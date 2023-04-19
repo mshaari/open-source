@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const Order = require('./Order');
+const jobSchema = require('./Job');
 
 const userSchema = new Schema({
   firstName: {
@@ -25,7 +25,16 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  orders: [Order.schema]
+  resume: {
+    type: String,
+  },
+  cv : {
+    type: String,
+  },
+  coverLetter : {
+    type: String,
+  },
+  savedJobs: [jobSchema]
 });
 
 // set up pre-save middleware to create password
