@@ -13,6 +13,7 @@ type User {
   resume: String
   cover_letter: String
   saved_jobs : [Job]
+  paid_member: Boolean
 }
 type Job {
   save_date: Date

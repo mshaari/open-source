@@ -31,6 +31,9 @@ const userSchema = new Schema({
   cover_letter : {
     type: String,
   },
+  paid_member : {
+    type: Boolean
+  },
   saved_jobs: [jobSchema]
 });
 
