@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import {
-//   ApolloClient,
-//   InMemoryCache,
-//   ApolloProvider,
-//   createHttpLink,
-// } from '@apollo/client';
-// import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import Login from './components/pages/Login';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
-import Dashboard from './components/pages/Dashboard'
+import Dashboard from './components/pages/Dashboard';
+import Search from './components/pages/Search';
 
 
 // import Detail from './pages/Detail';
@@ -25,24 +26,24 @@ import Dashboard from './components/pages/Dashboard'
 // import Success from './pages/Success';
 // import OrderHistory from './pages/OrderHistory';
 
-// const httpLink = createHttpLink({
-//   uri: '/graphql',
-// });
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
 
-// const authLink = setContext((_, { headers }) => {
-//   const token = localStorage.getItem('id_token');
-//   return {
-//     headers: {
-//       ...headers,
-//       authorization: token ? `Bearer ${token}` : '',
-//     },
-//   };
-// });
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
 
-// const client = new ApolloClient({
-//   link: authLink.concat(httpLink),
-//   cache: new InMemoryCache(),
-// });
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
 
 
@@ -53,22 +54,27 @@ function App() {
   const renderPage = () => {
     if (currentPage === 'About') {
       return (
-          <About currentPage='About'/>
+        <About currentPage='About' />
       )
     }
     if (currentPage === 'Login') {
       return (
-          <Login />
+        <Login />
       )
     }
     if (currentPage === 'Contact') {
       return (
-          <Contact />
+        <Contact />
       )
     }
     if (currentPage === 'Dashboard') {
       return (
-          <Dashboard />
+        <Dashboard />
+      )
+    }
+    if (currentPage === 'Search') {
+      return (
+        <Search />
       )
     }
   };
@@ -77,11 +83,15 @@ function App() {
   const handlePageChange = (page) => setCurrentPage(page);
 
   return (
-    <div className='rootApp'>
-      <Header currentPage={currentPage} handlePageChange={handlePageChange}/>
-      {renderPage()}
-      <Footer />
-    </div>
+    <ApolloProvider client={client}>
+      <Router>
+        <div className='rootApp'>
+          <Header currentPage={currentPage} handlePageChange={handlePageChange} />
+          {renderPage()}
+          <Footer />
+        </div>
+      </Router>
+    </ApolloProvider>
   )
 }
 
