@@ -34,11 +34,10 @@ const jobSchema = new Schema({
   redirect_url: {
     type: String
   },
-  progress : [progressSchema]
+  progress : [progressSchema] ,
 
   
 });
 
-const Job = mongoose.model('Job', jobSchema);
 
-module.exports = Job;
+module.exports = jobSchema;
