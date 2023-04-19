@@ -19,25 +19,10 @@
     --title: 'Press Start 2P', cursive;
     --text: 'Play', sans-serif;
     --buttons: 'Share Tech Mono', monospace;
-
 }
 
-@keyframes title-glow {
-    0% {
-        color: var(--blush);
-        text-shadow: none;
-    }
-    50% {
-        color: var(--coral);
-        text-shadow: 0 0 15px var(--light-coral);
-    }
-    100% {
-        color: var(--blush);
-        text-shadow: none;
-    }
-}
-
-@keyframes bg-shift {
+/* background color-shifting animation */
+@keyframes horizontal-bg-shift {
     0%{
         background-position: left;
     }
@@ -53,12 +38,12 @@
     position: relative;
     width: 100vw;
     margin-inline: 0;
-    display: flex;
+    display: flex; 
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(90deg, var(--tea-leaf)0%, var(--new-leaf)100%);
-    background-size: 500%;
-    animation: bg-shift 3s infinite alternate-reverse;
+    background: linear-gradient(90deg, var(--straw)0%, var(--fairytale)50%, var(--straw) 100%);
+    background-size: 200%;
+    animation: horizontal-bg-shift 3s infinite alternate-reverse linear;
 } 
 
 .header::after {
@@ -69,7 +54,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: linear-gradient(180deg, var(--sky) 0%, white 100%);
+    background: radial-gradient(circle at 50% 50%, var(--new-leaf) 0%, var(--sky) 80%);
     transform: scale(0);
     transition: transform;
     transform-origin: top;
@@ -89,7 +74,13 @@
 #title span:nth-of-type(2) {
     font-family: var(--title);
     color: var(--blush);
-    animation: title-glow 2s infinite;
+    transition: all;
+    transition-duration: 0.3s;
+}
+
+.header:hover #title span:nth-of-type(2) {
+    color: white;
+    text-shadow: 0 0 15px white;
 }
 
 /* nav-link styling */

@@ -3,20 +3,8 @@ import '../../styles/footer.css';
 
 function Footer() {
     return (
-        <footer>
-            <ul className='FooterElements'>
-                <li>
-                    <a href="https://github.com/mshaari">GitHub</a>
-                </li>
-
-                <li>
-                    <a href="https://stackoverflow.com/users/21660005/michael-s">Stack Overflow</a>
-                </li>
-
-                <li>
-                    <a href="https://www.linkedin.com/in/michael-shaari/">LinkedIn</a>
-                </li>
-            </ul>
+        <footer className='footer'>
+            <h5 id="footer-title"><span>&lt;/</span><span>Team Open Source, 2023</span><span>&gt;</span></h5>
         </footer>
     );
 }
