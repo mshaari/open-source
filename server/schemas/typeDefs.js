@@ -1,38 +1,39 @@
 const { gql } = require('apollo-server-express');
+//TODO: write out queries and mutations (types) below
 
+//'scalar Date' is necessary for us to use the Scalar Type Date
 const typeDefs = gql`
-  type Category {
-    _id: ID
-    name: String
-  }
+scalar Date
 
-  type Product {
-    _id: ID
-    name: String
-    description: String
-    image: String
-    quantity: Int
-    price: Float
-    category: Category
-  }
+type User {
+  _id: ID
+  first_name: String
+  last_name: String
+  email: String
+  resume: String
+  cover_letter: String
+  saved_jobs : [Job]
+}
+type Job {
+  save_date: Date
+  location: String
+  title: String
+  description: String
+  salary_predicted: Boolean
+  salary_max: Int
+  salary_min: Int
+  contract_time: String
+  redirect_url: String
+  progress: [Progress]
+}
 
-  type Order {
-    _id: ID
-    purchaseDate: String
-    products: [Product]
-  }
-
-  type User {
-    _id: ID
-    firstName: String
-    lastName: String
-    email: String
-    orders: [Order]
-  }
-
-  type Checkout {
-    session: ID
-  }
+type Progress {
+  applied: Boolean
+  interviewed: Boolean
+  offer_received: Boolean
+  end_process: Boolean
+  notes: String
+}
 
   type Auth {
     token: ID

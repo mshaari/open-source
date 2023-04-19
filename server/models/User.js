@@ -5,12 +5,12 @@ const bcrypt = require('bcrypt');
 const jobSchema = require('./Job');
 
 const userSchema = new Schema({
-  firstName: {
+  first_name: {
     type: String,
     required: true,
     trim: true
   },
-  lastName: {
+  last_name: {
     type: String,
     required: true,
     trim: true
@@ -28,13 +28,10 @@ const userSchema = new Schema({
   resume: {
     type: String,
   },
-  cv : {
+  cover_letter : {
     type: String,
   },
-  coverLetter : {
-    type: String,
-  },
-  savedJobs: [jobSchema]
+  saved_jobs: [jobSchema]
 });
 
 // set up pre-save middleware to create password

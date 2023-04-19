@@ -10,10 +10,10 @@ const progressSchema = new Schema({
   interviewed: {
     type: Boolean
   },
-  offerReceived : {
+  offer_received : {
     type: Boolean
   },
-  endProcess: {
+  end_process: {
     type: Boolean
   },
   notes : {

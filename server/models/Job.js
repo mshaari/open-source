@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const progressSchema = require('./Progress');
 
 const jobSchema = new Schema({
-  saveDate: {
+  save_date: {
     type: Date,
     default: Date.now
   },
@@ -18,7 +18,7 @@ const jobSchema = new Schema({
   description: {
     type: String 
   },
-  salaryPredicted : {
+  salary_predicted : {
     type: Boolean
   },
   salary_max : {
