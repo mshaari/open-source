@@ -3,5 +3,30 @@ html, body {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
-
 }
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+
+    }
+}
+
+.cursor-effect {
+    position: absolute;
+    z-index: 10;
+    background: radial-gradient(circle at center, rgb(255, 199, 226) 0%, rgb(255, 194, 176) 15%, rgb(254, 255, 176) 30%, rgb(197, 255, 197) 45%,rgb(176, 209, 255) 60%,rgb(210, 176, 255) 75%);
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    animation: ripple 0.3s 1 forwards;
+    transition: all;
+    transition-duration: 1s; 
+}
+

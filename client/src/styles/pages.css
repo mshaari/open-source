@@ -1,0 +1,87 @@
+/* variables */
+:root {
+    --fairytale: #F4CAE0;
+    --thistle: #D7B9D5;
+    --lilac: #ADA7C9;
+    --powder-blue: #90A8C3;
+    --moonstone: #64A6BD;
+    --sky: #88bfff;
+    --new-leaf: #E4F0D0;
+    --tea-leaf: #C2D8B9;
+    --blushed-grey: #E2DADB;
+    --indian-red: #DA5552;
+    --coral: #DF7373;
+    --light-coral: #E39695;
+    --nude: #E4B1AB;
+    --blush: #CC444B;
+    --violet: #995D81;
+    --straw: #fcff9d;
+    --title: 'Press Start 2P', cursive;
+    --text: 'Play', sans-serif;
+    --buttons: 'Share Tech Mono', monospace;
+}
+
+.page-content {
+    z-index: -1;
+    user-select: none;
+    min-height: 80vh;
+    padding-top: 5vh;
+    background: url('../../public/images/bg.jpg');
+    background-size: cover;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* about page styling */
+@keyframes appear {
+    0% {
+        transform: scaleY(0);
+    }
+    80% {
+        transform: scaleY(1.05);
+    }
+    90% {
+        transform: scaleY(0.97);
+    }
+    100%{
+        transform: scaleY(1);
+    }
+}
+.about-container {
+    color: white;
+    width: 90vw;
+    background-color:rgba(136, 191, 255, 0.8);
+    border: 6px solid rgb(52, 109, 255);
+    min-height: 75vh;
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform, background-color, border, color, box-shadow;
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    padding-inline: 15px;
+}
+
+.about-container:hover {
+    color: black;
+    background-color: white;
+    border: 6px solid var(--straw);
+    box-shadow: 0 0 15px var(--straw);
+}
+
+.active {
+    animation: appear 0.3s 1 forwards;
+}
+
+#about-title {
+    text-align: center;
+    font-family: var(--text);
+}
+
+#about-text {
+    font-family: var(--text);
+    text-align: center;
+    margin-top: 15vh;
+    line-height: 2rem;
+}
+

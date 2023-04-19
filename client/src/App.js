@@ -52,16 +52,24 @@ function App() {
   // This method is checking to see what the value of `currentPage` is. Depending on the value of currentPage, we return the corresponding component to render.
   const renderPage = () => {
     if (currentPage === 'About') {
-      return <About />;
+      return (
+          <About currentPage='About'/>
+      )
     }
     if (currentPage === 'Login') {
-      return <Login />;
+      return (
+          <Login />
+      )
     }
     if (currentPage === 'Contact') {
-      return <Contact />;
+      return (
+          <Contact />
+      )
     }
     if (currentPage === 'Dashboard') {
-      return <Dashboard />;
+      return (
+          <Dashboard />
+      )
     }
   };
 

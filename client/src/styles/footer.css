@@ -1,0 +1,84 @@
+/* variables */
+:root {
+    --fairytale: #F4CAE0;
+    --thistle: #D7B9D5;
+    --lilac: #ADA7C9;
+    --powder-blue: #90A8C3;
+    --moonstone: #64A6BD;
+    --sky: #88bfff;
+    --new-leaf: #E4F0D0;
+    --tea-leaf: #C2D8B9;
+    --blushed-grey: #E2DADB;
+    --indian-red: #DA5552;
+    --coral: #DF7373;
+    --light-coral: #E39695;
+    --nude: #E4B1AB;
+    --blush: #CC444B;
+    --violet: #995D81;
+    --straw: #fcff9d;
+    --title: 'Press Start 2P', cursive;
+    --text: 'Play', sans-serif;
+    --buttons: 'Share Tech Mono', monospace;
+
+}
+
+/* background color-shifting animation */
+@keyframes horizontal-bg-shift {
+    0%{
+        background-position: left;
+    }
+    100%{
+        background-position: right;
+    }
+}
+
+/* footer styling */
+.footer {
+    font-family: var(--title);
+    user-select: none;
+    z-index: 1;
+    position: relative;
+    width: 100vw;
+    margin-inline: 0;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(90deg, var(--straw)0%, var(--fairytale)50%, var(--straw) 100%);
+    background-size: 200%;
+    animation: horizontal-bg-shift 3s infinite alternate-reverse linear;
+} 
+
+.footer::after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle at 50% 50%, var(--new-leaf) 0%, var(--sky) 80%);
+    transform: scale(0);
+    transition: transform;
+    transform-origin: bottom;
+    transition-duration: 0.2s;
+}
+
+.footer:hover::after {
+    transform: scale(1);
+    transform-origin: top;
+}
+
+#footer-title span {
+    color: black;
+}
+
+#footer-title span:nth-last-of-type(2) {
+    color: var(--blush);
+    transition: all;
+    transition-duration: 0.3s;
+}
+
+.footer:hover #footer-title span:nth-last-of-type(2) {
+    color: white;
+    text-shadow: 0 0 15px white;
+}
