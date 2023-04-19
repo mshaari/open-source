@@ -1,0 +1,6 @@
+API_KEY='722ff62c72663a012a677b90e9f31501'
+APP_ID='64b6bb15'
+
+
+
+https://api.adzuna.com/v1/api/jobs/{COUNTRY}/search/1?app_id={APP_ID}&app_key={APP_KEY}&what={JOB_ROLE}&where={City}
