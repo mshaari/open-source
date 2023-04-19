@@ -26,7 +26,7 @@ type Job {
   salary_min: Int
   contract_time: String
   redirect_url: String
-  progress: [Progress]
+  progress: Progress
 }
 
 type Progress {
@@ -44,28 +44,28 @@ type Progress {
 
   type Query {
     # Get basic user information by user ID
-    user(id: ID!): User
+    user(_id: ID!): User
   
-    # Check paid membership status for a user
-    paidmember(userId: ID!): User
+     # Check paid membership status for a user
+     # paidmember(userId: ID!): User
   
-    # Get a user's resume and cover letter by user ID
+     # Get a user's resume and cover letter by user ID
   
   
-    # Get a user's saved jobs by user ID
-    getSavedJobs(userId: ID!): [Job]
+     # Get a user's saved jobs by user ID
+    # getSavedJobs(userId: ID!): [Job]
   
-    # Get the progress data for a saved job
-    getJobProgress(jobId: ID!): [Progress]
+     # Get the progress data for a saved job
+    # getJobProgress(jobId: ID!): [Progress]
   }
 
   type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    addOrder(products: [ID]!): Order
-    updateUser(firstName: String, lastName: String, email: String, password: String): User
-    updateProduct(_id: ID!, quantity: Int!): Product
-    login(email: String!, password: String!): Auth
-  }
+    addUser(first_name: String!, last_name: String!, email: String!, password: String!): Auth
+  #   addOrder(products: [ID]!): Order
+  #   updateUser(firstName: String, lastName: String, email: String, password: String): User
+  #  updateProduct(_id: ID!, quantity: Int!): Product
+  #  login(email: String!, password: String!): Auth
+   }
 `;
 
 module.exports = typeDefs;
