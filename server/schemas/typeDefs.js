@@ -15,6 +15,7 @@ type User {
   saved_jobs : [Job]
   paid_member: Boolean
 }
+
 type Job {
   save_date: Date
   location: String
@@ -42,12 +43,20 @@ type Progress {
   }
 
   type Query {
-    categories: [Category]
-    products(category: ID, name: String): [Product]
-    product(_id: ID!): Product
-    user: User
-    order(_id: ID!): Order
-    checkout(products: [ID]!): Checkout
+    # Get basic user information by user ID
+    user(id: ID!): User
+  
+    # Check paid membership status for a user
+    paidmember(userId: ID!): User
+  
+    # Get a user's resume and cover letter by user ID
+  
+  
+    # Get a user's saved jobs by user ID
+    getSavedJobs(userId: ID!): [Job]
+  
+    # Get the progress data for a saved job
+    getJobProgress(jobId: ID!): [Progress]
   }
 
   type Mutation {
