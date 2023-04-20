@@ -77,26 +77,33 @@
 }
 
 #about-title {
-    font-size: 2rem;
+    font-family: var(--title);
+    font-size: 1.5rem;
     text-align: center;
-    font-family: var(--text);
+    margin-top: 3rem;
 }
 
 #about-text {
     font-family: var(--text);
     text-align: center;
-    margin-top: 15vh;
+    margin-top: 10vh;
     line-height: 2rem;
 }
 
 /* login page styling */
 #login-signup-wrapper {
     position: relative;
+}
 
+.login-title {
+    font-family: var(--title);
+    margin-block: 3rem;
 }
 
 .login-wrapper {
     font-family: var(--text);
+    text-align: center;
+    color:white;
     position: absolute;
     left: 3vw;
     display: flex;
@@ -116,6 +123,8 @@
 
 .signup-wrapper {
     font-family: var(--text);
+    text-align: center;
+    color:white;
     position: absolute;
     right: 3vw;
     display: flex;
@@ -139,6 +148,48 @@
     border: 6px solid var(--straw);
     box-shadow: 0 0 15px var(--straw);
 
+}
+
+.btn {
+    margin: 1rem;
+    font-family: var(--buttons);
+    background-color: #D7B9D5;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 3px solid #9d60ff;
+}
+
+@keyframes btn-pop-up {
+    0% {
+        transform: translateY(-4px);
+        box-shadow: 0 5px 0px 0 var(--violet);
+    }
+    30% {
+        transform: translateY(-1px);
+        box-shadow: 0 3px 0px 0 var(--violet);
+    }
+    40% {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 0px 0 var(--violet);
+    }
+    100% {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 0px 0 var(--violet);
+    }
+}
+
+.btn:hover {
+    animation: btn-pop-up 0.5s linear forwards;
+}
+
+.btn:active {
+    transition: none;
+    box-shadow: none !important;
+    background-color: white;
+    border: 3px solid rgb(228, 173, 255);;
+    color: rgb(228, 173, 255);
+    transform: translateY(2px) !important;
 }
 
 @keyframes slide-right {
@@ -185,6 +236,11 @@
     animation: slide-left 0.6s linear forwards;
 }
 
+.form-group {
+    text-align: center;
+    margin-block: 1rem;
+}
+
 /* contact page styling */
 @keyframes slide-up {
     0% {
@@ -202,6 +258,10 @@
     100% {
         transform: translateY(0);
     }
+}
+
+.contact-title {
+    font-family: var(--title);
 }
 
 .contact-form-container {

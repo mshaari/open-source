@@ -7,10 +7,10 @@ function LoginForm() {
                 <div className='LoginForm'>
                     <div id="login-signup-wrapper">
                         <div className="login-wrapper login-active" >
-                            <h2>Login</h2>
+                            <h2 className='login-title'>Login</h2>
     
                             <form className="form login-form">
-                                <div className="form-group txt-field">
+                                <div className="form-group">
                                     <label>Email:</label>
                                     <input className="form-input" type="text" id="email-login" />
                                 </div>
@@ -24,7 +24,7 @@ function LoginForm() {
                             </form>
                         </div>
                         <div className="signup-wrapper signup-active">
-                            <h2>Signup</h2>
+                            <h2 className='login-title'>Signup</h2>
     
                             <form className="form signup-form">
                                 <div className="form-group">
