@@ -20,7 +20,7 @@ html, body {
 
 .cursor-effect {
     position: absolute;
-    z-index: 10;
+    z-index: 1;
     background: radial-gradient(circle at center, rgb(255, 199, 226) 0%, rgb(255, 194, 176) 15%, rgb(254, 255, 176) 30%, rgb(197, 255, 197) 45%,rgb(176, 209, 255) 60%,rgb(210, 176, 255) 75%);
     height: 3rem;
     width: 3rem;
