@@ -15,6 +15,7 @@ import About from './components/pages/About';
 import Contact from './components/pages/Contact';
 import Dashboard from './components/pages/Dashboard';
 import Search from './components/pages/Search';
+import Membership from './components/pages/Memebership';
 
 
 // import Detail from './pages/Detail';
@@ -75,6 +76,11 @@ function App() {
     if (currentPage === 'Search') {
       return (
         <Search />
+      )
+    }
+    if (currentPage === 'Membership') {
+      return (
+        <Membership />
       )
     }
   };

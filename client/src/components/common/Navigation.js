@@ -11,6 +11,7 @@ function Navigation(props) {
             <a href="#dashboard" onClick={() => handlePageChange("Dashboard") } className={ currentPage === "Dashboard" ? "nav-item-active" : "nav-item"}>Dashboard</a>
             <a href="#search" onClick={() => handlePageChange("Search") } className={ currentPage === "Search" ? "nav-item-active" : "nav-item"}>Search</a>
             <a href="#contact" onClick={() => handlePageChange("Contact") } className={ currentPage === "Contact" ? "nav-item-active" : "nav-item"}>Contact</a>
+            <a href="#membership" onClick={() => handlePageChange("Membership") } className={ currentPage === "Membership" ? "nav-item-active" : "nav-item"}>Membership</a>
         </nav>
     );
 }
