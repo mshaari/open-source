@@ -6,10 +6,10 @@ const typeDefs = gql`
 scalar Date
 
 type User {
-  _id: ID
-  first_name: String
-  last_name: String
-  email: String
+  _id: ID!
+  first_name: String!
+  last_name: String!
+  email: String!
   resume: String
   cover_letter: String
   saved_jobs : [Job]
@@ -17,6 +17,7 @@ type User {
 }
 
 type Job {
+  _id: ID!
   save_date: Date
   location: String
   title: String
@@ -45,25 +46,17 @@ type Progress {
   type Query {
     # Get basic user information by user ID
     user(_id: ID!): User
-  
-     # Check paid membership status for a user
-     # paidmember(userId: ID!): User
-  
-     # Get a user's resume and cover letter by user ID
-  
-  
-     # Get a user's saved jobs by user ID
-    # getSavedJobs(userId: ID!): [Job]
-  
-     # Get the progress data for a saved job
-    # getJobProgress(jobId: ID!): [Progress]
+    # Get all users
+    users: [User!]!
+    # Get job by job ID
+    job(_id: ID!): Job
+    # Get all jobs
+    jobs: [Job!]!
   }
 
   type Mutation {
     addUser(first_name: String!, last_name: String!, email: String!, password: String!): Auth
-  #   addOrder(products: [ID]!): Order
-  #   updateUser(firstName: String, lastName: String, email: String, password: String): User
-  #  updateProduct(_id: ID!, quantity: Int!): Product
+    updateUser(firstName: String, lastName: String, email: String, password: String): User
   #  login(email: String!, password: String!): Auth
    }
 `;
