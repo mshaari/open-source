@@ -60,7 +60,7 @@ function App() {
     }
     if (currentPage === 'Login') {
       return (
-        <Login />
+        <Login currentPage='Login'/>
       )
     }
     if (currentPage === 'Contact') {
