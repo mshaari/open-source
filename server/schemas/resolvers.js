@@ -21,6 +21,10 @@ const resolvers = {
       const token = signToken(user);
    return { token, user };
     },
+    updateUser : async (parent, args) => {
+      const user = await User.findByIdAndUpdate(args, {new: true} );
+      return user;
+    }
   //   addOrder: async (parent, { products }, context) => {
   //     console.log(context);
   //     if (context.user) {
