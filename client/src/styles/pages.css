@@ -26,11 +26,12 @@
     user-select: none;
     min-height: 80vh;
     padding-top: 5vh;
-    background: url('../../public/images/bg.jpg');
+    background: url('../../public/images/bg.png');
     background-size: cover;
     display:flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 }
 
 /* about page styling */
@@ -61,6 +62,7 @@
     transition-duration: 0.4s;
     border-radius: 10px;
     padding-inline: 15px;
+    box-shadow: 5px 5px 10px black;
 }
 
 .about-container:hover, .contact-form-container:hover {
@@ -75,18 +77,193 @@
 }
 
 #about-title {
+    font-family: var(--title);
+    font-size: 1.5rem;
     text-align: center;
-    font-family: var(--text);
+    margin-top: 3rem;
 }
 
 #about-text {
     font-family: var(--text);
     text-align: center;
-    margin-top: 15vh;
+    margin-top: 10vh;
     line-height: 2rem;
 }
 
+/* login page styling */
+#login-signup-wrapper {
+    position: relative;
+}
+
+.login-title {
+    font-family: var(--title);
+    margin-block: 3rem;
+}
+
+.login-wrapper {
+    font-family: var(--text);
+    text-align: center;
+    color:white;
+    position: absolute;
+    left: 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 30vw;
+    height: 60vh;
+    background-color: rgba(226, 218, 219, 0.8);
+    border: 6px solid var(--lilac);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: all;
+    transition-duration: 0.3s;
+    transform: translateX(100vw);
+    box-shadow: 5px 5px 10px black;
+}
+
+.signup-wrapper {
+    font-family: var(--text);
+    text-align: center;
+    color:white;
+    position: absolute;
+    right: 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 30vw;
+    height: 60vh;
+    background-color: rgba(226, 218, 219, 0.8);
+    border: 6px solid var(--lilac);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: all;
+    transition-duration: 0.3s;
+    transform: translateX(-100vw);
+    box-shadow: 5px 5px 10px black;
+}
+
+.signup-wrapper:hover, .login-wrapper:hover {
+    color: black;
+    background-color: white;
+    border: 6px solid var(--straw);
+    box-shadow: 0 0 15px var(--straw);
+
+}
+
+.btn {
+    margin: 1rem;
+    font-family: var(--buttons);
+    background-color: #D7B9D5;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 3px solid #9d60ff;
+}
+
+@keyframes btn-pop-up {
+    0% {
+        transform: translateY(-4px);
+        box-shadow: 0 5px 0px 0 var(--violet);
+    }
+    30% {
+        transform: translateY(-1px);
+        box-shadow: 0 3px 0px 0 var(--violet);
+    }
+    40% {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 0px 0 var(--violet);
+    }
+    100% {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 0px 0 var(--violet);
+    }
+}
+
+.btn:hover {
+    animation: btn-pop-up 0.5s linear forwards;
+}
+
+.btn:active {
+    transition: none;
+    box-shadow: none !important;
+    background-color: white;
+    border: 3px solid rgb(228, 173, 255);;
+    color: rgb(228, 173, 255);
+    transform: translateY(2px) !important;
+}
+
+@keyframes slide-right {
+    0%{
+        transform: translateX(-100vw);
+    }
+    30% {
+        transform: translateX(0);
+    }
+    40% {
+        transform: translateX(-3vw);
+    }
+    45% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-left {
+    0%{
+        transform: translateX(100vw);
+    }
+    30% {
+        transform: translateX(0);
+    }
+    40% {
+        transform: translateX(3vw);
+    }
+    45% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.signup-active {
+    animation: slide-right 0.6s linear forwards;
+}
+
+.login-active {
+    animation: slide-left 0.6s linear forwards;
+}
+
+.form-group {
+    text-align: center;
+    margin-block: 1rem;
+}
+
 /* contact page styling */
+@keyframes slide-up {
+    0% {
+        transform: translateY(120vh);
+    }
+    30% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(2vh);
+    }
+    45% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.contact-title {
+    font-family: var(--title);
+}
+
 .contact-form-container {
     position: relative;
     color: white;
@@ -94,14 +271,19 @@
     background-color: rgba(228, 177, 171, 0.8);
     border: 6px solid var(--light-coral);
     min-height: 75vh;
-    transform: scaleY(0);
-    transform-origin: center;
-    transition: transform, background-color, border, color, box-shadow;
-    transition-duration: 0.4s;
+    transition: all;
+    transition-duration: 0.3s;
     border-radius: 10px;
     padding-inline: 15px;
     text-align: center;
     font-family: var(--text);
+    box-shadow: 5px 5px 10px black;
+    transform: translateY(120vh);
+    margin-bottom: 2rem;
+}
+
+.contact-active {
+    animation: slide-up 0.6s linear forwards;
 }
 
 label {
@@ -141,22 +323,38 @@ label {
     padding: 5px 10px;
     border-radius: 6px;
     border: 3px solid var(--coral);
-    transition: transform, box-shadow;
-    transition-duration: 0.2s;
+}
+
+@keyframes pop-up {
+    0% {
+        transform: translateY(-4px);
+        box-shadow: 0 5px 0px 0 var(--indian-red);
+    }
+    30% {
+        transform: translateY(-1px);
+        box-shadow: 0 3px 0px 0 var(--indian-red);
+    }
+    40% {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 0px 0 var(--indian-red);
+    }
+    100% {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 0px 0 var(--indian-red);
+    }
 }
 
 #submit-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 0px var(--indian-red);
+    animation: pop-up 0.5s linear forwards;
 }
 
 #submit-button:active {
     transition: none;
-    box-shadow: none;
+    box-shadow: none !important;
     background-color: white;
     border: 3px solid var(--nude);
     color: var(--nude);
-    transform: translateY(2px);
+    transform: translateY(2px) !important;
 }
 
 #submission-message {

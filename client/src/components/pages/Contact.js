@@ -39,10 +39,9 @@ function Contact() {
 
     return (
         <div className='page-content'>
-            <div className='contact-form-container active'>
-                <h3 className={'submitted' + submittedStatus}>Got questions?
-                <br></br>
-                Fill out the form below and we'll get back to you ASAP!</h3>
+            <div className='contact-form-container contact-active'>
+                <h3 className='contact-title'>Got questions?</h3>
+                <h3>Fill out the form below and we'll get back to you ASAP!</h3>
 
                 <form ref={form} onSubmit={sendEmail} className={'submitted' + submittedStatus}>
                     <div className='input'>
