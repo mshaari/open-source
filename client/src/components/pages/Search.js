@@ -4,8 +4,8 @@ import '../../styles/pages.css';
 function Search() {
     return (
         <div className='page-content'>
-            <div className='dashboard-container'>
-                <p className='Dashboard'>Search</p>
+            <div className='search-container'>
+                <p className='search'>Search</p>
             </div>
         </div>
 

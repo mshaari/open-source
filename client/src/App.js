@@ -64,7 +64,7 @@ function App() {
     }
     if (currentPage === 'Contact') {
       return (
-        <Contact />
+        <Contact currentPage='Contact' />
       )
     }
     if (currentPage === 'Dashboard') {

@@ -48,6 +48,7 @@
         transform: scaleY(1);
     }
 }
+
 .about-container {
     color: white;
     width: 90vw;
@@ -62,7 +63,7 @@
     padding-inline: 15px;
 }
 
-.about-container:hover {
+.about-container:hover, .contact-form-container:hover {
     color: black;
     background-color: white;
     border: 6px solid var(--straw);
@@ -84,4 +85,111 @@
     margin-top: 15vh;
     line-height: 2rem;
 }
+
+/* contact page styling */
+.contact-form-container {
+    position: relative;
+    color: white;
+    width: 90vw;
+    background-color: rgba(228, 177, 171, 0.8);
+    border: 6px solid var(--light-coral);
+    min-height: 75vh;
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform, background-color, border, color, box-shadow;
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    padding-inline: 15px;
+    text-align: center;
+    font-family: var(--text);
+}
+
+label {
+    margin-right: 1rem;
+}
+
+.message-label {
+    margin-bottom: 1rem;
+}
+
+.input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-block: 1rem;
+}
+
+.message-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textarea {
+    width: 70vw;
+    height: 35vh;
+    resize: vertical;
+
+}
+
+#submit-button {
+    margin: 1rem;
+    font-family: var(--buttons);
+    background-color: var(--light-coral);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 3px solid var(--coral);
+    transition: transform, box-shadow;
+    transition-duration: 0.2s;
+}
+
+#submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 0px var(--indian-red);
+}
+
+#submit-button:active {
+    transition: none;
+    box-shadow: none;
+    background-color: white;
+    border: 3px solid var(--nude);
+    color: var(--nude);
+    transform: translateY(2px);
+}
+
+#submission-message {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index:3;
+    top:0;
+    width: 90vw;
+    height: 70vh;
+    border-radius: 35px;
+    color: white;
+    background-color: rgba(0,0,0,0.8);
+}
+
+@keyframes blink {
+    0% {
+        opacity: 100%;
+    }
+    50% {
+        opacity: 20%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+#redirect {
+    animation: blink 1.5s infinite linear;
+}
+
+
+
+
 
