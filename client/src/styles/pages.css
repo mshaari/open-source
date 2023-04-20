@@ -388,6 +388,200 @@ label {
 }
 
 
+/* membership page styling */
+@keyframes shimmer {
+    0% {
+        color: var(--blush);
+    }
+    50% {
+        color: var(--light-coral);
+    }
+    100% {
+        color: var(--blush);
+    }
+}
+.membership-container {
+    text-align: center;
+    color: white;
+    width: 90vw;
+    background-color:rgba(201, 255, 136, 0.8);
+    border: 6px solid rgb(145, 181, 0);
+    min-height: 75vh;
+    transform-origin: center;
+    transition: transform, background-color, border, color, box-shadow;
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    padding-inline: 15px;
+    box-shadow: 5px 5px 10px black;
+    transform: translateY(-110vh);
+}
 
+.membership-container:hover {
+    color: black;
+    background-color: white;
+    border: 6px solid var(--straw);
+    box-shadow: 0 0 15px var(--straw);
+}
 
+.membership-title {
+    font-family: var(--title);
+    margin-block: 2rem;
+}
 
+.price {
+    font-size: 1.5rem;
+    animation: shimmer 1s infinite linear;
+}
+
+.membership-text {
+    position: relative;
+    margin-inline: auto;
+    margin-bottom: 40px;
+    padding-inline: 10px;
+    padding-block: 25px;
+    border-radius: 25px;
+    font-family: var(--text);
+    line-height: 2rem;
+    background-color: rgb(162, 162, 162);
+    width: 75vw;
+    transition: all;
+    transition-duration: 0.3s;
+}
+
+.membership-text::after {
+    content: "";
+    position: absolute;
+    left:calc(50% - 1rem);
+    top:99%;
+    height: 3rem;
+    width: 2rem;
+    background-color: rgb(162, 162, 162);
+    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    transition: all;
+    transition-duration: 0.3s;
+}
+
+.membership-container:hover .membership-text::after {
+    background-color: rgb(222, 255, 207);
+}
+
+.membership-container:hover .membership-text {
+    background-color: rgb(222, 255, 207);
+}
+
+#checkout {
+    position: relative;
+    margin: 1rem;
+    font-family: var(--buttons);
+    background-color: rgb(0, 188, 88);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 3px solid rgb(0, 170, 28);
+}
+
+@keyframes checkout-btn {
+    0% {
+        transform: translateY(-4px);
+        box-shadow: 0 5px 0px 0 rgb(0, 128, 60);
+    }
+    30% {
+        transform: translateY(-1px);
+        box-shadow: 0 3px 0px 0 rgb(0, 128, 60);
+    }
+    40% {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 0px 0 rgb(0, 128, 60);
+    }
+    100% {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 0px 0 rgb(0, 128, 60);
+    }
+}
+
+#checkout:hover {
+    animation: checkout-btn 0.5s linear forwards;
+}
+
+#checkout:active {
+    transition: none;
+    box-shadow: none !important;
+    background-color: white;
+    border: 3px solid rgb(74, 255, 158);
+    color: rgb(74, 255, 158);
+    transform: translateY(2px) !important;
+}
+
+@keyframes point-right {
+    0% {
+        left: -10rem;
+        opacity: 0;
+    }
+    50% {
+        left: -6rem;
+        opacity: 1;
+    }
+    100% {
+        left: -5rem;
+        opacity: 0;
+    }
+}
+
+@keyframes point-left {
+    0% {
+        left: 10rem;
+        opacity: 0;
+    }
+    50% {
+        left: 6rem;
+        opacity: 1;
+    }
+    100% {
+        left: 5rem;
+        opacity: 0;
+    }
+}
+
+#checkout::before {
+    position: absolute;
+    content: ">>>";
+    top: 3px;
+    left: -10rem;
+    color: rgb(162, 162, 162);
+    font-family: var(--title);
+    font-size: 1.5rem;
+    animation: point-right 1s linear infinite;
+}
+
+#checkout::after {
+    position: absolute;
+    content: "<<<";
+    top: 3px;
+    left: 10rem;
+    color: rgb(162, 162, 162);
+    font-family: var(--title);
+    font-size: 1.5rem;
+    animation: point-left 1s linear infinite;
+}
+
+@keyframes drop-down {
+    0% {
+        transform: translateY(-110vh);
+    }
+    30% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-3vh);
+    }
+    45% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.membership-active {
+    animation: drop-down 0.6s 1 linear forwards;
+}
