@@ -10,7 +10,10 @@ const resolvers = {
     // Get user by ID
         //TODO: set it up to identify the user ID by context, not passed in as args
     user: async (parents, args, context) => {
-      return await User.findById(args._id)
+      if(context.user) {
+        return await User.findById(context.user._id)
+      }
+      throw new AuthenticationError("You need to be logged in!")
     },
 
     // Get all users
@@ -56,9 +59,13 @@ const resolvers = {
     //finds and updates 1 user by ID - ID is required
     //returns the new/updated version of the user
           //TODO: set it up to take in the user ID from the app's context
-    updateUser : async (parent, args) => {
+    updateUser : async (parent, args, context) => {
+      if(context.user) {
       const user = await User.findByIdAndUpdate(args, {new: true} );
       return user;
+      }
+      //if context.user does not exist, then we do not have a valid jwt and are not logged in 
+      throw new AuthenticationError("You need to be logged in!")
     },
     //logs a user in
     //takes in an email and a password as arguments
@@ -75,20 +82,21 @@ const resolvers = {
           }
     
           const token = signToken(user);
-    
           return { token, user };
         },
       //TODO: use React context to grab the user's id
       addJob: async (parent, args, context) => {
+        if(context.user) {
         const user = await User.findByIdAndUpdate(
-          {_id: '644039c6ee5020e4ec957056'},
+          {_id: context.user._id},
           {$addToSet : {saved_jobs : args.job}},
           {new: true});
         //saved_jobs is an array, we only want to return the most recently created Job
         //so we slice off the last item in the array into its own array, and return the first element in that new array
         const newJob = user.saved_jobs.slice(-1)[0];
         return newJob;
-        
+      }
+      throw new AuthenticationError('You need to be logged in!');
       }
 
   //   addOrder: async (parent, { products }, context) => {
