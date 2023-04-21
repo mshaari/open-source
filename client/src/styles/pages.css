@@ -26,8 +26,9 @@
     user-select: none;
     min-height: 80vh;
     padding-top: 5vh;
-    background: url('../../public/images/bg.png');
+    background: url('../../public/images/bg.gif');
     background-size: cover;
+    background-position: bottom;
     display:flex;
     flex-direction: column;
     align-items: center;
