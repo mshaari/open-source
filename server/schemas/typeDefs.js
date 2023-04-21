@@ -52,6 +52,8 @@ type Progress {
     job(_id: ID!): Job
     # Get all jobs
     jobs: [Job!]!
+    #find jobs from web API ?
+    findJobs(country: String, role: String, location: String): [Job]
   }
 
   type Mutation {

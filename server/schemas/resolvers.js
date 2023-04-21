@@ -1,7 +1,9 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Product, Order } = require('../models');
 const { signToken } = require('../utils/auth');
+const axios = require("axios");
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+require('dotenv').config();
 
 const resolvers = {
   Query: {
@@ -13,14 +15,25 @@ const resolvers = {
     // Get all users
     users: async () => {
       return await User.find()
-    }
+    },
+
+    // Pulls Web API data from adzuna.com
+    findJobs: async (parent, { country, role, location }) => {
+      const { data } = await axios.get(`https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${process.env.APP_ID}&app_key=${process.env.API_KEY}&results_per_page=20&what=${role}&where=${location}&distance=20`)
+      console.log(data)
+      return data.results
+    },
   },
+
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
    return { token, user };
     },
+
+    
+
   //   addOrder: async (parent, { products }, context) => {
   //     console.log(context);
   //     if (context.user) {
