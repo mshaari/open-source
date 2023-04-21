@@ -1,8 +1,4 @@
 import React from 'react';
-import Header from '../common/Header';
-import Navigation from '../common/Navigation';
-import Footer from '../common/Footer';
-
 import '../../styles/pages.css';
 
 function Success(props) {
@@ -23,7 +19,7 @@ function Success(props) {
                         <br></br>
                         &lt;/open source&gt; offers!
                     </p>
-                    <a href='/#search' className='return'>Start Job Hunting</a>
+                    <a href='/' className='return'>Start Job Hunting</a>
                 </div>
             </div>
     );

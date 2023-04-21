@@ -1,9 +1,12 @@
+require("dotenv").config()
+console.log(require("dotenv").config())
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Product, Order } = require('../models');
 const { signToken } = require('../utils/auth');
 const axios = require("axios");
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-require('dotenv').config();
+// TODO: figure out why process.env.STRIPE_SECRET_KEY isn't loading the variable
+const stripe_secret_key = process.env.STRIPE_SECRET_KEY;
+const stripe = require('stripe')(stripe_secret_key);
 
 const resolvers = {
   Query: {
@@ -38,8 +41,8 @@ const resolvers = {
           }
         ],
         mode: 'payment',
-        success_url: process.env.FRONTEND_DOMAIN + '/success',
-        cancel_url: process.env.FRONTEND_DOMAIN + '/cancel'
+        success_url: 'http://localhost:3000/success',
+        cancel_url: 'http://localhost:3000/cancel'
       });
 
       return JSON.stringify({

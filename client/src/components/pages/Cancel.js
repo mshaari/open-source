@@ -12,11 +12,11 @@ function Cancel(props) {
                     <br></br>
                     Please feel free to drop us a message
                     <br></br>
-                    on the Contact page to let us know why
+                    on the Contact page to let us know
                     <br></br>
-                    you decided to cancel your membership!
+                    why you changed your mind!
                 </p>
-                <a href='/#about' className='return'>Return</a>
+                <a href='/' className='return'>Return</a>
             </div>
         </div>
     );
