@@ -2,7 +2,7 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User, Product, Order } = require('../models');
 const { signToken } = require('../utils/auth');
 const axios = require("axios");
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 require('dotenv').config();
 
 const resolvers = {
@@ -23,6 +23,26 @@ const resolvers = {
       const { data } = await axios.get(`https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${process.env.APP_ID}&app_key=${process.env.API_KEY}&results_per_page=20&what=${role}&where=${location}&distance=20`)
       console.log(data)
       return data.results
+    },
+
+    // Stripe integration
+    createCheckoutSession: async () => {
+      const session = await stripe.checkout.sessions.create({
+        line_items: [
+          {
+            price: 'price_1MzKj2HjdTfpIyDypkipEIHS',
+            quantity: 1
+          }
+        ],
+        mode: 'payment',
+        success_url: process.env.FRONTEND_DOMAIN + '/success',
+        cancel_url: process.env.FRONTEND_DOMAIN + '/cancel'
+      });
+
+      return JSON.stringify({
+        url: session.url
+      });
+
     },
   },
 

@@ -66,6 +66,9 @@ type Progress {
     jobs: [Job!]!
     #find jobs from web API ?
     findJobs(country: String, role: String, location: String): [Job]
+    # Stripe integration
+    createCheckoutSession: String # '{ url: "STRIPEURL.com"}'
+
   }
 
   type Mutation {
