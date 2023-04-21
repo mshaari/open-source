@@ -64,6 +64,7 @@
     border-radius: 10px;
     padding-inline: 15px;
     box-shadow: 5px 5px 10px black;
+    margin-bottom: 2rem;
 }
 
 .about-container:hover, .contact-form-container:hover {
@@ -94,6 +95,7 @@
 /* login page styling */
 #login-signup-wrapper {
     position: relative;
+    margin-bottom: 2rem;
 }
 
 .login-title {
@@ -289,6 +291,7 @@
     padding-inline: 15px;
     box-shadow: 5px 5px 10px black;
     opacity: 0;
+    margin-bottom: 2rem;
 }
 
 .search-active {
@@ -368,6 +371,7 @@
     box-shadow: 5px 5px 10px black;
     transform: scale(0.3) translateX(-110vw);
     opacity: 0;
+    margin-bottom: 2rem;
 }
 
 .dashboard-container:hover {
@@ -612,6 +616,7 @@ label {
     padding-inline: 15px;
     box-shadow: 5px 5px 10px black;
     transform: translateY(-110vh);
+    margin-bottom: 2rem;
 }
 
 .membership-container:hover {
@@ -782,4 +787,57 @@ label {
 
 .membership-active {
     animation: drop-down 0.6s 1 linear forwards;
+}
+
+/* payment success page styliing */
+.success-content {
+    height: 100vh;
+    background-image: url('../../public/images/success.gif');
+    background-position: bottom;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.cancel-content {
+    height: 100vh;
+    background-image: url('../../public/images/cancel.gif');
+    background-position: bottom;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-content: center; 
+}
+
+#success-title, #cancel-title {
+    font-family: var(--title);
+}
+
+.success-container, .cancel-container {
+    padding-block: 35px;
+    margin-top: 35vh;
+    font-family: var(--text);
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.return {
+    text-decoration: none;
+    margin-top: 5rem;
+    font-family: var(--buttons);
+    background-color: #e2b1df;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 3px solid #ff60b2;
+}
+
+.return:active {
+    transition: none;
+    box-shadow: none !important;
+    background-color: white;
+    border: 3px solid var(--nude);
+    color: var(--nude);
+    transform: translateY(2px) !important;
 }

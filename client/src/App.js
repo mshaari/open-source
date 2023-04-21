@@ -16,6 +16,8 @@ import Contact from './components/pages/Contact';
 import Dashboard from './components/pages/Dashboard';
 import Search from './components/pages/Search';
 import Membership from './components/pages/Memebership';
+import Success from './components/pages/Success';
+import Cancel from './components/pages/Cancel';
 
 
 // import Detail from './pages/Detail';
@@ -55,32 +57,56 @@ function App() {
   const renderPage = () => {
     if (currentPage === 'About') {
       return (
-        <About currentPage='About' />
+        <div>
+          <Header currentPage={currentPage} handlePageChange={handlePageChange} />
+          <About currentPage='About' />
+          <Footer />
+        </div>
       )
     }
     if (currentPage === 'Login') {
       return (
-        <Login currentPage='Login'/>
+        <div>
+          <Header currentPage={currentPage} handlePageChange={handlePageChange} />
+          <Login currentPage='Login' />
+          <Footer />
+        </div>
       )
     }
     if (currentPage === 'Contact') {
       return (
-        <Contact currentPage='Contact' />
+        <div>
+          <Header currentPage={currentPage} handlePageChange={handlePageChange} />
+          <Contact currentPage='Contact' />
+          <Footer />
+        </div>
       )
     }
     if (currentPage === 'Dashboard') {
       return (
-        <Dashboard currentPage='Dashboard' />
+        <div>
+          <Header currentPage={currentPage} handlePageChange={handlePageChange} />
+          <Dashboard currentPage='Dashboard' />
+          <Footer />
+        </div>
       )
     }
     if (currentPage === 'Search') {
       return (
-        <Search currentPage='Search'/>
+        <div>
+          <Header currentPage={currentPage} handlePageChange={handlePageChange} />
+          <Search currentPage='Search' />
+          <Footer />
+        </div>
       )
     }
     if (currentPage === 'Membership') {
       return (
-        <Membership currentPage='Membership' />
+        <div>
+          <Header currentPage={currentPage} handlePageChange={handlePageChange} />
+          <Membership currentPage='Membership' />
+          <Footer />
+        </div>
       )
     }
   };
@@ -91,11 +117,13 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className='rootApp'>
-          <Header currentPage={currentPage} handlePageChange={handlePageChange} />
-          {renderPage()}
-          <Footer />
-        </div>
+        <Routes>
+          <Route path='/' element={renderPage()} />
+          <Route path='/success' element={<Success />} />
+          <Route path='/cancel' element={<Cancel />} />
+        </Routes>
+
+
       </Router>
     </ApolloProvider>
   )
