@@ -17,7 +17,7 @@ type User {
 }
 
 type Job {
-  _id: ID
+  _id: ID!
   save_date: Date
   location: String
   title: String
@@ -68,7 +68,8 @@ type Progress {
 
   type Mutation {
     addUser(first_name: String!, last_name: String!, email: String!, password: String!): Auth
-    updateUser(_id: ID! firstName: String, lastName: String, email: String, password: String): User
+    updateUser(_id: ID! firstName: String, lastName: String, email: String, password: String, paid_member: Boolean, resume: String,
+              cover_letter: String): User
     login(email: String!, password: String!): Auth
     addJob(job: JobData) : Job
    }
