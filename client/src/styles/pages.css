@@ -241,6 +241,111 @@
     margin-block: 1rem;
 }
 
+/* job-search page styling */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    10% {
+        opacity: 0.1;
+        transform: translateX(15px);
+    }
+    15% {
+        opacity: 0.3;
+        transform: translateX(-10px);
+    }
+    20% {
+        opacity: 0.5;
+        transform: translateX(8px);
+    }
+    25% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.search, .results {
+    font-family: var(--title);
+    margin-bottom: 30px;
+}
+.search-container {
+    font-family: var(--text);
+    text-align: center;
+    color: white;
+    width: 90vw;
+    background-color:rgba(255, 136, 193, 0.8);
+    border: 6px solid rgb(255, 52, 116);
+    min-height: 75vh;
+    transform-origin: center;
+    transition: transform, background-color, border, color, box-shadow;
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    padding-inline: 15px;
+    box-shadow: 5px 5px 10px black;
+    opacity: 0;
+}
+
+.search-active {
+    animation: fade-in 1s 1 linear forwards;
+}
+
+.search-container:hover {
+    color: black;
+    background-color: white;
+    border: 6px solid var(--straw);
+    box-shadow: 0 0 15px var(--straw);
+}
+
+.search-box {
+    margin-block: 15px;
+}
+
+#search-btn {
+    margin: 1rem;
+    font-family: var(--buttons);
+    background-color: #e2b1df;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 3px solid #ff60b2;
+}
+
+@keyframes search-button {
+    0% {
+        transform: translateY(-4px);
+        box-shadow: 0 5px 0px 0 rgb(255, 42, 88);
+    }
+    30% {
+        transform: translateY(-1px);
+        box-shadow: 0 3px 0px 0 rgb(255, 42, 88);
+    }
+    40% {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 0px 0 rgb(255, 42, 88);
+    }
+    100% {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 0px 0 rgb(255, 42, 88);
+    }
+}
+
+#search-btn:hover {
+    animation: search-button 0.5s linear forwards;
+}
+
+#search-btn:active {
+    transition: none;
+    box-shadow: none !important;
+    background-color: white;
+    border: 3px solid rgb(188, 173, 255);;
+    color: rgb(188, 173, 255);
+    transform: translateY(2px) !important;
+}
+
 /* contact page styling */
 @keyframes slide-up {
     0% {

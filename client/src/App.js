@@ -75,7 +75,7 @@ function App() {
     }
     if (currentPage === 'Search') {
       return (
-        <Search />
+        <Search currentPage='Search'/>
       )
     }
     if (currentPage === 'Membership') {
