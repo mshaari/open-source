@@ -7,7 +7,7 @@ function Membership() {
             <div className='membership-container membership-active'>
                 <h3 className='membership-title'>Paid Membership Plan</h3>
                 <p className='membership-text'>
-                    <span className='price'>A one-time payment of USD$15.00</span>
+                    <span className='price'>A one-time payment of USD$14.99</span>
                     <br></br>
                     <span className='details'>
                         Perks: 
