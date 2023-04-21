@@ -18,6 +18,7 @@ type User {
 
 type Job {
   _id: ID!
+  display_name: String
   save_date: Date
   location: String
   title: String
@@ -44,6 +45,7 @@ type Progress {
   }
 
   input JobData {
+  display_name: String
   location: String
   title: String
   description: String

@@ -22,10 +22,34 @@ const resolvers = {
     },
 
     // Pulls Web API data from adzuna.com
+   
     findJobs: async (parent, { country, role, location }) => {
       const { data } = await axios.get(`https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${process.env.APP_ID}&app_key=${process.env.API_KEY}&results_per_page=20&what=${role}&where=${location}&distance=20`)
-      console.log(data)
-      return data.results
+      // console.log(data)
+      let jobArray = [];
+      for (i=0; i < data.results.length; i++){
+           let job =  data.results[i];
+           if(!job.contract_time){
+            var contract = "N/A"
+           } else {
+            var contract = job.contract_time;
+           }
+           let jobObject = {
+            _id: job.id,
+            title: job.title,
+            location: job.location.display_name,
+            description: job.description,
+            salary_predicted: job.salary_is_predicted,
+            salary_max: job.salary_max,
+            salary_min: job.salary_min,
+            company_name: job.company.display_name,
+            contract_time: contract,
+            redirect_url : job.redirect_url
+           }
+           jobArray.push(jobObject);
+          }
+      console.log(jobArray)
+      return jobArray;
     },
 
     // Stripe integration
