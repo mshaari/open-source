@@ -1,4 +1,5 @@
 import React from 'react';
+import JobResults from '../jobs/JobResults';
 import '../../styles/pages.css';
 
 function Search(props) {
@@ -65,6 +66,7 @@ function Search(props) {
                 <button id='search-btn'>Search</button>
                 <div className='result-container'>
                     <h3 className='results'>Results:</h3>
+                    <JobResults />
                 </div>
             </div>
 
