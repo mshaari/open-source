@@ -11,7 +11,7 @@ function Search(props) {
                 <div className='search-box'>
                     <label>Country:</label>
                     <select id='country-select'>
-                        <option disabled selected>Please select one</option>
+                        <option disabled>Please select one</option>
                         <option value='us'>US</option>
                         <option value='gb'>UK</option>
                         <option value='at'>Austria</option>
@@ -36,7 +36,7 @@ function Search(props) {
                 <div className='search-box'>
                     <label>Job Title:</label>
                     <select id='job-select'>
-                        <option disabled selected>Please select one</option>
+                        <option disabled>Please select one</option>
                         <option value='software-engineer'>Software Engineer</option>
                         <option value='web-developer'>Web Developer</option>
                         <option value='mobile-app-developer'>Mobile App Developer</option>

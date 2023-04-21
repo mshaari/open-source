@@ -1,4 +1,5 @@
 import React from 'react';
+import Checkout from '../../utils/Checkout';
 import '../../styles/pages.css';
 
 function Membership() {
@@ -21,7 +22,7 @@ function Membership() {
                         make personal notes for yourself for each saved job listing
                     </span>
                 </p>
-                <button id='checkout'>Pay Now</button>
+                <Checkout></Checkout>
             </div>
         </div>
 
