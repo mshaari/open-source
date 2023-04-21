@@ -70,7 +70,7 @@ function App() {
     }
     if (currentPage === 'Dashboard') {
       return (
-        <Dashboard />
+        <Dashboard currentPage='Dashboard' />
       )
     }
     if (currentPage === 'Search') {
@@ -80,7 +80,7 @@ function App() {
     }
     if (currentPage === 'Membership') {
       return (
-        <Membership />
+        <Membership currentPage='Membership' />
       )
     }
   };
