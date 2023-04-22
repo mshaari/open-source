@@ -6,7 +6,7 @@ import '../../styles/pages.css';
 function Login() {
     return (
         <div className='page-content'>
-            <div className='login-container'>
+            <div id='login-signup-wrapper'>
                 <LoginForm currentPage='Login' />
                 <RegisterForm currentPage='Login' />
             </div>

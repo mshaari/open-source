@@ -103,16 +103,6 @@
     margin-block: 3rem;
 }
 
-#loggedout-message {
-    font-family: var(--title);
-    width: 100vw;
-    height: fit-content;
-    text-align: center;
-    margin-top: 15vh;
-    padding-block: 15vh;
-    background-color: rgba(255, 255, 255, 0.7);
-}
-
 .login-wrapper {
     font-family: var(--text);
     text-align: center;
@@ -161,6 +151,10 @@
     border: 6px solid var(--straw);
     box-shadow: 0 0 15px var(--straw);
 
+}
+
+.input-box {
+    margin-block: 15px;
 }
 
 .btn {
@@ -249,9 +243,33 @@
     animation: slide-left 0.6s linear forwards;
 }
 
-.form-group {
-    text-align: center;
-    margin-block: 1rem;
+@keyframes shake {
+    0% {
+        transform: translateX(0px);
+    }
+    15% {
+        transform: translateX(20px);
+    }
+    25% {
+        transform: translateX(-15px);
+    }
+    35% {
+        transform: translateX(10px);
+    }
+    45% {
+        transform: translateX(-5px);
+    }
+    55% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.error-text {
+    animation: shake 1s 1 linear forwards;
+    color: red;
 }
 
 /* job-search page styling */
