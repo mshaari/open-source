@@ -1,21 +1,14 @@
-import React, { useContext } from 'react';
-import { UserContext } from '../UserContext';
+import React from 'react';
 import LoginForm from '../auth/LoginForm';
+import RegisterForm from '../auth/SignupForm';
 import '../../styles/pages.css';
 
 function Login() {
-
-    const user = useContext(UserContext);
-
     return (
         <div className='page-content'>
             <div className='login-container'>
-                {user.loggedIn? (
-                    <p id='loggedout-message'>You're Logged Out!</p>
-                ):(
-                    <LoginForm currentPage='Login'/>
-                )}
-
+                <LoginForm currentPage='Login' />
+                <RegisterForm currentPage='Login' />
             </div>
         </div>
     );
