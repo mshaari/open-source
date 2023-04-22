@@ -6,7 +6,7 @@ import { SIGN_UP } from '../../utils/mutations';
 
 function Signup(props) {
     const [formState, setFormState] = useState({ email: '', password: '' });
-    const [addUser] = useMutation(SIGN_UP);
+    const [addUser, { error }] = useMutation(SIGN_UP);
 
 
     const handleFormSubmit = async (event) => {
@@ -34,10 +34,10 @@ function Signup(props) {
 
 
     return (
-        <div className="container my-1">
-            <h2>Signup</h2>
+        <div className="signup-wrapper signup-active">
+            <h2 className='login-title'>Signup</h2>
             <form onSubmit={handleFormSubmit}>
-                <div className="flex-row space-between my-2">
+                <div className='input-box'>
                     <label htmlFor="firstName">First Name:</label>
                     <input
                         placeholder="First"
@@ -47,7 +47,7 @@ function Signup(props) {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="flex-row space-between my-2">
+                <div className='input-box'>
                     <label htmlFor="lastName">Last Name:</label>
                     <input
                         placeholder="Last"
@@ -57,28 +57,33 @@ function Signup(props) {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="flex-row space-between my-2">
-                    <label htmlFor="email">Email:</label>
+                <div className='input-box'>
+                    <label htmlFor="signup-email">Email:</label>
                     <input
                         placeholder="youremail@test.com"
                         name="email"
                         type="email"
-                        id="email"
+                        id="signup-email"
                         onChange={handleChange}
                     />
                 </div>
-                <div className="flex-row space-between my-2">
-                    <label htmlFor="pwd">Password:</label>
+                <div className='input-box'>
+                    <label htmlFor="signup-pwd">Password:</label>
                     <input
                         placeholder="******"
                         name="password"
                         type="password"
-                        id="pwd"
+                        id="signup-pwd"
                         onChange={handleChange}
                     />
                 </div>
-                <div className="flex-row flex-end">
-                    <button type="submit">Submit</button>
+                {error ? (
+                    <div>
+                        <p className="error-text">Please complete the signup form</p>
+                    </div>
+                ) : null}
+                <div>
+                    <button className="btn" type="submit">Submit</button>
                 </div>
             </form>
         </div>
