@@ -3,9 +3,6 @@ import JobResultCard from './JobResultCard';
 
 
 function JobResults() {
-
-
-
     // Declare an array of objects that will get passed into Job element to create the multiple projects (array of objects with properties determined by what the API returns)
     const jobs = [
         {
