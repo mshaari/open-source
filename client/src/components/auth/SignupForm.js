@@ -58,22 +58,22 @@ function Signup(props) {
                     />
                 </div>
                 <div className='input-box'>
-                    <label htmlFor="email">Email:</label>
+                    <label htmlFor="signup-email">Email:</label>
                     <input
                         placeholder="youremail@test.com"
                         name="email"
                         type="email"
-                        id="email"
+                        id="signup-email"
                         onChange={handleChange}
                     />
                 </div>
                 <div className='input-box'>
-                    <label htmlFor="pwd">Password:</label>
+                    <label htmlFor="signup-pwd">Password:</label>
                     <input
                         placeholder="******"
                         name="password"
                         type="password"
-                        id="pwd"
+                        id="signup-pwd"
                         onChange={handleChange}
                     />
                 </div>

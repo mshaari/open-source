@@ -33,22 +33,22 @@ function Login(props) {
             <h2 className='login-title'>Login</h2>
             <form onSubmit={handleFormSubmit}>
                 <div className='input-box'>
-                    <label htmlFor="email">Email address:</label>
+                    <label htmlFor="login-email">Email address:</label>
                     <input
                         placeholder="youremail@test.com"
                         name="email"
                         type="email"
-                        id="email"
+                        id="login-email"
                         onChange={handleChange}
                     />
                 </div>
                 <div className='input-box'>
-                    <label htmlFor="pwd">Password:</label>
+                    <label htmlFor="login-pwd">Password:</label>
                     <input
                         placeholder="******"
                         name="password"
                         type="password"
-                        id="pwd"
+                        id="login-pwd"
                         onChange={handleChange}
                     />
                 </div>
