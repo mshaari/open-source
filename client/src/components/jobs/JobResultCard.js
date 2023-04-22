@@ -19,10 +19,10 @@ function JobResultCard(props) {
                         <h5>Estimated Salary: {job.salary_predicted}</h5>
                         <p>Description: {job.description}</p>
 
-                        {user[0].paidMember? (
+                        {user[0].loggedIn ? (
                             <button className="save-job">Save This Job</button>
-                        ):(
-                            <p>Join our membership to save this job!</p>
+                        ) : (
+                            <p>Login/Signup to save this job!</p>
                         )}
                     </div>
                 </div>
