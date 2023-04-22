@@ -16,7 +16,7 @@ function About(props) {
                     <br></br>
                     and with our paid membership plan for just $14.99,
                     <br></br> 
-                    youu'll get to save the job listings you're insterested in,
+                    you'll get to save the job listings you're insterested in,
                     <br></br>
                     document your progress, and make notes for yourself,
                     <br></br>
