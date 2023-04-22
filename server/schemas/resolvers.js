@@ -5,8 +5,8 @@ const { User, Product, Order } = require('../models');
 const { signToken } = require('../utils/auth');
 const axios = require("axios");
 // TODO: figure out why process.env.STRIPE_SECRET_KEY isn't loading the variable
-const stripe_secret_key = process.env.STRIPE_SECRET_KEY;
-const stripe = require('stripe')(stripe_secret_key);
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); 
+
 
 const resolvers = {
   Query: {
@@ -41,6 +41,8 @@ const resolvers = {
           }
         ],
         mode: 'payment',
+        // sucess_url: process.env.FRONTEND_DOMAIN + '/sucess',
+        // cancel_url: process.env.FRONTEND_DOMAIN + '/cancel'
         success_url: 'http://localhost:3000/success',
         cancel_url: 'http://localhost:3000/cancel'
       });

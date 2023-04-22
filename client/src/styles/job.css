@@ -1,0 +1,84 @@
+/* variables */
+:root {
+    --fairytale: #F4CAE0;
+    --thistle: #D7B9D5;
+    --lilac: #ADA7C9;
+    --powder-blue: #90A8C3;
+    --moonstone: #64A6BD;
+    --sky: #88bfff;
+    --new-leaf: #E4F0D0;
+    --tea-leaf: #C2D8B9;
+    --blushed-grey: #E2DADB;
+    --indian-red: #DA5552;
+    --coral: #DF7373;
+    --light-coral: #E39695;
+    --nude: #E4B1AB;
+    --blush: #CC444B;
+    --violet: #995D81;
+    --straw: #fcff9d;
+    --title: 'Press Start 2P', cursive;
+    --text: 'Play', sans-serif;
+    --buttons: 'Share Tech Mono', monospace;
+}
+
+.result-container {
+    background-color: rgb(255, 215, 215);
+    border-radius: 25px;
+    margin-block: 15px;
+    padding-block: 15px;
+    transition: all;
+    transition-duration: 0.3s;
+}
+
+.result-container:hover {
+    background-color: rgb(215, 255, 229);
+}
+
+.result-title {
+    font-family: var(--title);
+    font-size: 0.8em;
+    text-decoration: none;
+    color: black;
+}
+
+.save-job{
+    margin: 1rem;
+    font-family: var(--buttons);
+    background-color: #b1d1e2;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 3px solid #608aff;
+}
+
+@keyframes save-job-button {
+    0% {
+        transform: translateY(-4px);
+        box-shadow: 0 5px 0px 0 rgb(42, 131, 255);
+    }
+    30% {
+        transform: translateY(-1px);
+        box-shadow: 0 3px 0px 0 rgb(42, 131, 255);
+    }
+    40% {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 0px 0 rgb(42, 131, 255);
+    }
+    100% {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 0px 0 rgb(42, 131, 255);
+    }
+}
+
+.save-job:hover {
+    animation: save-job-button 0.5s linear forwards;
+}
+
+.save-job:active {
+    transition: none;
+    box-shadow: none !important;
+    background-color: white;
+    border: 3px solid rgb(173, 204, 255);
+    color: rgb(173, 204, 255);
+    transform: translateY(2px) !important;
+}

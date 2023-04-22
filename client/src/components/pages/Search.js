@@ -2,7 +2,7 @@ import React from 'react';
 import JobResults from '../jobs/JobResults';
 import '../../styles/pages.css';
 
-function Search(props) {
+function Search() {
 
     return (
         <div className='page-content'>
@@ -64,7 +64,7 @@ function Search(props) {
                     <input id='location' placeholder='city or postal code'></input>
                 </div>
                 <button id='search-btn'>Search</button>
-                <div className='result-container'>
+                <div>
                     <h3 className='results'>Results:</h3>
                     <JobResults />
                 </div>

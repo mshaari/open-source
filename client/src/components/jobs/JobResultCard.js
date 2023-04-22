@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../../styles/pages.css';
+import { UserContext } from '../UserContext';
+import '../../styles/job.css';
 
 function JobResultCard(props) {
     const { jobs } = props;
 
+    const user = useContext(UserContext);
+
+
     return (
-        <div className='projectList'>
+        <div className='result-list'>
             {jobs.map((job) => (
-                <div key={job.name} className='projectListItem'>
-                    <a href={job.redirect_url}><h3>{job.title}</h3></a>
-                    <h5>{job.salary_predicted}</h5>
-                    <p>{job.description}</p>
-                    <p>{job.contract_time}</p>
-                    {/* <a href={job.url}><img src={process.env.PUBLIC_URL + '/assets/' + job.image} alt="Preview of this project" /></a>
-                    <p className='flashingUrl'>View the <a href={job.url}>Deployed Application</a></p>
-                    <p className='flashingUrl'>View the <a href={job.github}>GitHub Repository</a></p>
-                    <p></p> */}
-                    <button>Save This Job!</button>
-                    <p>----</p>
+                <div key={job.name} className='result-container'>
+                    <a className="result-title" href={job.redirect_url}><h3>{job.title}</h3></a>
+                    <div className='job-container'>
+                        <p>Contract Time: {job.contract_time}</p>
+                        <h5>Estimated Salary: {job.salary_predicted}</h5>
+                        <p>Description: {job.description}</p>
+
+                        {user[0].loggedIn? (
+                            <button className="save-job">Save This Job</button>
+                        ):(
+                            <p>Login/Signup to save this job!</p>
+                        )}
+                    </div>
                 </div>
             ))}
         </div>

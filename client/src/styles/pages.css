@@ -103,6 +103,16 @@
     margin-block: 3rem;
 }
 
+#loggedout-message {
+    font-family: var(--title);
+    width: 100vw;
+    height: fit-content;
+    text-align: center;
+    margin-top: 15vh;
+    padding-block: 15vh;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
 .login-wrapper {
     font-family: var(--text);
     text-align: center;
@@ -346,7 +356,7 @@
     transition: none;
     box-shadow: none !important;
     background-color: white;
-    border: 3px solid rgb(188, 173, 255);;
+    border: 3px solid rgb(188, 173, 255);
     color: rgb(188, 173, 255);
     transform: translateY(2px) !important;
 }

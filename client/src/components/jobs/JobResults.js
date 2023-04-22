@@ -1,7 +1,10 @@
 import React from 'react';
 import JobResultCard from './JobResultCard';
 
+
 function JobResults() {
+
+
 
     // Declare an array of objects that will get passed into Job element to create the multiple projects (array of objects with properties determined by what the API returns)
     const jobs = [
@@ -23,7 +26,6 @@ function JobResults() {
 
     return (
         <div className='Jobs'>
-            <h2>Job Results:</h2>
             <JobResultCard jobs={jobs} />
         </div>
     );

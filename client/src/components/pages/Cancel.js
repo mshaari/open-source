@@ -8,13 +8,11 @@ function Cancel(props) {
             <div className='cancel-container active'>
                 <h3 id='cancel-title'>Aww!</h3>
                 <p id='cancel-text'>
-                    Sorry to see you go!
+                    Sorry that you changed your mind!
                     <br></br>
-                    Please feel free to drop us a message
+                    Please feel free to reach out to us
                     <br></br>
-                    on the Contact page to let us know
-                    <br></br>
-                    why you changed your mind!
+                    on the Contact page to let us know why!
                 </p>
                 <a href='/' className='return'>Return</a>
             </div>
