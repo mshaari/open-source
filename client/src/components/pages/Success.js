@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../UserContext';
 import '../../styles/pages.css';
 
 function Success(props) {
+
+    const [user,setUser] = useContext(UserContext);
+
+    const handlePaidMember = async () => {
+        await setUser({loggedIn: true, paidMember: true});
+        window.location.assign('/');
+    }
 
     return (
 
@@ -19,7 +27,7 @@ function Success(props) {
                         <br></br>
                         &lt;/open source&gt; offers!
                     </p>
-                    <a href='/' className='return'>Start Job Hunting</a>
+                    <button className='return' onClick={() => handlePaidMember()}>Start Job Hunting</button>
                 </div>
             </div>
     );

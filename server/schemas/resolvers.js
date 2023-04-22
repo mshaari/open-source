@@ -5,7 +5,8 @@ const { User, Product, Order } = require('../models');
 const { signToken } = require('../utils/auth');
 const axios = require("axios");
 // TODO: figure out why process.env.STRIPE_SECRET_KEY isn't loading the variable
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); 
+//const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); 
+const stripe = require('stripe')("sk_test_51MzKdLHjdTfpIyDy5QMM5NQNLDl7k2EX2hqlxSFTGo9DU30rdvDtVCtoaYNMIQVOJqiosWH2GvwKPvEjpK9yCcvt00XaINsqhq"); 
 
 
 const resolvers = {

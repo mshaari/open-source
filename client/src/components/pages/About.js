@@ -14,7 +14,7 @@ function About(props) {
                     <br></br>
                     Here, you can sign up for free and search for tech jobs by category and location, 
                     <br></br>
-                    and with our paid membership plan for just $15.00,
+                    and with our paid membership plan for just $14.99,
                     <br></br> 
                     youu'll get to save the job listings you're insterested in,
                     <br></br>

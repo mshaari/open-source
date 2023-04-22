@@ -18,16 +18,15 @@ function Navigation(props) {
         <div>
             { user.loggedIn? (
                 <nav className='navigation'>
-                    <a href="#about" onClick={() => handlePageChange("About") } className={ currentPage === "About" ? "nav-item-active" : "nav-item"}>About Us</a>
                     <a href="#login"  onClick={() => handleLogout()} className={ currentPage === "Login" ? "nav-item-active" : "nav-item"}>Log Out</a>
                     <a href="#search" onClick={() => handlePageChange("Search") } className={ currentPage === "Search" ? "nav-item-active" : "nav-item"}>Search</a>
-                    {user.paidMember? (
+                    {/* {user.paidMember? (
                         <a href="#dashboard" onClick={() => handlePageChange("Dashboard") } className={ currentPage === "Dashboard" ? "nav-item-active" : "nav-item"}>Dashboard</a>
                     ):(
-                        <a href="#membership" onClick={() => handlePageChange("Membership") } className={ currentPage === "Dashboard" ? "nav-item-active" : "nav-item"}>Dashboard</a>
-                    )}
+                        <a href="#membership" onClick={() => handlePageChange("Dashboard") } className={ currentPage === "Dashboard" ? "nav-item-active" : "nav-item"}>Dashboard</a>
+                    )} */}
                     {user.paidMember? (
-                        <a href="#dashboard" onClick={() => handlePageChange("Dashboard") } className={ currentPage === "Membership" ? "nav-item-active" : "nav-item"}>Membership</a>
+                        <a href="#dashboard" onClick={() => handlePageChange("Dashboard") } className={ currentPage === "Dashboard" ? "nav-item-active" : "nav-item"}>Dashboard</a>
 
                     ):(
                         <a href="#membership" onClick={() => handlePageChange("Membership") } className={ currentPage === "Membership" ? "nav-item-active" : "nav-item"}>Membership</a>
