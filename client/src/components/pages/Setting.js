@@ -7,6 +7,7 @@ function Setting() {
         <div className='setting-content'>
             <div className='setting-container active'>
                 <h3 id='setting-title'>User Settings</h3>
+                
             </div>
     </div>
     )
