@@ -11,9 +11,9 @@ function Membership() {
                     <span className='price'>A one-time payment of USD$14.99</span>
                     <br></br>
                     <span className='details'>
-                        Perks: 
+                        Perks:
                         <br></br>
-                        save and edit your cover letter/ resume on your dashboard
+                        save and edit your cover letter/resume on your dashboard
                         <br></br>
                         save job listings to your dashboard
                         <br></br>
@@ -25,7 +25,6 @@ function Membership() {
                 <Checkout></Checkout>
             </div>
         </div>
-
     );
 }
 
