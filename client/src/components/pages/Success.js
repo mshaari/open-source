@@ -1,7 +1,7 @@
 import { useMutation } from '@apollo/client';
 import { UPDATE_MEMBERSHIP } from '../../utils/mutations';
 import { UserContext } from '../UserContext';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import '../../styles/pages.css';
 
 function Success() {

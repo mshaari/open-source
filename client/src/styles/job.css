@@ -41,6 +41,7 @@
     font-size: 0.8em;
     text-decoration: none;
     color: black;
+    line-height: 1.5rem;
 }
 
 .status, .note-title {

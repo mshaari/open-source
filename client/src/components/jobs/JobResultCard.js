@@ -3,11 +3,26 @@ import '../../styles/pages.css';
 import { UserContext } from '../UserContext';
 import '../../styles/job.css';
 
+import { useQuery } from '@apollo/client'; // import useQuery hook
+import { QUERY_USER } from '../../utils/queries'; // import the query
+
 function JobResultCard(props) {
     const { jobs } = props;
 
     const user = useContext(UserContext);
 
+    const { loading, error, data } = useQuery(QUERY_USER, {
+        variables: { id: user.user_id }, // pass the user ID as a variable to the query
+        skip: !user.loggedIn, // skip the query if user is not logged in
+      });
+
+      if (loading) {
+        return <p>Loading...</p>;
+      }
+    
+      if (error) {
+        console.log(error);
+      }
 
     return (
         <div className='result-list'>
@@ -20,7 +35,7 @@ function JobResultCard(props) {
                         <p>Description: {job.description}</p>
 
                         {/* TODO: update paid_member context method */}
-                        {user[0].paidMember ? (
+                        {data?.user?.paid_member ? (
                             <button className="save-job">Save This Job</button>
                         ) : (
                             <p className='reminder-text'>Become a paid member to save this job!</p>
