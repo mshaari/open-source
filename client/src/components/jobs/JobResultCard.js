@@ -19,6 +19,7 @@ function JobResultCard(props) {
                         <h5>Estimated Salary: {job.salary_predicted}</h5>
                         <p>Description: {job.description}</p>
 
+                        {/* TODO: update paid_member context method */}
                         {user[0].paidMember ? (
                             <button className="save-job">Save This Job</button>
                         ) : (
