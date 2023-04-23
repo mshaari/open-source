@@ -156,7 +156,6 @@
     padding-inline: 10px;
     padding-top: 5px;
     padding-bottom: 3px;
-    border-radius: 7px;
     margin-bottom: 10px;
     transition: all;
     transition-duration: 0.2s;
@@ -171,7 +170,36 @@
     width: 1.5rem;
     left: calc(50% - 0.75rem);
     top: 90%;
-    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 16%, 92% 16%, 92% 30%, 84% 30%, 84% 44%, 76% 44%, 76% 58%, 68% 58%, 68% 72%, 60% 72%, 60% 86%, 55% 86%, 55% 100%, 45% 100%, 45% 86%, 40% 86%, 40% 72%, 32% 72%, 32% 58%, 24% 58%, 24% 44%, 16% 44%, 16% 30%, 8% 30%, 8% 16%, 0% 16% )
 }
+
+@media screen and (max-width: 630px) {
+    #title {
+        font-size: 1em;
+        margin-block: 2rem;
+    }
+
+    .navigation {
+        display: flex;
+        flex-direction: row;
+        column-gap: 0.3rem;
+    }
+
+    .nav-item {
+        font-size: 0.5em;
+        padding-top: 6px;
+    }
+
+    .nav-item-active {
+        border-radius: 6px;
+    }
+    
+    .nav-item-active::after {
+        height: 2rem;
+        clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    }
+}
+
+
 
 

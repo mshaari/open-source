@@ -13,13 +13,13 @@ function Membership() {
                     <span className='details'>
                         Perks:
                         <br></br>
-                        save and edit your cover letter/resume on your dashboard
+                        ✦ Save and edit your cover letter/resume on your dashboard
                         <br></br>
-                        save job listings to your dashboard
+                        ✦ Save job listings to your dashboard
                         <br></br>
-                        a checklist for each saved job listing to record your job hunting progress
+                        ✦ A status field for your saved jobs to track your job hunting progress
                         <br></br>
-                        make personal notes for yourself for each saved job listing
+                        ✦ Make personal notes for yourself for each saved job listing
                     </span>
                 </p>
                 <Checkout></Checkout>

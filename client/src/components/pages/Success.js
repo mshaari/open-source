@@ -1,37 +1,100 @@
-import React, { useContext } from 'react';
+import { useMutation } from '@apollo/client';
+import { UPDATE_MEMBERSHIP } from '../../utils/mutations';
 import { UserContext } from '../UserContext';
+import React, { useContext, useEffect } from 'react';
 import '../../styles/pages.css';
 
-function Success(props) {
+function Success() {
 
-    const [user,setUser] = useContext(UserContext);
+    const [user, setUser] = useContext(UserContext);
+
+    const [updateMembership] = useMutation(UPDATE_MEMBERSHIP);
 
     const handlePaidMember = async () => {
-        await setUser({loggedIn: true, paidMember: true});
-        window.location.assign('/');
-    }
+
+
+        try {
+
+            // Call the UPDATE_USER mutation to update the user's paid_member status
+            const { data } = await updateMembership({
+                variables: {
+                    id: user.user.data._id,
+                }
+            });
+
+            console.log({data})
+
+            // Redirect the user to the home page
+            window.location.assign('/');
+
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
 
     return (
-
-            <div className='success-content'>
-                <div className='success-container active'>
-                    <h3 id='success-title'>Congratulations!</h3>
-                    <p id='success-text'>
-                        Your payment was processed successfully!
-                        <br></br>
-                        You're now on your way to your next tech career!
-                        <br></br>
-                        Head to the Search page and the Dashboard page
-                        <br></br>
-                        to enjoy all the special features
-                        <br></br>
-                        &lt;/open source&gt; offers!
-                    </p>
-                    <button className='return' onClick={() => handlePaidMember()}>Start Job Hunting</button>
-                </div>
+        <div className='success-content'>
+            <div className='success-container active'>
+                <h3 id='success-title'>Congratulations!</h3>
+                <p id='success-text'>
+                    Your payment was processed successfully!
+                    <br />
+                    You're now on your way to your next tech career!
+                    <br />
+                    Head to the Search page and the Dashboard page
+                    <br />
+                    to enjoy all the special features
+                    <br />
+                    &lt;/open source&gt; offers!
+                </p>
+                <button className='return' onClick={() => handlePaidMember()}>
+                    Start Job Hunting
+                </button>
             </div>
+        </div>
     );
-
 }
 
 export default Success;
+
+
+
+
+// import React, { useContext, useEffect } from 'react';
+// import { UserContext } from '../UserContext';
+// import '../../styles/pages.css';
+
+// function Success(props) {
+
+//     const [user,setUser] = useContext(UserContext);
+
+//     const handlePaidMember = () => {
+//         // TODO: insert functionality to save user as a paid member
+//         window.location.assign('/');
+//     }
+
+//     return (
+
+//             <div className='success-content'>
+//                 <div className='success-container active'>
+//                     <h3 id='success-title'>Congratulations!</h3>
+//                     <p id='success-text'>
+//                         Your payment was processed successfully!
+//                         <br></br>
+//                         You're now on your way to your next tech career!
+//                         <br></br>
+//                         Head to the Search page and the Dashboard page
+//                         <br></br>
+//                         to enjoy all the special features
+//                         <br></br>
+//                         &lt;/open source&gt; offers!
+//                     </p>
+//                     <button className='return' onClick={() => handlePaidMember()}>Start Job Hunting</button>
+//                 </div>
+//             </div>
+//     );
+
+// }
+
+// export default Success;

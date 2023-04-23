@@ -5,9 +5,8 @@ const { User, Product, Order } = require('../models');
 const { signToken } = require('../utils/auth');
 const axios = require("axios");
 // TODO: figure out why process.env.STRIPE_SECRET_KEY isn't loading the variable
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); 
-
-
+//const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); 
+const stripe = require('stripe')("sk_test_51MzKdLHjdTfpIyDy5QMM5NQNLDl7k2EX2hqlxSFTGo9DU30rdvDtVCtoaYNMIQVOJqiosWH2GvwKPvEjpK9yCcvt00XaINsqhq"); 
 
 const resolvers = {
   Query: {
@@ -85,13 +84,27 @@ const resolvers = {
    return { token, user };
     },
 
+    // updates user's membership status
+    updateMembership : async (parent, args, context) => {
+      if(context.user) {
+
+        const user = await User.findByIdAndUpdate(args.id, { paid_member: true }, { new: true });
+
+        return user;
+      }
+      //if context.user does not exist, then we do not have a valid jwt and are not logged in 
+      throw new AuthenticationError("You need to be logged in!")
+    },
+
     //finds and updates 1 user by ID - ID is required
     //returns the new/updated version of the user
           //TODO: set it up to take in the user ID from the app's context
     updateUser : async (parent, args, context) => {
       if(context.user) {
-      const user = await User.findByIdAndUpdate(args, {new: true} );
-      return user;
+
+        const user = await User.findByIdAndUpdate(args.id, args, { new: true });
+
+        return user;
       }
       //if context.user does not exist, then we do not have a valid jwt and are not logged in 
       throw new AuthenticationError("You need to be logged in!")

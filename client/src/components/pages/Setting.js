@@ -32,7 +32,7 @@ function Setting() {
                     {editMode? (
                         <textarea id="user-first-name"></textarea>
                     ):(
-                        <textarea id="user-first-name" readonly="readonly"></textarea>
+                        <textarea id="user-first-name" readOnly="readonly"></textarea>
                     )}
                 </div>
                 <div className='data-box'>
@@ -40,7 +40,7 @@ function Setting() {
                     {editMode? (
                         <textarea id="user-last-name"></textarea>
                     ):(
-                        <textarea id="user-last-name" readonly="readonly"></textarea>
+                        <textarea id="user-last-name" readOnly="readonly"></textarea>
                     )}
                 </div>
                 <div className='data-box'>
@@ -48,7 +48,7 @@ function Setting() {
                     {editMode? (
                         <textarea id="user-username"></textarea>
                     ):(
-                        <textarea id="user-username" readonly="readonly"></textarea>
+                        <textarea id="user-username" readOnly="readonly"></textarea>
                     )}
                 </div>
                 <div className='data-box'>
@@ -56,7 +56,7 @@ function Setting() {
                     {editMode? (
                         <textarea id="user-email"></textarea>
                     ):(
-                        <textarea id="user-email" readonly="readonly"></textarea>
+                        <textarea id="user-email" readOnly="readonly"></textarea>
                     )}
                 </div>
                 <div className='data-box-large'>
@@ -64,7 +64,7 @@ function Setting() {
                     {editMode? (
                         <textarea id="user-resume"></textarea>
                     ):(
-                        <textarea id="user-resume" readonly="readonly"></textarea>
+                        <textarea id="user-resume" readOnly="readonly"></textarea>
                     )}
                     <button id='resume-copy' onClick={() => copyResume()}>Copy Your Resume</button>
                 </div>
@@ -73,7 +73,7 @@ function Setting() {
                     {editMode? (
                         <textarea id="user-cover-letter"></textarea>
                     ):(
-                        <textarea id="user-cover-letter" readonly="readonly"></textarea>
+                        <textarea id="user-cover-letter" readOnly="readonly"></textarea>
                     )}
                     <button id='cover-letter-copy' onClick={() => copyLetter()}>Copy Your Cover Letter</button>
                 </div>

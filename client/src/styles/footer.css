@@ -83,3 +83,9 @@
     color: white;
     text-shadow: 0 0 15px white;
 }
+
+@media screen and (max-width: 630px) {
+    .footer {
+        font-size: 0.5rem;
+    }
+}
