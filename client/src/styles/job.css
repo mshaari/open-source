@@ -28,6 +28,8 @@
     padding-block: 15px;
     transition: all;
     transition-duration: 0.3s;
+    width: 85vw;
+    margin-inline:auto;
 }
 
 .result-container:hover {
@@ -41,7 +43,7 @@
     color: black;
 }
 
-.save-job{
+.save-job, .remove-job{
     margin: 1rem;
     font-family: var(--buttons);
     background-color: #b1d1e2;
@@ -70,11 +72,11 @@
     }
 }
 
-.save-job:hover {
+.save-job:hover, .remove-job:hover {
     animation: save-job-button 0.5s linear forwards;
 }
 
-.save-job:active {
+.save-job:active, .remove-job:active {
     transition: none;
     box-shadow: none !important;
     background-color: white;
