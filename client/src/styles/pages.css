@@ -512,14 +512,21 @@
 }
 
 #user-first-name, #user-last-name, #user-username, #user-email {
+    font-family: var(--text);
     height: 1rem;
+    width: 25vw;
     resize: none;
+    background-color: transparent;
+    border: none;
 }
 
 #user-resume, #user-cover-letter {
+    font-family: var(--text);
     width: 75vw;
     min-height: 35vh;
     resize: vertical;
+    border-radius: 20px 20px 0px 20px;
+    padding: 20px;
 }
 
 .data-box-large {
@@ -601,9 +608,12 @@ label {
 }
 
 .textarea {
+    font-family: var(--text);
     width: 70vw;
     height: 35vh;
     resize: vertical;
+    border-radius: 20px 20px 0px 20px;
+    padding: 20px;
 }
 
 #submit-button {
