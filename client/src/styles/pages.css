@@ -610,7 +610,7 @@ label {
 .textarea {
     font-family: var(--text);
     width: 70vw;
-    height: 35vh;
+    height: 30vh;
     resize: vertical;
     border-radius: 20px 20px 0px 20px;
     padding: 20px;
@@ -923,7 +923,7 @@ label {
 
 .return {
     text-decoration: none;
-    margin-top: 5rem;
+    margin-top: 1rem;
     font-family: var(--buttons);
     background-color: #e2b1df;
     color: white;
@@ -939,4 +939,65 @@ label {
     border: 3px solid var(--nude);
     color: var(--nude);
     transform: translateY(2px) !important;
+}
+
+@media screen and (max-width: 630px) {
+
+    .page-content {
+        background: url('../../public/images/mobile-bg.gif');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .about-container, #login-signup-wrapper, .search-container, .dashboard-container, #setting-container, .contact-form-container, .membership-container {
+        width: 80vw;
+    }
+
+    #about-title {
+        font-size: 0.7rem;
+    }
+
+    #about-text {
+        font-size: 0.7rem;
+    }
+
+    .signup-wrapper {
+        font-size: 0.7rem;
+        right: 41vw;
+        width: 27vw;
+    }
+
+    .login-wrapper {
+        font-size: 0.7rem;
+        left: 41vw;
+        width: 27vw;
+    }
+
+    .login-wrapper input, .signup-wrapper input {
+        width: 25vw;
+    }
+
+    .contact-form-container {
+        font-size: 0.7rem;
+    }
+
+    #setting-container {
+        font-size: 0.7rem;
+    }
+
+    .textarea {
+        width: 60vw;
+    }
+
+    #user-resume, #user-cover-letter {
+        width: 70vw;
+    }
+
+    .membership-container {
+        font-size: 0.6rem;
+    }
+
+    .price {
+        font-size: 1rem;
+    }
 }
