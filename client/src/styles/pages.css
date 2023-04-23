@@ -529,6 +529,10 @@
     margin-bottom: 15px;
 }
 
+.label {
+    margin-bottom: 5px;
+}
+
 /* contact page styling */
 @keyframes slide-up {
     0% {

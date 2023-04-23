@@ -60,7 +60,7 @@ function Setting() {
                     )}
                 </div>
                 <div className='data-box-large'>
-                    <label>User Resume:</label>
+                    <label className='label'>User Resume:</label>
                     {editMode? (
                         <textarea id="user-resume"></textarea>
                     ):(
@@ -69,7 +69,7 @@ function Setting() {
                     <button id='resume-copy' onClick={() => copyResume()}>Copy Your Resume</button>
                 </div>
                 <div className='data-box-large'>
-                    <label>User Cover Letter:</label>
+                    <label className='label'>User Cover Letter:</label>
                     {editMode? (
                         <textarea id="user-cover-letter"></textarea>
                     ):(

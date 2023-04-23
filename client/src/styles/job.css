@@ -43,6 +43,10 @@
     color: black;
 }
 
+.status, .note-title {
+    margin-bottom: 5px;
+}
+
 .save-job, .remove-job{
     margin: 1rem;
     font-family: var(--buttons);

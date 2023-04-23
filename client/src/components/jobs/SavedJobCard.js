@@ -13,16 +13,18 @@ function JobResultCard(props) {
                         <p>Contact Term: {job.contract_time}</p>
                         <h5>Estimated Salary: {job.salary_predicted}</h5>
                         <p>Description: {job.description}</p>
-                        <h5 className='status'>Current Status:</h5>
-                        <select>
-                            <option>Please select one</option>
-                            <option value='applied'>Applied</option>
-                            <option value='interviewed'>Interviewed</option>
-                            <option value='offer-received'>Offer Received</option>
-                            <option value='end-process'>Process Ended</option>
-                        </select>
                         <div className='note-box'>
-                            <h5>Note:</h5>
+                            <h5 className='status'>Current Status:</h5>
+                            <select>
+                                <option>Please select one</option>
+                                <option value='applied'>Applied</option>
+                                <option value='interviewed'>Interviewed</option>
+                                <option value='offer-received'>Offer Received</option>
+                                <option value='end-process'>Process Ended</option>
+                            </select>
+                        </div>
+                        <div className='note-box'>
+                            <h5 className='note-title'>Note:</h5>
                             <textarea className='textarea'></textarea>
                         </div>
                         <div>
