@@ -43,6 +43,10 @@
     color: black;
 }
 
+.status, .note-title {
+    margin-bottom: 5px;
+}
+
 .save-job, .remove-job{
     margin: 1rem;
     font-family: var(--buttons);
@@ -83,4 +87,33 @@
     border: 3px solid rgb(173, 204, 255);
     color: rgb(173, 204, 255);
     transform: translateY(2px) !important;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0px);
+    }
+    5% {
+        transform: translateX(20px);
+    }
+    10% {
+        transform: translateX(-15px);
+    }
+    13% {
+        transform: translateX(10px);
+    }
+    17% {
+        transform: translateX(-5px);
+    }
+    21% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.reminder-text {
+    animation: shake 2s infinite linear;
+    color: rgb(0, 81, 255);
 }

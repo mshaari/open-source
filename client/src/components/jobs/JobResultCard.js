@@ -22,7 +22,7 @@ function JobResultCard(props) {
                         {user[0].paidMember ? (
                             <button className="save-job">Save This Job</button>
                         ) : (
-                            <p>Login/Signup to save this job!</p>
+                            <p className='reminder-text'>Become a paid member to save this job!</p>
                         )}
                     </div>
                 </div>
