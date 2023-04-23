@@ -81,7 +81,6 @@ function Setting() {
                     <button className='edit-btn' onClick={() => editData()}>Edit Settings</button>
                     <button className='edit-btn' onClick={() => saveData()}>Save Changes</button>
                 </div>
-
             </div>
     </div>
     )
