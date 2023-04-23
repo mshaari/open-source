@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import JobResults from '../jobs/JobResults';
 import { useQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
 import { QUERY_JOBS } from '../../utils/queries'; //Imports the query we made in client/src/utils/queries.js
 import '../../styles/pages.css';
+
+// THE BELOW IS UNDER REVIEW PLEASE DO NOT EDIT
 
 // An onChange event was added to each input field to update the corresponding state variable whenever the user selects a new value
 
@@ -13,17 +16,17 @@ function Search() {
  const [role, setRole] = useState('');
  const [location, setLocation] = useState('');
 
- const [findJobs, { loading, data }] = useQuery(QUERY_JOBS);
+ const [findJobs, { loading, error, data }] = useQuery(QUERY_JOBS, { 
+    variables: { country: country, role: role, location: location }
+    });
 
 // This should make an API call with the country, role, and location values using Axios and passing them to the findJobs query.
 
 const handleSearch = async (event) => {
     event.preventDefault();
     try {
-        const queryResponse = await findJobs({
-            variables: { country: country, role: role, location: location },
-        });
-        console.log(queryResponse);
+        // findJobs();
+        console.log(data);
     } catch (e) {
         console.log(e);
     }
