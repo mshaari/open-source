@@ -427,7 +427,7 @@
     animation: spin 0.3s 1 linear forwards;
 }
 
-#resume-copy, #cover-letter-copy, #setting {
+#resume-copy, #cover-letter-copy, #setting, .edit-btn {
     width: fit-content;
     margin-block: 15px;
     margin: 1rem;
@@ -458,11 +458,11 @@
     }
 }
 
-#resume-copy:hover, #cover-letter-copy:hover, #setting:hover {
+#resume-copy:hover, #cover-letter-copy:hover, #setting:hover, .edit-btn:hover {
     animation: copy-button 0.5s linear forwards;
 }
 
-#resume-copy:active, #cover-letter-copy:active, #setting:active {
+#resume-copy:active, #cover-letter-copy:active, #setting:active, .edit-btn:active {
     transition: none;
     box-shadow: none !important;
     background-color: white;
@@ -472,7 +472,9 @@
 }
 
 /* setting section styling */
-
+#setting {
+    margin-bottom: 40px;
+}
 
 #setting-container {
     display: flex;
@@ -500,6 +502,31 @@
     background-color: white;
     border: 6px solid var(--straw);
     box-shadow: 0 0 15px var(--straw);
+}
+
+.data-box {
+    margin-block: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#user-first-name, #user-last-name, #user-username, #user-email {
+    height: 1rem;
+    resize: none;
+}
+
+#user-resume, #user-cover-letter {
+    width: 75vw;
+    min-height: 35vh;
+    resize: vertical;
+}
+
+.data-box-large {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
 /* contact page styling */
@@ -573,7 +600,6 @@ label {
     width: 70vw;
     height: 35vh;
     resize: vertical;
-
 }
 
 #submit-button {

@@ -23,7 +23,7 @@ function SavedJobs() {
 
     return (
         <div className='Jobs'>
-            <h2>Your Saved Jobs</h2>
+            <h3>Your Saved Jobs:</h3>
             <SavedJobCard jobs={jobs} />
         </div>
     );

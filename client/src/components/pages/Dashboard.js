@@ -20,9 +20,6 @@ function Dashboard() {
             <div className='dashboard-container dashboard-active'>
                 <h3 id='dashboard-title'>User Dashboard</h3>
                 <SavedJobs />
-                <h4 className='dashboard-subtitle'>Your Current Resume/Cover Letter:</h4>
-                <button id='resume-copy'>Copy Your Resume</button>
-                <button id='cover-letter-copy'>Copy Your Cover Letter</button>
             </div>
             {showSetting? (
                 <div>
