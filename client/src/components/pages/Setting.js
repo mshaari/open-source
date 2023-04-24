@@ -10,9 +10,10 @@ import { UPDATE_USER } from '../../utils/mutations'; // import the mutation
 
 function Setting() {
 
+
     const [editMode, setEditMode] = useState(false);
 
-    const [user, setUser] = useContext(UserContext);
+    const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
 
     const { loading, error, data } = useQuery(QUERY_USER, {
         variables: { id: user.user_id },
@@ -70,12 +71,12 @@ function Setting() {
     }
 
     const copyResume = () => {
-        const Resume = document.getElementById('user-resume').value;
-        navigator.clipboard.writeText(Resume);
+        const resume = document.getElementById('user-resume').value;
+        navigator.clipboard.writeText(resume);
     }
 
     return (
-        <div className='setting-content'>
+        <div className={`setting-content ${theme.greyscale ? "greyscale" : ""}`}>
             <div className='setting-container active'>
                 <h3 id='setting-title'>User Settings</h3>
                 <div className='data-box'>

@@ -12,6 +12,10 @@ const Context =  ({ children }) => {
         user: null,
     });
 
+    const [theme, setTheme] = useState(() => {
+        const savedTheme = localStorage.getItem('theme');
+        return savedTheme ? JSON.parse(savedTheme) : { greyscale: false };
+      });
 
     useEffect(() => {
         const token = AuthService.getToken();
@@ -34,7 +38,13 @@ const Context =  ({ children }) => {
 
     }, []);
 
-    return <UserContext.Provider value={ [user, setUser] }>{ children }</UserContext.Provider>;
+    const toggleTheme = () => {
+        const newTheme = { ...theme, greyscale: !theme.greyscale };
+        setTheme(newTheme);
+        localStorage.setItem('theme', JSON.stringify(newTheme));
+      };
+
+    return <UserContext.Provider value={[user, setUser, theme, setTheme, toggleTheme]}>{ children }</UserContext.Provider>;
 
 };
 

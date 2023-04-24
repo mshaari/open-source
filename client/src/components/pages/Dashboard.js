@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../UserContext';
 import SavedJobs from '../jobs/SavedJobs';
 import Setting from '../pages/Setting';
 import '../../styles/pages.css';
@@ -6,6 +7,8 @@ import '../../styles/pages.css';
 function Dashboard() {
     
     const [showSetting, setShowSetting] = useState(false);
+
+    const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
 
     const openSetting = () => {
         setShowSetting(true);
@@ -16,7 +19,7 @@ function Dashboard() {
     };
 
     return (
-        <div className='page-content'>
+        <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>
             <div className='dashboard-container dashboard-active'>
                 <h3 id='dashboard-title'>User Dashboard</h3>
                 <SavedJobs />

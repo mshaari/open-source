@@ -24,7 +24,7 @@ function Navigation(props) {
 
   const handleLogout = () => {
     setUser({ loggedIn: false });
-    localStorage.clear();
+    localStorage.removeItem('id_token');
     handlePageChange("About");
   }
 

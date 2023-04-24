@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../UserContext';
 import '../../styles/pages.css';
 
-function Cancel(props) {
+function Cancel() {
+
+    const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
 
     return (
-        <div className='cancel-content'>
+        <div className={`cancel-content ${theme.greyscale ? "greyscale" : ""}`}>
             <div className='cancel-container active'>
                 <h3 id='cancel-title'>Aww!</h3>
                 <p id='cancel-text'>

@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../UserContext';
 import Checkout from '../../utils/Checkout';
 import '../../styles/pages.css';
 
 function Membership() {
+
+    const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+    
     return (
-        <div className='page-content'>
+        <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>
             <div className='membership-container membership-active'>
                 <h3 className='membership-title'>Paid Membership Plan</h3>
                 <p className='membership-text'>
