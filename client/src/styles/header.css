@@ -21,6 +21,10 @@
     --buttons: 'Share Tech Mono', monospace;
 }
 
+.greyscale {
+    filter:grayscale(1);
+}
+
 /* background color-shifting animation */
 @keyframes horizontal-bg-shift {
     0%{

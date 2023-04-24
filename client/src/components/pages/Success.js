@@ -1,12 +1,12 @@
 import { useMutation } from '@apollo/client';
 import { UPDATE_MEMBERSHIP } from '../../utils/mutations';
 import { UserContext } from '../UserContext';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import '../../styles/pages.css';
 
 function Success() {
 
-    const [user, setUser] = useContext(UserContext);
+    const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
 
     const [updateMembership] = useMutation(UPDATE_MEMBERSHIP);
 
@@ -34,7 +34,7 @@ function Success() {
 
 
     return (
-        <div className='success-content'>
+        <div className={`success-content ${theme.greyscale ? "greyscale" : ""}`}>
             <div className='success-container active'>
                 <h3 id='success-title'>Congratulations!</h3>
                 <p id='success-text'>

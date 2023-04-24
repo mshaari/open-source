@@ -1,8 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useContext } from 'react';
+import { UserContext } from '../UserContext';
 import emailjs from '@emailjs/browser';
 import '../../styles/pages.css';
 
 function Contact() {
+
+    const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+
     const form = useRef();
 
     const [messageState, setMessageState] = useState(undefined);
@@ -38,7 +42,7 @@ function Contact() {
     };
 
     return (
-        <div className='page-content'>
+        <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>
             <div className='contact-form-container contact-active'>
                 <h3 className='contact-title'>Got questions?</h3>
                 <h3>Fill out the form below and we'll get back to you ASAP!</h3>

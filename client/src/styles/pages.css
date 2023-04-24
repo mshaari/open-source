@@ -21,6 +21,14 @@
     --buttons: 'Share Tech Mono', monospace;
 }
 
+.greyscale {
+    filter:grayscale(1);
+}
+
+a, button {
+    cursor: pointer;
+}
+
 .page-content {
     z-index: -1;
     user-select: none;
@@ -618,6 +626,7 @@ label {
 }
 
 #submit-button {
+    cursor: pointer;
     margin: 1rem;
     font-family: var(--buttons);
     background-color: var(--light-coral);

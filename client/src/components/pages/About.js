@@ -8,7 +8,7 @@ import { QUERY_USER } from '../../utils/queries'; // import the query
 
 function About(props) {
 
-    const [user, setUser] = useContext(UserContext);
+    const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
 
     const { loading, error, data } = useQuery(QUERY_USER, {
         variables: { id: user.user_id }, // pass the user ID as a variable to the query
@@ -24,7 +24,7 @@ function About(props) {
       }
 
     return (
-        <div className='page-content'>
+        <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>
             <div className='about-container active'>
                 {user.loggedIn? (
                     <h3 id='about-title'>Hello there,
@@ -48,7 +48,7 @@ function About(props) {
                     <br></br>
                     Sign up for free and search for tech jobs by category and location, 
                     <br></br>
-                    and with our paid membership plan for just $14.99,
+                    and with our paid membership plan for just <span className="price">$14.99</span>,
                     <br></br> 
                     you'll get to save the job listings you're insterested in,
                     <br></br>

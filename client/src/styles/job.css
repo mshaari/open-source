@@ -21,6 +21,10 @@
     --buttons: 'Share Tech Mono', monospace;
 }
 
+.greyscale {
+    filter:grayscale(1);
+}
+
 .result-container {
     background-color: rgb(255, 215, 215);
     border-radius: 25px;
@@ -41,6 +45,7 @@
     font-size: 0.8em;
     text-decoration: none;
     color: black;
+    line-height: 1.5rem;
 }
 
 .status, .note-title {
