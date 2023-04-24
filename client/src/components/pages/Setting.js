@@ -14,6 +14,10 @@ function Setting() {
 
     const [editMode, setEditMode] = useState(false);
 
+    const [showError, setShowError] = useState(false);
+
+    const [showSuccess, setShowSuccess] = useState(false);
+
     const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
 
     const { loading, error, data } = useQuery(QUERY_USER, {
@@ -57,8 +61,14 @@ function Setting() {
             const isValidPassword = await bcrypt.compare(oldPassword, data?.user?.password);
 
             if (!isValidPassword) {
-                // TODO: add modal to alert user instead
-                window.alert("Incorrect Password!");
+
+                setShowError(true);
+
+                setTimeout(() => {
+                    setShowError(false);
+                    
+                },3000);
+
                 return;
             };
 
@@ -77,7 +87,11 @@ function Setting() {
                 }
             }) 
             .then(() => {
-                // TODO: add modal to alert user instead
+
+                setShowSuccess(true);
+                setTimeout(() => {
+                    setShowSuccess(false)
+                },3000);
                 window.location.assign('/#dashboard');
             })
             .catch((error) => {
@@ -97,7 +111,13 @@ function Setting() {
                 }
             }) 
             .then(() => {
+
+                setShowSuccess(true);
+                setTimeout(() => {
+                    setShowSuccess(false)
+                },3000);
                 window.location.assign('/#dashboard');
+
             })
             .catch((error) => {
                 console.log(error);
@@ -105,9 +125,6 @@ function Setting() {
         };
     };
 
-    const styles ={
-        display: "none"
-    };
 
     const SaveData = async () => {
         setEditMode(false);
@@ -128,13 +145,16 @@ function Setting() {
             const isValidPassword = await bcrypt.compare(oldPassword, data?.user?.password);
 
             if (!isValidPassword) {
-                // TODO: add modal to alert user instead
-                styles.display = "block";
-                // setTimeout(()=> {
-                //     styles.display = "none";
 
-                // },2000)
+                setShowError(true);
+
+                setTimeout(() => {
+                    setShowError(false);
+
+                },3000);
+
                 return;
+
             };
 
             const saltRounds = 10;
@@ -150,7 +170,11 @@ function Setting() {
                 }
             }) 
             .then(() => {
-                // TODO: add modal to alert user instead
+
+                setShowSuccess(true);
+                setTimeout(() => {
+                    setShowSuccess(false)
+                },3000);
                 window.location.assign('/#dashboard');
             })
             .catch((error) => {
@@ -168,7 +192,13 @@ function Setting() {
                 }
             }) 
             .then(() => {
+
+                setShowSuccess(true);
+                setTimeout(() => {
+                    setShowSuccess(false)
+                },3000);
                 window.location.assign('/#dashboard');
+
             })
             .catch((error) => {
                 console.log(error);
@@ -255,9 +285,16 @@ function Setting() {
                             )}
                             <button id='cover-letter-copy' onClick={() => copyLetter()}>Copy Your Cover Letter</button>
                         </div>
-                        <div className='error-text' style={styles}>
-                            <p>Incorrect Password!</p>
-                        </div>
+                        {showError? (
+                            <div className='error-text'>
+                                <p>Incorrect Password!</p>
+                            </div>
+                        ): null}
+                        {showSuccess? (
+                            <div className='success-text'>
+                                <p>User Data Updated!</p>
+                            </div>
+                        ): null}
                         <div className='data-box'>
                             <button className='edit-btn' onClick={() => EditData()}>Edit Settings</button>
                             <button className='edit-btn' onClick={() => SaveMemberData()}>Save Changes</button>
@@ -265,14 +302,20 @@ function Setting() {
                     </div>
                 ) : (
                     <div>
-                        <div className='error-text' style={styles}>
-                            <p>Incorrect Password!</p>
-                        </div>
+                        {showError? (
+                            <div className='error-text'>
+                                <p>Incorrect Password!</p>
+                            </div>
+                        ): null}
+                        {showSuccess? (
+                            <div className='success-text'>
+                                <p>User Data Updated!</p>
+                            </div>
+                        ): null}
                         <div className='data-box'>
                             <button className='edit-btn' onClick={() => EditData()}>Edit Settings</button>
                             <button className='edit-btn' onClick={() => SaveData()}>Save Changes</button>
                         </div>
-
                     </div>
                 ) }
 
