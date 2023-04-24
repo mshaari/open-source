@@ -155,25 +155,25 @@ function Setting() {
                 <div className='data-box'>
                     <label>User First Name:</label>
                     {editMode? (
-                        <textarea id="user-first-name">{data?.user?.first_name}</textarea>
+                        <textarea id="user-first-name" defaultValue={data?.user?.first_name}></textarea>
                     ):(
-                        <textarea id="user-first-name" readOnly="readonly">{data?.user?.first_name}</textarea>
+                        <textarea id="user-first-name" readOnly="readonly" value={data?.user?.first_name}></textarea>
                     )}
                 </div>
                 <div className='data-box'>
                     <label>User Last Name:</label>
                     {editMode? (
-                        <textarea id="user-last-name">{data?.user?.last_name}</textarea>
+                        <textarea id="user-last-name" defaultValue={data?.user?.last_name}></textarea>
                     ):(
-                        <textarea id="user-last-name" readOnly="readonly">{data?.user?.last_name}</textarea>
+                        <textarea id="user-last-name" readOnly="readonly" value={data?.user?.last_name}></textarea>
                     )}
                 </div>
                 <div className='data-box'>
                     <label>User Email:</label>
                     {editMode? (
-                        <textarea id="user-email">{data?.user?.email}</textarea>
+                        <textarea id="user-email" defaultValue={data?.user?.email}></textarea>
                     ):(
-                        <textarea id="user-email" readOnly="readonly">{data?.user?.email}</textarea>
+                        <textarea id="user-email" readOnly="readonly" value={data?.user?.email}></textarea>
                     )}
                 </div>
                 {editMode? (
@@ -192,18 +192,18 @@ function Setting() {
                         <div className='data-box-large'>
                             <label className='label'>User Resume:</label>
                             {editMode? (
-                                <textarea id="user-resume">{data?.user?.resume}</textarea>
+                                <textarea id="user-resume" defaultValue={data?.user?.resume}></textarea>
                             ):(
-                                <textarea id="user-resume" readOnly="readonly">{data?.user?.resume}</textarea>
+                                <textarea id="user-resume" readOnly="readonly" value={data?.user?.resume}></textarea>
                             )}
                             <button id='resume-copy' onClick={() => copyResume()}>Copy Your Resume</button>
                         </div>
                         <div className='data-box-large'>
                             <label className='label'>User Cover Letter:</label>
                             {editMode? (
-                                <textarea id="user-cover-letter">{data?.user?.cover_letter}</textarea>
+                                <textarea id="user-cover-letter" defaultValue={data?.user?.cover_letter}></textarea>
                             ):(
-                                <textarea id="user-cover-letter" readOnly="readonly">{data?.user?.cover_letter}</textarea>
+                                <textarea id="user-cover-letter" readOnly="readonly" value={data?.user?.cover_letter}></textarea>
                             )}
                             <button id='cover-letter-copy' onClick={() => copyLetter()}>Copy Your Cover Letter</button>
                         </div>
