@@ -8,6 +8,7 @@ export const QUERY_USER = gql`
       cover_letter
       first_name
       last_name
+      password
       paid_member
       resume
       saved_jobs {
