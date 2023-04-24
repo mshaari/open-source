@@ -107,6 +107,7 @@ const resolvers = {
           last_name: args.lastName,
           email: args.email,
           resume: args.resume,
+          password: args.password,
           cover_letter: args.cover_letter
         }, { new: true });
 

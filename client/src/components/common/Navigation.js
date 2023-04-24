@@ -43,9 +43,7 @@ function Navigation(props) {
           <a href="#about" onClick={() => handleClick("About")} className={currentPage === "About" ? "nav-item-active" : "nav-item"}>About Us</a>
           <a href="#login" onClick={() => handleLogout()} className={currentPage === "Login" ? "nav-item-active" : "nav-item"}>Log Out</a>
           <a href="#search" onClick={() => handleClick("Search")} className={currentPage === "Search" ? "nav-item-active" : "nav-item"}>Search</a>
-          {data.user.paid_member ? (
-            <a href="#dashboard" onClick={() => handleClick("Dashboard")} className={currentPage === "Dashboard" ? "nav-item-active" : "nav-item"}>Dashboard</a>
-          ) : null}
+          <a href="#dashboard" onClick={() => handleClick("Dashboard")} className={currentPage === "Dashboard" ? "nav-item-active" : "nav-item"}>Dashboard</a>
           {data.user.paid_member ? null : (
             <a href="#membership" onClick={() => handleClick("Membership")} className={currentPage === "Membership" ? "nav-item-active" : "nav-item"}>Membership</a>
           )}

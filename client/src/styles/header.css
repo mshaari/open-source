@@ -191,10 +191,13 @@
 
     .nav-item {
         font-size: 0.5em;
-        padding-top: 6px;
+        padding-top: 4px;
+        padding-inline: 5px;
     }
 
     .nav-item-active {
+        padding-top: 4px;
+        font-size: 0.8rem;
         border-radius: 6px;
     }
     
