@@ -76,9 +76,9 @@
 }
 
 #toggle-theme:active {
-    color: red;
+    color: var(--indian-red);
     background-color: white;
-    border: 3px solid red;
+    border: 3px solid var(--indian-red);
 }
 
 #toggle-theme:active::after {
