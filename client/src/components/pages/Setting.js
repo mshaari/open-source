@@ -105,6 +105,9 @@ function Setting() {
         };
     };
 
+    const styles ={
+        display: "none"
+    };
 
     const SaveData = async () => {
         setEditMode(false);
@@ -126,7 +129,11 @@ function Setting() {
 
             if (!isValidPassword) {
                 // TODO: add modal to alert user instead
-                window.alert("Incorrect Password!");
+                styles.display = "block";
+                // setTimeout(()=> {
+                //     styles.display = "none";
+
+                // },2000)
                 return;
             };
 
@@ -179,6 +186,9 @@ function Setting() {
         const resume = document.getElementById('user-resume').value;
         navigator.clipboard.writeText(resume);
     }
+
+
+
 
     return (
         <div className={`setting-content ${theme.greyscale ? "greyscale" : ""}`}>
@@ -245,15 +255,24 @@ function Setting() {
                             )}
                             <button id='cover-letter-copy' onClick={() => copyLetter()}>Copy Your Cover Letter</button>
                         </div>
+                        <div className='error-text' style={styles}>
+                            <p>Incorrect Password!</p>
+                        </div>
                         <div className='data-box'>
                             <button className='edit-btn' onClick={() => EditData()}>Edit Settings</button>
                             <button className='edit-btn' onClick={() => SaveMemberData()}>Save Changes</button>
                         </div>
                     </div>
                 ) : (
-                    <div className='data-box'>
-                        <button className='edit-btn' onClick={() => EditData()}>Edit Settings</button>
-                        <button className='edit-btn' onClick={() => SaveData()}>Save Changes</button>
+                    <div>
+                        <div className='error-text' style={styles}>
+                            <p>Incorrect Password!</p>
+                        </div>
+                        <div className='data-box'>
+                            <button className='edit-btn' onClick={() => EditData()}>Edit Settings</button>
+                            <button className='edit-btn' onClick={() => SaveData()}>Save Changes</button>
+                        </div>
+
                     </div>
                 ) }
 
