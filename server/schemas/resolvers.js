@@ -107,7 +107,7 @@ const resolvers = {
           last_name: args.lastName,
           email: args.email,
           resume: args.resume,
-          coverLetter: args.coverLetter
+          cover_letter: args.cover_letter
         }, { new: true });
 
         return user;
@@ -146,31 +146,6 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
       }
-
-  //   addOrder: async (parent, { products }, context) => {
-  //     console.log(context);
-  //     if (context.user) {
-  //       const order = new Order({ products });
-
-  //       await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
-
-  //       return order;
-  //     }
-
-  //     throw new AuthenticationError('Not logged in');
-  //   },
-  //   updateUser: async (parent, args, context) => {
-  //     if (context.user) {
-  //       return await User.findByIdAndUpdate(context.user._id, args, { new: true });
-  //     }
-
-  //     throw new AuthenticationError('Not logged in');
-  //   },
-  //   updateProduct: async (parent, { _id, quantity }) => {
-  //     const decrement = Math.abs(quantity) * -1;
-
-  //     return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
-  //   },
  
    }
 };
