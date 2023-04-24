@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../UserContext';
 import '../../styles/pages.css';
+import bcrypt from 'bcryptjs';
 
 import { useQuery } from '@apollo/client'; // import useQuery hook
 import { QUERY_USER } from '../../utils/queries'; // import the query
@@ -34,7 +35,7 @@ function Setting() {
         setEditMode(true);
     };
 
-    const SaveMemberData = () => {
+    const SaveMemberData = async() => {
         setEditMode(false);
 
         const firstName = document.getElementById('user-first-name').value;
@@ -42,7 +43,10 @@ function Setting() {
         const email = document.getElementById('user-email').value;
         const resume = document.getElementById('user-resume').value;
         const coverLetter = document.getElementById('user-cover-letter').value;
+
+        const saltRounds = 10;
         const password = document.getElementById('user-password').value;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
 
         if (!user.loggedIn) {
             return;
@@ -55,7 +59,7 @@ function Setting() {
                     firstName: firstName,
                     lastName: lastName,
                     email: email,
-                    password: password,
+                    password: hashedPassword,
                     resume: resume,
                     coverLetter: coverLetter,
                 }
@@ -89,13 +93,16 @@ function Setting() {
     };
 
 
-    const SaveData = () => {
+    const SaveData = async () => {
         setEditMode(false);
 
         const firstName = document.getElementById('user-first-name').value;
         const lastName = document.getElementById('user-last-name').value;
         const email = document.getElementById('user-email').value;
+
+        const saltRounds = 10;
         const password = document.getElementById('user-password').value;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
 
         if (!user.loggedIn) {
             return;
@@ -108,7 +115,7 @@ function Setting() {
                     firstName: firstName,
                     lastName: lastName,
                     email: email,
-                    password: password,
+                    password: hashedPassword,
                 }
             }) 
             .then(() => {
