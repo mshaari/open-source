@@ -16,17 +16,23 @@ function Search() {
  const [role, setRole] = useState('');
  const [location, setLocation] = useState('');
 
- const [findJobs, { loading, error, data }] = useQuery(QUERY_JOBS, { 
-    variables: { country: country, role: role, location: location }
-    });
+ const [findJobs, { called, loading, data}] = useLazyQuery(QUERY_JOBS,
+    { 
+        variables: {country: country, role: role, location: location}
+    }
+    );
 
 // This should make an API call with the country, role, and location values using Axios and passing them to the findJobs query.
 
 const handleSearch = async (event) => {
     event.preventDefault();
     try {
-        // findJobs();
-        console.log(data);
+        await findJobs();
+       
+        if(data){
+            console.log(data);
+        }
+       
     } catch (e) {
         console.log(e);
     }
@@ -93,7 +99,7 @@ const handleSearch = async (event) => {
     <button id='search-btn' onClick={handleSearch}>Search</button>
     <div>
      <h3 className='results'>Results:</h3>
-     <JobResults />
+     <JobResults jobData={data}/>
     </div>
    </div>
   </div>
