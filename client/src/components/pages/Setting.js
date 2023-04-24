@@ -34,7 +34,7 @@ function Setting() {
         setEditMode(true);
     };
 
-    const SaveData = () => {
+    const SaveMemberData = () => {
         setEditMode(false);
 
         const firstName = document.getElementById('user-first-name').value;
@@ -42,28 +42,101 @@ function Setting() {
         const email = document.getElementById('user-email').value;
         const resume = document.getElementById('user-resume').value;
         const coverLetter = document.getElementById('user-cover-letter').value;
+        const password = document.getElementById('user-password').value;
 
         if (!user.loggedIn) {
             return;
         }
 
-        updateUser({
-            variables: {
-                id: user.user_id,
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                resume: resume,
-                coverLetter: coverLetter,
-            }
-        }) 
-        .then(() => {
-            window.location.assign('/#dashboard');
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+        if (password.length) {
+            updateUser({
+                variables: {
+                    id: user.user_id,
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: password,
+                    resume: resume,
+                    coverLetter: coverLetter,
+                }
+            }) 
+            .then(() => {
+                window.location.assign('/#dashboard');
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+        } else {
+
+            updateUser({
+                variables: {
+                    id: user.user_id,
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    resume: resume,
+                    coverLetter: coverLetter,
+                }
+            }) 
+            .then(() => {
+                window.location.assign('/#dashboard');
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        };
     };
+
+
+    const SaveData = () => {
+        setEditMode(false);
+
+        const firstName = document.getElementById('user-first-name').value;
+        const lastName = document.getElementById('user-last-name').value;
+        const email = document.getElementById('user-email').value;
+        const password = document.getElementById('user-password').value;
+
+        if (!user.loggedIn) {
+            return;
+        }
+
+        if (password.length) {
+            updateUser({
+                variables: {
+                    id: user.user_id,
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: password,
+                }
+            }) 
+            .then(() => {
+                window.location.assign('/#dashboard');
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+        } else {
+
+            updateUser({
+                variables: {
+                    id: user.user_id,
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                }
+            }) 
+            .then(() => {
+                window.location.assign('/#dashboard');
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        };
+    };
+
 
     const copyLetter = () => {
         const coverLetter = document.getElementById('user-cover-letter').value;
@@ -103,30 +176,51 @@ function Setting() {
                         <textarea id="user-email" readOnly="readonly">{data?.user?.email}</textarea>
                     )}
                 </div>
-                <div className='data-box-large'>
-                    <label className='label'>User Resume:</label>
-                    {editMode? (
-                        <textarea id="user-resume">{data?.user?.resume}</textarea>
-                    ):(
-                        <textarea id="user-resume" readOnly="readonly">{data?.user?.resume}</textarea>
-                    )}
-                    <button id='resume-copy' onClick={() => copyResume()}>Copy Your Resume</button>
-                </div>
-                <div className='data-box-large'>
-                    <label className='label'>User Cover Letter:</label>
-                    {editMode? (
-                        <textarea id="user-cover-letter">{data?.user?.cover_letter}</textarea>
-                    ):(
-                        <textarea id="user-cover-letter" readOnly="readonly">{data?.user?.cover_letter}</textarea>
-                    )}
-                    <button id='cover-letter-copy' onClick={() => copyLetter()}>Copy Your Cover Letter</button>
-                </div>
-                <div className='data-box'>
-                    <button className='edit-btn' onClick={() => EditData()}>Edit Settings</button>
-                    <button className='edit-btn' onClick={() => SaveData()}>Save Changes</button>
-                </div>
+                {editMode? (
+                    <div className='data-box'>
+                        <label>Change Password:</label>
+                            <textarea id="user-password" placeholder='Enter New Password'></textarea>
+                    </div>
+                ):(
+                    <div className='data-box'>
+                        <label>User Password:</label>
+                            <textarea id="user-password" readOnly="readonly" placeholder='*******'></textarea>
+                    </div>
+                )}
+                {data?.user?.paid_member? (
+                    <div>
+                        <div className='data-box-large'>
+                            <label className='label'>User Resume:</label>
+                            {editMode? (
+                                <textarea id="user-resume">{data?.user?.resume}</textarea>
+                            ):(
+                                <textarea id="user-resume" readOnly="readonly">{data?.user?.resume}</textarea>
+                            )}
+                            <button id='resume-copy' onClick={() => copyResume()}>Copy Your Resume</button>
+                        </div>
+                        <div className='data-box-large'>
+                            <label className='label'>User Cover Letter:</label>
+                            {editMode? (
+                                <textarea id="user-cover-letter">{data?.user?.cover_letter}</textarea>
+                            ):(
+                                <textarea id="user-cover-letter" readOnly="readonly">{data?.user?.cover_letter}</textarea>
+                            )}
+                            <button id='cover-letter-copy' onClick={() => copyLetter()}>Copy Your Cover Letter</button>
+                        </div>
+                        <div className='data-box'>
+                            <button className='edit-btn' onClick={() => EditData()}>Edit Settings</button>
+                            <button className='edit-btn' onClick={() => SaveMemberData()}>Save Changes</button>
+                        </div>
+                    </div>
+                ) : (
+                    <div className='data-box'>
+                        <button className='edit-btn' onClick={() => EditData()}>Edit Settings</button>
+                        <button className='edit-btn' onClick={() => SaveData()}>Save Changes</button>
+                    </div>
+                ) }
+
             </div>
-    </div>
+        </div>
     )
 };
 

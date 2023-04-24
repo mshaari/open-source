@@ -2,7 +2,6 @@ import { createContext, useState, useEffect } from 'react';
 import AuthService from '../utils/auth';
 
 
-
 export const UserContext = createContext();
 
 const Context =  ({ children }) => {
