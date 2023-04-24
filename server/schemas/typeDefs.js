@@ -9,10 +9,12 @@ type User {
   first_name: String!
   last_name: String!
   email: String!
+  password: String!
   resume: String
   cover_letter: String
   saved_jobs : [Job]
   paid_member: Boolean
+
 }
 type Job {
   _id: ID!

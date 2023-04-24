@@ -44,15 +44,27 @@ function Setting() {
         const resume = document.getElementById('user-resume').value;
         const coverLetter = document.getElementById('user-cover-letter').value;
 
-        const saltRounds = 10;
         const password = document.getElementById('user-password').value;
-        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const oldPassword = document.getElementById('user-old-password').value;
+
 
         if (!user.loggedIn) {
             return;
         }
 
         if (password.length) {
+
+            const isValidPassword = await bcrypt.compare(oldPassword, data?.user?.password);
+
+            if (!isValidPassword) {
+                // TODO: add modal to alert user instead
+                window.alert("Incorrect Password!");
+                return;
+            };
+
+            const saltRounds = 10;
+            const hashedPassword = await bcrypt.hash(password, saltRounds);
+
             updateUser({
                 variables: {
                     id: user.user_id,
@@ -65,6 +77,7 @@ function Setting() {
                 }
             }) 
             .then(() => {
+                // TODO: add modal to alert user instead
                 window.location.assign('/#dashboard');
             })
             .catch((error) => {
@@ -100,15 +113,26 @@ function Setting() {
         const lastName = document.getElementById('user-last-name').value;
         const email = document.getElementById('user-email').value;
 
-        const saltRounds = 10;
         const password = document.getElementById('user-password').value;
-        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const oldPassword = document.getElementById('user-old-password').value;
 
         if (!user.loggedIn) {
             return;
         }
 
         if (password.length) {
+
+            const isValidPassword = await bcrypt.compare(oldPassword, data?.user?.password);
+
+            if (!isValidPassword) {
+                // TODO: add modal to alert user instead
+                window.alert("Incorrect Password!");
+                return;
+            };
+
+            const saltRounds = 10;
+            const hashedPassword = await bcrypt.hash(password, saltRounds);
+
             updateUser({
                 variables: {
                     id: user.user_id,
@@ -119,6 +143,7 @@ function Setting() {
                 }
             }) 
             .then(() => {
+                // TODO: add modal to alert user instead
                 window.location.assign('/#dashboard');
             })
             .catch((error) => {
@@ -184,14 +209,20 @@ function Setting() {
                     )}
                 </div>
                 {editMode? (
-                    <div className='data-box'>
-                        <label>Change Password:</label>
+                    <div>
+                        <div className='data-box'>
+                            <label>Old Password:</label>
+                            <textarea id="user-old-password" placeholder='Enter Old Password'></textarea>
+                        </div>
+                        <div className='data-box'>
+                            <label>New Password:</label>
                             <textarea id="user-password" placeholder='Enter New Password'></textarea>
+                        </div>
                     </div>
                 ):(
                     <div className='data-box'>
                         <label>User Password:</label>
-                            <textarea id="user-password" readOnly="readonly" placeholder='*******'></textarea>
+                        <textarea id="user-password" readOnly="readonly" placeholder='*******'></textarea>
                     </div>
                 )}
                 {data?.user?.paid_member? (
@@ -199,18 +230,18 @@ function Setting() {
                         <div className='data-box-large'>
                             <label className='label'>User Resume:</label>
                             {editMode? (
-                                <textarea id="user-resume" defaultValue={data?.user?.resume}></textarea>
+                                <textarea id="user-resume" defaultValue={data?.user?.resume || ''}></textarea>
                             ):(
-                                <textarea id="user-resume" readOnly="readonly" value={data?.user?.resume}></textarea>
+                                <textarea id="user-resume" readOnly="readonly" value={data?.user?.resume || ''}></textarea>
                             )}
                             <button id='resume-copy' onClick={() => copyResume()}>Copy Your Resume</button>
                         </div>
                         <div className='data-box-large'>
                             <label className='label'>User Cover Letter:</label>
                             {editMode? (
-                                <textarea id="user-cover-letter" defaultValue={data?.user?.cover_letter}></textarea>
+                                <textarea id="user-cover-letter" defaultValue={data?.user?.cover_letter || ''}></textarea>
                             ):(
-                                <textarea id="user-cover-letter" readOnly="readonly" value={data?.user?.cover_letter}></textarea>
+                                <textarea id="user-cover-letter" readOnly="readonly" value={data?.user?.cover_letter || ''}></textarea>
                             )}
                             <button id='cover-letter-copy' onClick={() => copyLetter()}>Copy Your Cover Letter</button>
                         </div>

@@ -520,7 +520,7 @@ a, button {
     justify-content: center;
 }
 
-#user-first-name, #user-last-name, #user-username, #user-email, #user-password {
+#user-first-name, #user-last-name, #user-username, #user-email, #user-password, #user-old-password {
     font-family: var(--text);
     height: 1rem;
     width: 25vw;
