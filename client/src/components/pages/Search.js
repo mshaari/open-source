@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import JobResults from '../jobs/JobResults';
+import JobResultCard from '../jobs/JobResults';
 import { useQuery } from '@apollo/client';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_JOBS } from '../../utils/queries'; //Imports the query we made in client/src/utils/queries.js
 import '../../styles/pages.css';
 
-// THE BELOW IS UNDER REVIEW PLEASE DO NOT EDIT
 
 // An onChange event was added to each input field to update the corresponding state variable whenever the user selects a new value
-
 // An onClick event is added to the Search button, which calls the handleSearch function.
 function Search() {
  const [country, setCountry] = useState('');
  const [role, setRole] = useState('');
  const [location, setLocation] = useState('');
+ const [jobData, setData] = useState();
 
+ //useLazyQuery hook allows us to call the query only when findJobs is triggered, as opposed to regulary useQuery which queries automatically when the page opens
  const [findJobs, { called, loading, data}] = useLazyQuery(QUERY_JOBS,
     { 
         variables: {country: country, role: role, location: location}
@@ -25,12 +25,14 @@ function Search() {
 // This should make an API call with the country, role, and location values using Axios and passing them to the findJobs query.
 
 const handleSearch = async (event) => {
+    //when the search button is clicked, the findJobs() / QUERY_JOBS query will trigger
     event.preventDefault();
     try {
         await findJobs();
-       
+        
         if(data){
-            console.log(data);
+            setData(data)
+            console.log(jobData);
         }
        
     } catch (e) {
@@ -99,7 +101,13 @@ const handleSearch = async (event) => {
     <button id='search-btn' onClick={handleSearch}>Search</button>
     <div>
      <h3 className='results'>Results:</h3>
-     <JobResults jobData={data}/>
+     {jobData ? 
+     (
+         <JobResultCard jobs={jobData}/>
+     ) : 
+     (<h4>Make a search to see job results</h4>)
+     }
+    
     </div>
    </div>
   </div>

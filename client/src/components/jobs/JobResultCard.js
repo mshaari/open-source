@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/client'; // import useQuery hook
 import { QUERY_USER } from '../../utils/queries'; // import the query
 
 function JobResultCard(props) {
-    const { jobs } = props;
+    const jobs = props.jobs;
 
     const user = useContext(UserContext);
 
@@ -26,12 +26,16 @@ function JobResultCard(props) {
 
     return (
         <div className='result-list'>
+            <h1>Hello</h1>
             {jobs.map((job) => (
-                <div key={job.name} className='result-container'>
+                <div key={job._id} className='result-container'>
                     <a className="result-title" href={job.redirect_url}><h3>{job.title}</h3></a>
                     <div className='job-container'>
                         <p>Contract Time: {job.contract_time}</p>
-                        <h5>Estimated Salary: {job.salary_predicted}</h5>
+                        {job.salary_predicted ? 
+                        (<h5>Estimated Salary: {job.salary_min} to {job.salary_max}</h5>)
+                        : (<h5>Salary not estimated</h5>)
+                        }
                         <p>Description: {job.description}</p>
 
                         {/* TODO: update paid_member context method */}
@@ -43,6 +47,7 @@ function JobResultCard(props) {
                     </div>
                 </div>
             ))}
+
         </div>
     );
 }
