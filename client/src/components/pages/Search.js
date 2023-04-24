@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import JobResultCard from '../jobs/JobResults';
+import JobResultCard from '../jobs/JobResultCard';
 import { useQuery } from '@apollo/client';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_JOBS } from '../../utils/queries'; //Imports the query we made in client/src/utils/queries.js
@@ -29,11 +29,19 @@ const handleSearch = async (event) => {
     event.preventDefault();
     try {
         await findJobs();
+        if(called){
+            console.warn('TESTING CALLED')
+        }
+        if(loading){
+            console.warn('TEST LOADING')
+        }
         
         if(data){
+            console.warn("Hello");
             setData(data)
-            console.log(jobData);
-        }
+            // console.log(data)
+            // console.log(jobData);
+        }else {console.warn("ERROR WITH GRABBING DATA")}
        
     } catch (e) {
         console.log(e);
@@ -104,9 +112,9 @@ const handleSearch = async (event) => {
      {jobData ? 
      (
          <JobResultCard jobs={jobData}/>
-     ) : 
-     (<h4>Make a search to see job results</h4>)
-     }
+      ) : 
+     (<h4>TEST FROM SEARCH COMPONENT : NO JOB DATA IS COMING BACK FROM QUERY --- Make a search to see job results</h4>)
+     } 
     
     </div>
    </div>

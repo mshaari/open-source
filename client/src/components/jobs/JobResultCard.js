@@ -6,9 +6,8 @@ import '../../styles/job.css';
 import { useQuery } from '@apollo/client'; // import useQuery hook
 import { QUERY_USER } from '../../utils/queries'; // import the query
 
-function JobResultCard(props) {
-    const jobs = props.jobs;
-
+function JobResultCard({jobs}) {
+    
     const user = useContext(UserContext);
 
     const { loading, error, data } = useQuery(QUERY_USER, {
@@ -24,9 +23,15 @@ function JobResultCard(props) {
         console.log(error);
       }
 
+      if(!jobs){
+        return (
+            <h4>TEST FROM JOBRESULTCARD : Please make a search to view results!</h4>
+        );
+    }
+
     return (
         <div className='result-list'>
-            <h1>Hello</h1>
+            <h1>TEST FROM INSIDE JOB RESULT CARD _ IF JOBS ARE RETURNED</h1>
             {jobs.map((job) => (
                 <div key={job._id} className='result-container'>
                     <a className="result-title" href={job.redirect_url}><h3>{job.title}</h3></a>
