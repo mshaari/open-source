@@ -30,10 +30,12 @@
     border-radius: 25px;
     margin-block: 15px;
     padding-block: 15px;
+    padding-inline: 15px;
     transition: all;
     transition-duration: 0.3s;
-    width: 85vw;
+    width: 80vw;
     margin-inline:auto;
+    text-align: center;
 }
 
 .result-container:hover {
@@ -126,6 +128,6 @@
 @media screen and (max-width: 630px) {
     .result-container {
         font-size: 0.7rem;
-        width: 80vw;
+        width: 70vw;
     }
 }
