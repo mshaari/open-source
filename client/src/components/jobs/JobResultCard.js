@@ -8,31 +8,23 @@ import { QUERY_USER } from '../../utils/queries'; // import the query
 
 function JobResultCard({jobs}) {
     
-    const user = useContext(UserContext);
+    // const user = useContext(UserContext);
 
-    const { loading, error, data } = useQuery(QUERY_USER, {
-        variables: { id: user.user_id }, // pass the user ID as a variable to the query
-        skip: !user.loggedIn, // skip the query if user is not logged in
-      });
+    // const { loading, data } = useQuery(QUERY_USER, {
+    //     variables: { id: user.user_id }, // pass the user ID as a variable to the query
+    //     skip: !user.loggedIn, // skip the query if user is not logged in
+    //   });
 
-      if (loading) {
-        return <p>Loading...</p>;
-      }
-    
-      if (error) {
-        console.log(error);
-      }
-
-      if(!jobs){
-        return (
-            <h4>TEST FROM JOBRESULTCARD : Please make a search to view results!</h4>
-        );
-    }
+    //   if (loading) {
+    //     return <p>Loading...</p>;
+    //   }
+console.log(jobs);
 
     return (
         <div className='result-list'>
             <h1>TEST FROM INSIDE JOB RESULT CARD _ IF JOBS ARE RETURNED</h1>
-            {jobs.map((job) => (
+            {jobs.findJobs ?  
+            (jobs.findJobs.map((job) => (
                 <div key={job._id} className='result-container'>
                     <a className="result-title" href={job.redirect_url}><h3>{job.title}</h3></a>
                     <div className='job-container'>
@@ -44,14 +36,15 @@ function JobResultCard({jobs}) {
                         <p>Description: {job.description}</p>
 
                         {/* TODO: update paid_member context method */}
-                        {data?.user?.paid_member ? (
+                        {/* {data?.user?.paid_member ? (
                             <button className="save-job">Save This Job</button>
                         ) : (
                             <p className='reminder-text'>Become a paid member to save this job!</p>
-                        )}
+                        )} */}
                     </div>
                 </div>
-            ))}
+            ))
+            ) : (<h1>TEST</h1>) }
 
         </div>
     );

@@ -16,7 +16,7 @@ function Search() {
  const [jobData, setData] = useState();
 
  //useLazyQuery hook allows us to call the query only when findJobs is triggered, as opposed to regulary useQuery which queries automatically when the page opens
- const [findJobs, { called, loading, data}] = useLazyQuery(QUERY_JOBS,
+ const [findJobs, {loading, error, data}] = useLazyQuery(QUERY_JOBS,
     { 
         variables: {country: country, role: role, location: location}
     }
@@ -29,17 +29,14 @@ const handleSearch = async (event) => {
     event.preventDefault();
     try {
         await findJobs();
-        if(called){
-            console.warn('TESTING CALLED')
-        }
+        
         if(loading){
             console.warn('TEST LOADING')
         }
         
         if(data){
-            console.warn("Hello");
             setData(data)
-            // console.log(data)
+             //console.log(data)
             // console.log(jobData);
         }else {console.warn("ERROR WITH GRABBING DATA")}
        
@@ -109,11 +106,11 @@ const handleSearch = async (event) => {
     <button id='search-btn' onClick={handleSearch}>Search</button>
     <div>
      <h3 className='results'>Results:</h3>
-     {jobData ? 
-     (
-         <JobResultCard jobs={jobData}/>
+     {loading ? 
+     (<h4>TEST FROM SEARCH COMPONENT : NO JOB DATA IS COMING BACK FROM QUERY --- Make a search to see job results</h4>  
       ) : 
-     (<h4>TEST FROM SEARCH COMPONENT : NO JOB DATA IS COMING BACK FROM QUERY --- Make a search to see job results</h4>)
+     (
+     <JobResultCard jobs={data}/>)
      } 
     
     </div>

@@ -44,9 +44,6 @@ export const QUERY_JOBS = gql`
       location
       title
       description
-      salary_predicted
-      salary_max
-      salary_min
       contract_time
       redirect_url
      }
