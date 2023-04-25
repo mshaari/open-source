@@ -27,20 +27,20 @@ function Search() {
 
 // This should make an API call with the country, role, and location values using Axios and passing them to the findJobs query.
 
-    const handleSearch = async (event) => {
-        //when the search button is clicked, the findJobs() / QUERY_JOBS query will trigger
-        event.preventDefault();
-        try {
-            await findJobs();
-            
-            if(loading){
-                console.log('LOADING');
-            }
+const handleSearch = async (event) => {
+    //when the search button is clicked, the findJobs() / QUERY_JOBS query will trigger
+    event.preventDefault();
+    try {
+        await findJobs();
         
-        } catch (e) {
-            console.log(e);
+        if(loading){
+            console.log('LOADING');
         }
+       
+    } catch (e) {
+        console.log(e);
     }
+}
 
  return (
   <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>
@@ -49,7 +49,7 @@ function Search() {
     <div className='search-box'>
      <label>Country:</label>
      <select id='country-select' onChange={(e) => setCountry(e.target.value)}>
-      <option disabled defaultValue>Please select one</option>
+      <option disabled selected>Please select one</option>
       <option value='us'>US</option>
       <option value='gb'>UK</option>
       <option value='at'>Austria</option>
@@ -74,7 +74,7 @@ function Search() {
     <div className='search-box'>
      <label>Job Title:</label>
      <select id='job-select' onChange={(e) => setRole(e.target.value)}>
-      <option disabled defaultValue>Please select one</option>
+      <option disabled selected>Please select one</option>
      	<option value='software-engineer'>Software Engineer</option>
         <option value='web-developer'>Web Developer</option>
         <option value='mobile-app-developer'>Mobile App Developer</option>
