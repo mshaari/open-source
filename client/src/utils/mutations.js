@@ -21,7 +21,6 @@ export const ADD_JOB = gql`
   mutation addJob($job: JobData) {
     addJob(job: $job) {
       _id
-      job_id
       save_date
       company_name
       location
