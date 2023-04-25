@@ -14,6 +14,7 @@ function JobResultCard(props) {
                 <div key={job._id} className='result-container'>
                     <a className="result-title" href={job.redirect_url}><h3>{job.title}</h3></a>
                     <div className='job-container'>
+                        <p>Location: {job.location}</p>
                         <p>Contract Time: {job.contract_time}</p>
                         {job.salary_predicted ? 
                         (<h5>Estimated Salary: {job.salary_min} to {job.salary_max}</h5>)
