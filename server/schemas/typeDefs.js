@@ -42,13 +42,13 @@ type Progress {
     user: User
   }
   input JobData {
-  display_name: String
+  company_name: String
   location: String
   title: String
   description: String
-  salary_predicted: Boolean
-  salary_max: Int
-  salary_min: Int
+  salary_predicted: Int
+  salary_max: Float
+  salary_min: Float
   contract_time: String
   redirect_url: String
   # progress: Progress

@@ -22,6 +22,7 @@ export const ADD_JOB = gql`
     addJob(job: $job) {
       _id
       save_date
+      company_name
       location
       title
       description
