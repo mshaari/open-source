@@ -84,7 +84,7 @@ const resolvers = {
     updateMembership : async (parent, args, context) => {
       if(context.user) {
 
-        const user = await User.findByIdAndUpdate(args.id, { paid_member: true }, { new: true });
+        const user = await User.findByIdAndUpdate(context.user._id , { paid_member: true }, { new: true });
 
         return user;
       }
@@ -98,7 +98,7 @@ const resolvers = {
     updateUser : async (parent, args, context) => {
       if(context.user) {
 
-        const user = await User.findByIdAndUpdate(args.id, {
+        const user = await User.findByIdAndUpdate(context.user._id, {
           first_name: args.firstName,
           last_name: args.lastName,
           email: args.email,
