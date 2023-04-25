@@ -64,10 +64,8 @@ const resolvers = {
           }
         ],
         mode: 'payment',
-        // sucess_url: process.env.FRONTEND_DOMAIN + '/sucess',
-        // cancel_url: process.env.FRONTEND_DOMAIN + '/cancel'
-        success_url: 'http://localhost:3000/success',
-        cancel_url: 'http://localhost:3000/cancel'
+        success_url: process.env.FRONTEND_DOMAIN + '/success',
+        cancel_url: process.env.FRONTEND_DOMAIN + '/cancel'
       });
 
       return JSON.stringify({

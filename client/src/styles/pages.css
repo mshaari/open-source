@@ -281,6 +281,10 @@ a, button {
     color: red;
 }
 
+.success-text {
+    color: rgb(0, 128, 60);
+}
+
 /* job-search page styling */
 @keyframes fade-in {
     0% {
