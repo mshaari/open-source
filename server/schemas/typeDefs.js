@@ -74,6 +74,7 @@ type Progress {
     updateUser(id: ID firstName: String, lastName: String, email: String, password: String, paid_member: Boolean, resume: String, cover_letter: String): User
     login(email: String!, password: String!): Auth
     addJob(job: JobData) : Job
+    deleteJob(_id: ID) : User
    }
 `;
 module.exports = typeDefs;

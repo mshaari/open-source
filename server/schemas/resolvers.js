@@ -142,6 +142,20 @@ const resolvers = {
         return newJob;
       }
       throw new AuthenticationError('You need to be logged in!');
+      },
+
+      deleteJob: async (parent, args, context) => {
+        //find the user through their _id in the context 
+        if(context.user){
+          const user = await User.findByIdAndUpdate(
+            {_id: context.user._id},
+            //remove the saved job from the saved_jobs array by the _id we are passing in as an argument
+            {$pull: {saved_jobs: {_id: args._id}}}, 
+            //return the new version of the user, without the deleted job from saved_jobs
+            {new: true}
+          );
+          return user;
+        }
       }
  
    }
