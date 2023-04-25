@@ -19,8 +19,8 @@ type User {
 type Job {
   _id: ID!
   company_name: String
-  save_date: Date
   location: String
+  save_date: Date
   title: String
   description: String
   salary_predicted: Int
@@ -42,6 +42,7 @@ type Progress {
     user: User
   }
   input JobData {
+  _id: ID
   company_name: String
   location: String
   title: String
@@ -55,7 +56,7 @@ type Progress {
   }
   type Query {
     # Get basic user information by user ID
-    user(_id: ID!): User
+    user(_id: ID): User
     # Get all users
     users: [User!]!
     # Get job by job ID
@@ -69,8 +70,8 @@ type Progress {
   }
   type Mutation {
     addUser(first_name: String!, last_name: String!, email: String!, password: String!): Auth
-    updateMembership(id: ID!, paid_member: Boolean): User
-    updateUser(id: ID! firstName: String, lastName: String, email: String, password: String, paid_member: Boolean, resume: String, cover_letter: String): User
+    updateMembership(id: ID, paid_member: Boolean): User
+    updateUser(id: ID firstName: String, lastName: String, email: String, password: String, paid_member: Boolean, resume: String, cover_letter: String): User
     login(email: String!, password: String!): Auth
     addJob(job: JobData) : Job
    }
