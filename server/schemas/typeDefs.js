@@ -18,15 +18,14 @@ type User {
 }
 type Job {
   _id: ID!
-  #where is display_name coming from?  is it the company_name?
-  display_name: String
+  company_name: String
   save_date: Date
   location: String
   title: String
   description: String
-  salary_predicted: Boolean
-  salary_max: Int
-  salary_min: Int
+  salary_predicted: Int
+  salary_max: Float
+  salary_min: Float
   contract_time: String
   redirect_url: String
   progress: Progress

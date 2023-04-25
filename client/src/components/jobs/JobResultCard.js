@@ -20,11 +20,6 @@ function JobResultCard({jobs}) {
     return <p>Loading...</p>;
     };
 
-    if ({jobs}) {
-        console.log({jobs});
-
-    };
-
     return (
         <div className='result-list'>
             {jobs?.findJobs ?  
