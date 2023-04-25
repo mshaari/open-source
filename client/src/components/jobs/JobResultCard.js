@@ -16,6 +16,15 @@ function JobResultCard({jobs}) {
         skip: !user.loggedIn, // skip the query if user is not logged in
       });
 
+    if (loading) {
+    return <p>Loading...</p>;
+    };
+
+    if ({jobs}) {
+        console.log({jobs});
+
+    };
+
     return (
         <div className='result-list'>
             {jobs?.findJobs ?  
@@ -29,6 +38,8 @@ function JobResultCard({jobs}) {
                         : (<h5>Salary not estimated</h5>)
                         }
                         <p>Description: {job.description}</p>
+
+                        {/* TODO: update paid_member context method */}
                         {data?.user?.paid_member ? (
                             <button className="save-job">Save This Job</button>
                         ) : (
@@ -37,7 +48,7 @@ function JobResultCard({jobs}) {
                     </div>
                 </div>
             ))
-            ) : null }
+            ) : (<h1>TEST</h1>) }
 
         </div>
     );
