@@ -1,14 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import '../../styles/pages.css';
-import { UserContext } from '../UserContext';
 import '../../styles/job.css';
-import { printIntrospectionSchema } from 'graphql';
 
 
 
 function JobResultCard(props) {
     
-    const user = useContext(UserContext);
 
     return (
         <div className='result-list'>
