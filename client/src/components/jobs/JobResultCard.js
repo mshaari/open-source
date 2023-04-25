@@ -7,22 +7,28 @@ import {ADD_JOB} from '../../utils/mutations';
 
 
 function JobResultCard(props) {
-    
+    // using ADD_JOB mutation 
     const [saveJob, {data, loading, error }] = useMutation(ADD_JOB);
 
     const handleSaveButton = async (event) => {
         event.preventDefault();
         try{
+            //finding the id of the button which triggered the event, which is set to be the _id field of the job from the API
             const jobId = event.target.id;
-            console.log(event);
+            //logging out the jobId to ensure the button click went through successfully, and that it grabs the _id of the correct job
             console.log(jobId)
+        //looping through all of the jobs in the array that came from the Search component
         for(let i=0; i<props.jobs.findJobs.length -1 ; i++){
+            //while looping through, the current job we are on is assigned to job variable
             let job = props.jobs.findJobs[i];
+            //if the current job's _id field matches the jobId which triggered the event, we will want to save that job
             if (job._id === jobId){
+                //logging out that job to see the job we will be saving, and we can compare its _id with the jobId we are logging out above
                 console.log(job)
+                //triggering the saveJob mutation/function, and passing in arguments to create the job
                  await saveJob({
                     variables: {
-                        _id: job._id,
+                        // _id: job._id,
                         company_name: job.company_name,
                         location: job.location,
                         title: job.title,
@@ -34,6 +40,7 @@ function JobResultCard(props) {
                         redirect_url: job.redirect_url
                     }
                 });
+                //if the mutation goes through correctly, it will return data, which we can log out to make sure it happened correctly 
                 if(data){
                     console.log(data)
                 }
