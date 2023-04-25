@@ -20,15 +20,23 @@ function JobResultCard(props) {
                         <p>Location: {job.location}</p>
                         <p>Contract Time: {job.contract_time}</p>
                         {job.salary_predicted ? 
-                        (<h5>Estimated Salary: {job.salary_min} to {job.salary_max}</h5>)
-                        : (<h5>Salary not estimated</h5>)
+                            (
+                                <h5>Estimated Salary: ${Math.floor(job.salary_min)}.00{job.salary_min !== job.salary_max ? ` - ${Math.floor(job.salary_max)}.00` : ''}</h5>
+                            )
+                            : 
+                            (
+                                <h5>Salary not estimated</h5>
+                            )
                         }
                         <p className='job-description'>Description: {job.description}</p>
-                        {props.isPaidMember ? (
+                        {props.isPaidMember ? 
+                            (
                             <button className="save-job">Save This Job</button>
-                        ) : (
+                            ) : 
+                            (
                             <p className='reminder-text'>Become a paid member to save this job!</p>
-                        )}
+                            )
+                        }
                     </div>
                 </div> 
             ))
