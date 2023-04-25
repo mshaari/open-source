@@ -19,8 +19,8 @@ type User {
 type Job {
   _id: ID!
   company_name: String
-  save_date: Date
   location: String
+  save_date: Date
   title: String
   description: String
   salary_predicted: Int
@@ -42,6 +42,7 @@ type Progress {
     user: User
   }
   input JobData {
+  _id: ID
   company_name: String
   location: String
   title: String

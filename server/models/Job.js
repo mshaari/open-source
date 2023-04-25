@@ -9,6 +9,9 @@ const jobSchema = new Schema({
     default: Date.now
   },
   //we want to pull the display name from the API
+  company_name: {
+    type: String
+  },
   location: {
     type: String
   },
