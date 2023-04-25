@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   ApolloClient,
@@ -7,6 +7,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { UserContext } from './components/UserContext';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import Login from './components/pages/Login';
@@ -33,6 +34,7 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
@@ -50,6 +52,10 @@ function App() {
       setCurrentPage(storedPage);
     }
   }, []);
+
+  // Import UserContext to see if user is logged in (determine whether to load login page or not)
+  const [user] = useContext(UserContext);
+
 
   // Export the handlePageChange functionality that will change the currentPage to whatever the input is
   const handlePageChange = (page) => {
@@ -69,13 +75,25 @@ function App() {
       )
     }
     if (currentPage === 'Login') {
-      return (
-        <div>
-          <Header currentPage={currentPage} handlePageChange={handlePageChange} />
-          <Login currentPage='Login' />
-          <Footer />
-        </div>
-      )
+      // If they are logged in, do not render the Login page, and render the About page instead
+      if (user.loggedIn === true) {
+        return (
+          <div>
+            <Header currentPage='About' handlePageChange={handlePageChange} />
+            <About currentPage='About' />
+            <Footer />
+          </div>
+        )
+      } else {
+        return (
+          <div>
+            <Header currentPage={currentPage} handlePageChange={handlePageChange} />
+            <Login currentPage='Login' />
+            <Footer />
+          </div>
+        )
+      }
+
     }
     if (currentPage === 'Contact') {
       return (
