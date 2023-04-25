@@ -50,8 +50,8 @@ const handleSearch = async (event) => {
      <label>Country:</label>
      <select id='country-select' onChange={(e) => setCountry(e.target.value)}>
       <option disabled selected>Please select one</option>
-      <option value='us'>US</option>
-      <option value='gb'>UK</option>
+      <option value='us'>United States</option>
+      <option value='gb'>United Kingdom</option>
       <option value='at'>Austria</option>
       <option value='au'>Australia</option>
       <option value='be'>Belgium</option>
