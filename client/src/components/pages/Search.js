@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../UserContext';
 import axios from 'axios';
 import JobResultCard from '../jobs/JobResultCard';
 import { useQuery } from '@apollo/client';
@@ -15,6 +16,8 @@ function Search() {
  const [location, setLocation] = useState('');
  const [jobData, setData] = useState();
 
+ const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+
  //useLazyQuery hook allows us to call the query only when findJobs is triggered, as opposed to regulary useQuery which queries automatically when the page opens
  const [findJobs, {loading, error, data}] = useLazyQuery(QUERY_JOBS,
     { 
@@ -24,34 +27,29 @@ function Search() {
 
 // This should make an API call with the country, role, and location values using Axios and passing them to the findJobs query.
 
-const handleSearch = async (event) => {
-    //when the search button is clicked, the findJobs() / QUERY_JOBS query will trigger
-    event.preventDefault();
-    try {
-        await findJobs();
+    const handleSearch = async (event) => {
+        //when the search button is clicked, the findJobs() / QUERY_JOBS query will trigger
+        event.preventDefault();
+        try {
+            await findJobs();
+            
+            if(loading){
+                console.log('LOADING');
+            }
         
-        if(loading){
-            console.warn('TEST LOADING')
+        } catch (e) {
+            console.log(e);
         }
-        
-        if(data){
-            setData(data)
-             //console.log(data)
-            // console.log(jobData);
-        }else {console.warn("ERROR WITH GRABBING DATA")}
-       
-    } catch (e) {
-        console.log(e);
     }
-}
+
  return (
-  <div className='page-content'>
+  <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>
    <div className='search-container search-active'>
     <h3 className='search'>Job Search:</h3>
     <div className='search-box'>
      <label>Country:</label>
      <select id='country-select' onChange={(e) => setCountry(e.target.value)}>
-      <option disabled selected>Please select one</option>
+      <option disabled defaultValue>Please select one</option>
       <option value='us'>US</option>
       <option value='gb'>UK</option>
       <option value='at'>Austria</option>
@@ -76,7 +74,7 @@ const handleSearch = async (event) => {
     <div className='search-box'>
      <label>Job Title:</label>
      <select id='job-select' onChange={(e) => setRole(e.target.value)}>
-      <option disabled selected>Please select one</option>
+      <option disabled defaultValue>Please select one</option>
      	<option value='software-engineer'>Software Engineer</option>
         <option value='web-developer'>Web Developer</option>
         <option value='mobile-app-developer'>Mobile App Developer</option>
