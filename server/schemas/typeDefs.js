@@ -18,6 +18,7 @@ type User {
 }
 type Job {
   _id: ID!
+  job_id: String
   company_name: String
   location: String
   save_date: Date
@@ -42,7 +43,7 @@ type Progress {
     user: User
   }
   input JobData {
-  _id: ID
+  job_id: String
   company_name: String
   location: String
   title: String

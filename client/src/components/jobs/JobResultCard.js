@@ -28,21 +28,23 @@ function JobResultCard(props) {
                 //triggering the saveJob mutation/function, and passing in arguments to create the job
                  await saveJob({
                     variables: {
-                        // _id: job._id,
-                        company_name: job.company_name,
-                        location: job.location,
-                        title: job.title,
-                        description: job.description,
-                        salary_predicted: job.salary_predicted,
-                        salary_max: job.salary_max,
-                        salary_min: job.salary_min,
-                        contract_time: job.contract_time,
-                        redirect_url: job.redirect_url
+                        job: {
+                            job_id: job._id,
+                            company_name: job.company_name,
+                            location: job.location,
+                            title: job.title,
+                            description: job.description,
+                            salary_predicted: job.salary_predicted,
+                            salary_max: job.salary_max,
+                            salary_min: job.salary_min,
+                            contract_time: job.contract_time,
+                            redirect_url: job.redirect_url
+                        }
                     }
                 });
                 //if the mutation goes through correctly, it will return data, which we can log out to make sure it happened correctly 
                 if(data){
-                    console.log(data)
+                    console.log({data})
                 }
                 
     }} 
@@ -74,7 +76,7 @@ function JobResultCard(props) {
                                 <h5>Salary not estimated</h5>
                             )
                         }
-                        <p>Description: {job.description}</p>
+                        <p className='job-description'>Description: {job.description}</p>
 
                         {props.isPaidMember ? (
                             <button onClick={handleSaveButton}className="save-job" id={job._id}>Save This Job</button>
