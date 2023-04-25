@@ -110,10 +110,7 @@ const handleSearch = async (event) => {
     </div>
     <button id='search-btn' onClick={handleSearch}>Search</button>
     <div>
-     <h3 className='results'>Results:</h3>
-     
      <JobResultCard jobs={data} isPaidMember={userData.data.user.paid_member}/>
-     
     </div>
    </div>
   </div>
