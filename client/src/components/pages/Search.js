@@ -31,23 +31,6 @@ const userData = useQuery(QUERY_USER, {
 });
 
 
-// if (userData.data.user.paid_member) {
-
-
-//     console.log(userData.data.user.paid_member)
-
-//     console.log(data);
-
-
-    
-// } else {
-//     console.log(userData.data.user.paid_member)
-
-//     console.log(data);
-// }
-
-
-
 
 const handleSearch = async (event) => {
     //when the search button is clicked, the findJobs() / QUERY_JOBS query will trigger
