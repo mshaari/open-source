@@ -1,32 +1,45 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import JobResults from '../jobs/JobResults';
+import JobResultCard from '../jobs/JobResultCard';
 import { useQuery } from '@apollo/client';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_JOBS } from '../../utils/queries'; //Imports the query we made in client/src/utils/queries.js
 import '../../styles/pages.css';
 
-// THE BELOW IS UNDER REVIEW PLEASE DO NOT EDIT
 
 // An onChange event was added to each input field to update the corresponding state variable whenever the user selects a new value
-
 // An onClick event is added to the Search button, which calls the handleSearch function.
 function Search() {
  const [country, setCountry] = useState('');
  const [role, setRole] = useState('');
  const [location, setLocation] = useState('');
+ const [jobData, setData] = useState();
 
- const [findJobs, { loading, error, data }] = useQuery(QUERY_JOBS, { 
-    variables: { country: country, role: role, location: location }
-    });
+ //useLazyQuery hook allows us to call the query only when findJobs is triggered, as opposed to regulary useQuery which queries automatically when the page opens
+ const [findJobs, {loading, error, data}] = useLazyQuery(QUERY_JOBS,
+    { 
+        variables: {country: country, role: role, location: location}
+    }
+    );
 
 // This should make an API call with the country, role, and location values using Axios and passing them to the findJobs query.
 
 const handleSearch = async (event) => {
+    //when the search button is clicked, the findJobs() / QUERY_JOBS query will trigger
     event.preventDefault();
     try {
-        // findJobs();
-        console.log(data);
+        await findJobs();
+        
+        if(loading){
+            console.warn('TEST LOADING')
+        }
+        
+        if(data){
+            setData(data)
+             //console.log(data)
+            // console.log(jobData);
+        }else {console.warn("ERROR WITH GRABBING DATA")}
+       
     } catch (e) {
         console.log(e);
     }
@@ -93,7 +106,13 @@ const handleSearch = async (event) => {
     <button id='search-btn' onClick={handleSearch}>Search</button>
     <div>
      <h3 className='results'>Results:</h3>
-     <JobResults />
+     {loading ? 
+     (<h4>TEST FROM SEARCH COMPONENT : NO JOB DATA IS COMING BACK FROM QUERY --- Make a search to see job results</h4>  
+      ) : 
+     (
+     <JobResultCard jobs={data}/>)
+     } 
+    
     </div>
    </div>
   </div>

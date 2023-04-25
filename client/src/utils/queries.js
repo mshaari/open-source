@@ -37,7 +37,7 @@ export const QUERY_USER = gql`
 // Made a query to get jobs from search input
 
 export const QUERY_JOBS = gql`
-  query Query ($country: String!, $role: String!, $location: String!) {
+  query queryJobs ($country: String!, $role: String!, $location: String!) {
      findJobs(country: $country, role: $role, location: $location) {
       _id
       display_name
@@ -45,9 +45,6 @@ export const QUERY_JOBS = gql`
       location
       title
       description
-      salary_predicted
-      salary_max
-      salary_min
       contract_time
       redirect_url
      }
