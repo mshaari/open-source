@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   ApolloClient,
@@ -42,6 +42,20 @@ const client = new ApolloClient({
 
 function App() {
   const [currentPage, setCurrentPage] = useState('About');
+
+  // useEffect functionality is used to store the user's current page in local storage so when they reload the page, it renders the correct page instead of the default About page
+  useEffect(() => {
+    const storedPage = localStorage.getItem('currentPage');
+    if (storedPage) {
+      setCurrentPage(storedPage);
+    }
+  }, []);
+
+  // Export the handlePageChange functionality that will change the currentPage to whatever the input is
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    localStorage.setItem('currentPage', page);
+  };
 
   // This method is checking to see what the value of `currentPage` is. Depending on the value of currentPage, we return the corresponding component to render.
   const renderPage = () => {
@@ -101,9 +115,6 @@ function App() {
     }
   };
 
-  // Export the handlePageChange functionality that will change the currentPage to whatever the input is
-  const handlePageChange = (page) => setCurrentPage(page);
-
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -112,14 +123,9 @@ function App() {
           <Route path='/success' element={<Success />} />
           <Route path='/cancel' element={<Cancel />} />
         </Routes>
-
-
       </Router>
     </ApolloProvider>
   )
 }
 
 export default App;
-
-
-

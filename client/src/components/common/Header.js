@@ -7,14 +7,12 @@ function Header(props) {
 
     const { currentPage, handlePageChange } = props;
 
-    const [ user, setUser, theme, setTheme ] = useContext(UserContext);
-
-
+    const [user, setUser, theme, setTheme] = useContext(UserContext);
 
     return (
         <div className={`header ${theme.greyscale ? "greyscale" : ""}`}>
             <h1 id='title'><span>&lt;/</span><span>open source</span><span>&gt;</span></h1>
-            < Navigation currentPage={currentPage} handlePageChange={handlePageChange}/>
+            < Navigation currentPage={currentPage} handlePageChange={handlePageChange} />
         </div>
     );
 }
