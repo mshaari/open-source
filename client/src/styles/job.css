@@ -42,12 +42,48 @@
     background-color: rgb(215, 255, 229);
 }
 
-.result-title {
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        text-shadow: none;
+        text-shadow: 1px 1px 1px black;
+    }
+    5% {
+        transform: scale(0.8);
+        text-shadow: none;
+    }
+    10% {
+        transform: scale(1.1);
+        text-shadow: 3px 3px 3px black;
+    }
+    13% {
+        transform: scale(0.9);
+        text-shadow: none;
+    }
+    15% {
+        transform: scale(1);
+        text-shadow: none;
+        text-shadow: 1px 1px 1px black;
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: none;
+        text-shadow: 1px 1px 1px black;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+a h3 {
     font-family: var(--title);
     font-size: 0.8em;
     text-decoration: none;
-    color: black;
     line-height: 1.5rem;
+    color: #608aff;
+    transition: transform;
+    animation: pulse 3s linear infinite;
 }
 
 .status, .note-title {
@@ -62,6 +98,30 @@
     padding: 5px 10px;
     border-radius: 6px;
     border: 3px solid #608aff;
+}
+
+@keyframes bg-shift {
+    0%{
+        background-position: left;
+    }
+    10% {
+        background-position: right;
+    }
+    20% {
+        background-position: left;
+    }
+    100% {
+        background-position: left;
+    }
+}
+.job-description {
+    background: linear-gradient(90deg, var(--fairytale) 0%, var(--thistle) 45%, var(--straw) 50%, var(--thistle) 55%, var(--fairytale) 100%);
+    background-size: 800%;
+    background-position: left;
+    border-radius: 25px;
+    padding: 15px;
+    color:black;
+    animation: bg-shift 5s infinite linear;
 }
 
 @keyframes save-job-button {

@@ -26,13 +26,14 @@
     filter:grayscale(1);
 }
 
-#toggle-theme {
+#toggle-theme, #back {
     position: relative;
     cursor: pointer;
     font-family: var(--title);
     font-size: 0.5rem;
     padding: 5px 10px;
     margin-top: 15px;
+    margin-inline: 15px;
     background-color: black;
     border:none;
     border: 3px solid white;
@@ -71,11 +72,11 @@
     transform-origin: bottom;
 }
 
-#toggle-theme:hover {
+#toggle-theme:hover, #back:hover {
     filter: invert(1);
 }
 
-#toggle-theme:active {
+#toggle-theme:active, #back:active {
     color: var(--indian-red);
     background-color: white;
     border: 3px solid var(--indian-red);
@@ -152,7 +153,7 @@
         font-size: 0.5rem;
     }
 
-    #toggle-theme {
+    #toggle-theme, #back {
         font-size: 0.3rem;
     }
 }
