@@ -29,7 +29,7 @@ function JobResultCard(props) {
                  await saveJob({
                     variables: {
                         job: {
-                            job_id: job._id,
+                            _id: job._id,
                             company_name: job.company_name,
                             location: job.location,
                             title: job.title,

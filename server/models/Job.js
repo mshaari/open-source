@@ -4,6 +4,9 @@ const { Schema } = mongoose;
 const progressSchema = require('./Progress');
 
 const jobSchema = new Schema({
+  _id: {
+    type: String 
+  },
   save_date: {
     type: Date,
     default: Date.now
