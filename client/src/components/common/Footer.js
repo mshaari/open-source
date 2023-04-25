@@ -6,13 +6,20 @@ function Footer() {
 
     const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
 
+    const backToTop = () => {
+        window.scrollTo(0, 0);
+    }
+
     return (
         <footer className={`footer ${theme.greyscale ? "greyscale" : ""}`}>
-            {theme.greyscale? (
-                <button id="toggle-theme" onClick={toggleTheme}>Color Mode</button>
-            ):(
-                <button id="toggle-theme" onClick={toggleTheme}>Greyscale Mode</button>
-            )}
+            <div>
+                {theme.greyscale? (
+                    <button id="toggle-theme" onClick={toggleTheme}>Color Mode</button>
+                ):(
+                    <button id="toggle-theme" onClick={toggleTheme}>Greyscale Mode</button>
+                )}
+                <button id="back" onClick={backToTop}>Back to Top</button>
+            </div>
             <h5 id="footer-title"><span>&lt;/</span><span>Team Open Source, 2023. All rights reserved</span><span>&gt;</span></h5>
         </footer>
     );
