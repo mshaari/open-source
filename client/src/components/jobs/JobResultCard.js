@@ -1,29 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import '../../styles/pages.css';
-import { UserContext } from '../UserContext';
 import '../../styles/job.css';
 
-import { useQuery } from '@apollo/client'; // import useQuery hook
-import { QUERY_USER } from '../../utils/queries'; // import the query
 
 
-function JobResultCard({jobs}) {
+function JobResultCard(props) {
     
-    const user = useContext(UserContext);
-
-    const { loading, data } = useQuery(QUERY_USER, {
-        variables: { id: user.user_id }, // pass the user ID as a variable to the query
-        skip: !user.loggedIn, // skip the query if user is not logged in
-      });
-
-    if (loading) {
-    return <p>Loading...</p>;
-    };
 
     return (
         <div className='result-list'>
-            {jobs?.findJobs ?  
-            (jobs.findJobs.map((job) => (
+            {props.jobs?.findJobs ?  
+            (props.jobs.findJobs.map((job) => (
                 <div key={job._id} className='result-container'>
                     <a className="result-title" href={job.redirect_url}><h3>{job.title}</h3></a>
                     <div className='job-container'>
@@ -34,17 +21,15 @@ function JobResultCard({jobs}) {
                         }
                         <p>Description: {job.description}</p>
 
-                        {/* TODO: update paid_member context method */}
-                        {data?.user?.paid_member ? (
+                        {props.isPaidMember ? (
                             <button className="save-job">Save This Job</button>
                         ) : (
                             <p className='reminder-text'>Become a paid member to save this job!</p>
                         )}
                     </div>
-                </div>
+                </div> 
             ))
-            ) : (<h1>TEST</h1>) }
-
+            ) : null }
         </div>
     );
 }

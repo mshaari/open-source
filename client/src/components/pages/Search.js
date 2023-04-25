@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../UserContext';
-import axios from 'axios';
 import JobResultCard from '../jobs/JobResultCard';
-import { useQuery } from '@apollo/client';
-import { useLazyQuery } from '@apollo/client';
+import { useLazyQuery, useQuery } from '@apollo/client';
 import { QUERY_JOBS } from '../../utils/queries'; //Imports the query we made in client/src/utils/queries.js
+import { QUERY_USER } from '../../utils/queries';
 import '../../styles/pages.css';
+
 
 
 // An onChange event was added to each input field to update the corresponding state variable whenever the user selects a new value
@@ -23,9 +23,14 @@ function Search() {
     { 
         variables: {country: country, role: role, location: location}
     }
-    );
+);
 
-// This should make an API call with the country, role, and location values using Axios and passing them to the findJobs query.
+
+const userData = useQuery(QUERY_USER, {
+    variables: { id: user.user.data._id },
+});
+
+
 
 const handleSearch = async (event) => {
     //when the search button is clicked, the findJobs() / QUERY_JOBS query will trigger
@@ -36,11 +41,13 @@ const handleSearch = async (event) => {
         if(loading){
             console.log('LOADING');
         }
-       
+
+
+
     } catch (e) {
         console.log(e);
     }
-}
+};
 
  return (
   <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>
@@ -104,13 +111,9 @@ const handleSearch = async (event) => {
     <button id='search-btn' onClick={handleSearch}>Search</button>
     <div>
      <h3 className='results'>Results:</h3>
-     {loading ? 
-     (<h4>TEST FROM SEARCH COMPONENT : NO JOB DATA IS COMING BACK FROM QUERY --- Make a search to see job results</h4>  
-      ) : 
-     (
-     <JobResultCard jobs={data}/>)
-     } 
-    
+     
+     <JobResultCard jobs={data} isPaidMember={userData.data.user.paid_member}/>
+     
     </div>
    </div>
   </div>
