@@ -9,6 +9,9 @@ function JobResultCard(props) {
 
     return (
         <div className='result-list'>
+            {props.jobs?.findJobs? (
+            <h3 className='results'>Results:</h3>
+            ) : null }
             {props.jobs?.findJobs ?  
             (props.jobs.findJobs.map((job) => (
                 <div key={job._id} className='result-container'>
@@ -19,8 +22,7 @@ function JobResultCard(props) {
                         (<h5>Estimated Salary: {job.salary_min} to {job.salary_max}</h5>)
                         : (<h5>Salary not estimated</h5>)
                         }
-                        <p>Description: {job.description}</p>
-
+                        <p className='job-description'>Description: {job.description}</p>
                         {props.isPaidMember ? (
                             <button className="save-job">Save This Job</button>
                         ) : (

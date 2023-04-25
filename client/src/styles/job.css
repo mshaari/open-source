@@ -64,6 +64,30 @@
     border: 3px solid #608aff;
 }
 
+@keyframes bg-shift {
+    0%{
+        background-position: left;
+    }
+    10% {
+        background-position: right;
+    }
+    20% {
+        background-position: left;
+    }
+    100% {
+        background-position: left;
+    }
+}
+.job-description {
+    background: linear-gradient(90deg, var(--fairytale) 0%, var(--thistle) 45%, var(--straw) 50%, var(--thistle) 55%, var(--fairytale) 100%);
+    background-size: 800%;
+    background-position: left;
+    border-radius: 25px;
+    padding: 15px;
+    color:black;
+    animation: bg-shift 5s infinite linear;
+}
+
 @keyframes save-job-button {
     0% {
         transform: translateY(-4px);
