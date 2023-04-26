@@ -123,3 +123,50 @@ export const UPDATE_MEMBERSHIP = gql`
     }
   }
 `;
+export const ADD_PROGRESS = gql`
+mutation AddProgress(
+  $id: ID
+  $applied: Boolean
+  $interviewed: Boolean
+  $offerReceived: Boolean
+  $endProcess: Boolean
+  $notes: String
+) {
+  addProgress(
+    _id: $id
+    applied: $applied
+    interviewed: $interviewed
+    offer_received: $offerReceived
+    end_process: $endProcess
+    notes: $notes
+  ) {
+    _id
+    first_name
+    last_name
+    email
+    password
+    resume
+    cover_letter
+    saved_jobs {
+      _id
+      company_name
+      location
+      save_date
+      title
+      description
+      salary_predicted
+      salary_max
+      salary_min
+      contract_time
+      redirect_url
+      progress {
+        applied
+        interviewed
+        offer_received
+        end_process
+        notes
+      }
+    }
+    paid_member
+  }
+}`
