@@ -12,6 +12,7 @@ function Search() {
     const [role, setRole] = useState('');
     const [location, setLocation] = useState('');
     const [jobData, setData] = useState();
+
    
     const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
    
@@ -25,9 +26,11 @@ function Search() {
        variables: { id: user.user_id },
     });
    
+    
     let savedJobId = [];
     
     if (userData) {
+
 
       if (userData?.data?.user?.saved_jobs) {
 
@@ -37,9 +40,14 @@ function Search() {
             savedJobId.push(savedJobsArray[i]._id);
          }
 
+
       }
+
     };
 
+
+
+    
     
  return (
   <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>
