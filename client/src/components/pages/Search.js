@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { UserContext } from '../UserContext';
 import JobResultCard from '../jobs/JobResultCard';
 import { useLazyQuery, useQuery } from '@apollo/client';
@@ -14,33 +14,37 @@ function Search() {
  const [country, setCountry] = useState('');
  const [role, setRole] = useState('');
  const [location, setLocation] = useState('');
- const [jobData, setData] = useState();
 
  const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
 
  //useLazyQuery hook allows us to call the query only when findJobs is triggered, as opposed to regulary useQuery which queries automatically when the page opens
- const [findJobs, {loading, error, data}] = useLazyQuery(QUERY_JOBS,
-    { 
-        variables: {country: country, role: role, location: location}
-    }
-);
+//  const [findJobs, {loading, error, data}] = useLazyQuery(QUERY_JOBS,
+//     { 
+//         variables: {country: country, role: role, location: location}
+//     }
+// );
 
 
-const userData = useQuery(QUERY_USER, {
-    variables: { id: user.user.data._id },
+
+const { loading:userLoading, error:userError, data:userData } = useQuery(QUERY_USER, {
+    variables: { id: user.user_id },
+    skip: !user.loggedIn,
 });
 
+
+console.log(userData)
+console.log(user);
 
 
 const handleSearch = async (event) => {
     //when the search button is clicked, the findJobs() / QUERY_JOBS query will trigger
     event.preventDefault();
     try {
-        await findJobs();
+        // await findJobs();
         
-        if(loading){
-            console.log('LOADING');
-        }
+        // if(loading){
+        //     console.log('LOADING');
+        // }
 
 
 
@@ -110,7 +114,7 @@ const handleSearch = async (event) => {
     </div>
     <button id='search-btn' onClick={handleSearch}>Search</button>
     <div>
-     <JobResultCard jobs={data} isPaidMember={userData.data.user.paid_member}/>
+     {/* <JobResultCard jobs={data} isPaidMember={userData.user.paid_member}/> */}
     </div>
    </div>
   </div>
