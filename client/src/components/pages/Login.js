@@ -6,7 +6,7 @@ import '../../styles/pages.css';
 
 function Login() {
 
-    const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+    const [theme] = useContext(UserContext);
 
     return (
         <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>

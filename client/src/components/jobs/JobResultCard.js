@@ -15,7 +15,6 @@ function JobResultCard(props) {
         
         event.preventDefault();
 
-        
         try{
 
             //finding the id of the button which triggered the event, which is set to be the _id field of the job from the API
@@ -25,11 +24,14 @@ function JobResultCard(props) {
 
             if (props.savedJobId.includes(jobId)) {
 
-                event.target.innerText = "Job Already Saved!";
-                event.target.parentElement.parentElement.classList.add("saved");
+                event.target.innerText = "You Saved this Job Already!";
+                event.target.parentElement.parentElement.classList.add("duplicate");
 
                 return;
+
             };
+
+
 
             //looping through all of the jobs in the array that came from the Search component
             for(let i=0; i<props.jobs.findJobs.length -1 ; i++){
@@ -41,6 +43,9 @@ function JobResultCard(props) {
                     //logging out that job to see the job we will be saving, and we can compare its _id with the jobId we are logging out above
                     console.log(job)
                     //triggering the saveJob mutation/function, and passing in arguments to create the job
+
+                    let button = document.getElementById(jobId);
+
                     await saveJob({
                         variables: {
                             job: {
@@ -59,7 +64,9 @@ function JobResultCard(props) {
                     });
                     //if the mutation goes through correctly, it will return data, which we can log out to make sure it happened correctly 
                     if(data){
-                        console.log({data})
+                        console.log({data});
+                        button.innerText = "Job Saved!";
+                        button.parentElement.parentElement.classList.add("saved");
                     }
                 
         }} 

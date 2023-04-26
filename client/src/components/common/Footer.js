@@ -4,11 +4,12 @@ import '../../styles/footer.css';
 
 function Footer() {
 
-    const [user, setUser, theme, setTheme, toggleTheme] = useContext(UserContext);
-
     const backToTop = () => {
         window.scrollTo(0, 0);
-    }
+    };
+
+    const [user, setUser, theme, setTheme, toggleTheme] = useContext(UserContext);
+
 
     return (
         <footer className={`footer ${theme.greyscale ? "greyscale" : ""}`}>

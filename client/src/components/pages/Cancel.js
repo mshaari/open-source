@@ -4,7 +4,7 @@ import '../../styles/pages.css';
 
 function Cancel() {
 
-    const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+    const [theme] = useContext(UserContext);
 
     return (
         <div className={`cancel-content ${theme.greyscale ? "greyscale" : ""}`}>
