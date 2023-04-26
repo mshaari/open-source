@@ -5,7 +5,7 @@ import '../../styles/pages.css';
 
 function Contact() {
 
-    const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+    const [theme] = useContext(UserContext);
 
     const form = useRef();
 
@@ -36,9 +36,9 @@ function Contact() {
 
         setSubmittedStatus(true);
 
-        setTimeout(()=> {
+        setTimeout(() => {
             document.location.reload();
-        },3000);
+        }, 3000);
     };
 
     return (

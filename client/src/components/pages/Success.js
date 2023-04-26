@@ -6,7 +6,7 @@ import '../../styles/pages.css';
 
 function Success() {
 
-    const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+    const [user, theme] = useContext(UserContext);
 
     const [updateMembership] = useMutation(UPDATE_MEMBERSHIP);
 
@@ -22,7 +22,7 @@ function Success() {
                 }
             });
 
-            console.log({data})
+            console.log({ data })
 
             // Redirect the user to the home page
             window.location.assign('/');

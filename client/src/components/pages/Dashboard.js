@@ -11,7 +11,7 @@ function Dashboard() {
 
     const [showSetting, setShowSetting] = useState(false);
 
-    const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+    const [user, theme] = useContext(UserContext);
 
     const { loading, error, data } = useQuery(QUERY_USER, {
         variables: { id: user.user_id },

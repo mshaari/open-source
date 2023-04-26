@@ -8,7 +8,7 @@ import { QUERY_USER } from '../../utils/queries'; // import the query
 
 function About(props) {
 
-    const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+    const [user, theme] = useContext(UserContext);
 
     const { loading, error, data } = useQuery(QUERY_USER, {
         variables: { id: user.user_id }, // pass the user ID as a variable to the query
