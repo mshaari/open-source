@@ -24,13 +24,14 @@ function Success() {
 
             console.log({ data })
 
-            // Redirect the user to the home page
-            window.location.assign('/');
+            
 
         } catch (err) {
             console.error(err);
         }
     };
+
+    handlePaidMember();
 
 
     return (
@@ -48,9 +49,7 @@ function Success() {
                     <br />
                     &lt;/open source&gt; offers!
                 </p>
-                <button className='return' onClick={() => handlePaidMember()}>
-                    Start Job Hunting
-                </button>
+                <a href='/search' className='return'>Start Job Hunting!</a>
             </div>
         </div>
     );
