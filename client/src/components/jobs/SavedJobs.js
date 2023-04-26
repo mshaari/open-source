@@ -31,8 +31,16 @@ function SavedJobs() {
 
     return (
         <div className='Jobs'>
-            <h3>Your Saved Jobs:</h3>
-            <SavedJobCard jobs={data.user.saved_jobs} />
+            {data.user.saved_jobs.length? (
+                <>
+                <h3>Your Saved Jobs:</h3><SavedJobCard jobs={data.user.saved_jobs} />
+                </>
+            ):(
+                <>
+                <h3>Your Have No Saved Jobs!</h3>
+                </>
+            )}
+
         </div>
     );
 }

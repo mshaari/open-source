@@ -13,7 +13,7 @@ const AuthProvider =  ({ children }) => {
 
     const [theme, setTheme] = useState(() => {
         const savedTheme = localStorage.getItem('theme');
-        return savedTheme ? JSON.parse(savedTheme) : { greyscale: false };
+        return savedTheme !== null ? JSON.parse(savedTheme) : { greyscale: false };
       });
 
     useEffect(() => {
@@ -39,11 +39,18 @@ const AuthProvider =  ({ children }) => {
 
     },[localStorage.getItem('id_token')]);
 
+    // const toggleTheme = () => {
+    //     const newTheme = { ...theme, greyscale: !theme.greyscale };
+    //     setTheme(newTheme);
+    //     localStorage.setItem('theme', JSON.stringify(newTheme));
+    // };
+
     const toggleTheme = () => {
         const newTheme = { ...theme, greyscale: !theme.greyscale };
         setTheme(newTheme);
         localStorage.setItem('theme', JSON.stringify(newTheme));
-    };
+      };
+
 
     return <UserContext.Provider value={[user, setUser, theme, setTheme, toggleTheme]}>{ children }</UserContext.Provider>;
 

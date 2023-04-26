@@ -7,7 +7,7 @@ function Header() {
 
     // const { currentPage, handlePageChange } = props;
 
-    const [theme] = useContext(UserContext);
+    const [user, setUser, theme, setTheme, toggleTheme] = useContext(UserContext);
 
     return (
         <div className={`header ${theme.greyscale ? "greyscale" : ""}`}>

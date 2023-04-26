@@ -7,12 +7,20 @@ function JobResultCard(props) {
     return (
         <div className='result-list'>
             {jobs.map((job) => (
-                <div key={job.name} className='result-container'>
-                    <a className="result-title" href={job.redirect_url}><h3>{job.title}</h3></a>
+                <div key={job.name} className='saved-result-container'>
+                    <a className="saved-result-title" href={job.redirect_url}><h3>{job.title}</h3></a>
                     <div className="job-container">
                         <p>Contact Term: {job.contract_time}</p>
-                        <h5>Estimated Salary: {job.salary_predicted}</h5>
-                        <p>Description: {job.description}</p>
+                        {job.salary_predicted ? 
+                            (
+                                <h5>Estimated Salary: ${Math.floor(job.salary_min)}.00{job.salary_min !== job.salary_max ? ` - ${Math.floor(job.salary_max)}.00` : ''}</h5>
+                            )
+                            : 
+                            (
+                                <h5>Salary not estimated</h5>
+                            )
+                        }
+                        <p className='saved-job-description'>Description: {job.description}</p>
                         <div className='note-box'>
                             <h5 className='status'>Current Status:</h5>
                             <select>

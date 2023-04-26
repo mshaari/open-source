@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { UserContext } from '../UserContext';
 import '../../styles/pages.css';
 
@@ -6,9 +6,10 @@ import { useQuery } from '@apollo/client'; // import useQuery hook
 import { QUERY_USER } from '../../utils/queries'; // import the query
 
 
-function About(props) {
+function About() {
 
-    const [user, theme] = useContext(UserContext);
+
+    const [user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
 
     const { loading, error, data } = useQuery(QUERY_USER, {
         variables: { id: user.user_id }, // pass the user ID as a variable to the query
@@ -25,7 +26,7 @@ function About(props) {
 
     return (
         <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>
-            <div className='about-container active'>
+            <div id='about-container' className='about-container active'>
                 {user.loggedIn ? (
                     <h3 id='about-title'>Hello there,
                         <br></br>

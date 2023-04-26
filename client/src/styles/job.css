@@ -25,6 +25,86 @@
     filter:grayscale(1);
 }
 
+@keyframes duplicate {
+    0%{
+        transform: translateX(0px);
+        filter:blur(0) hue-rotate(0deg)
+    }
+    70%{
+        transform: translateX(0px);
+        filter:blur(0) hue-rotate(0deg)
+    }
+    75% {
+        transform: translateX(-15px);
+        filter:blur(0) hue-rotate(0deg)
+    }
+    80% {
+        transform: translateX(13px);
+        filter:blur(1px) hue-rotate(45deg)
+    }
+    83% {
+        transform: translateX(-10px);
+        filter:blur(2px) hue-rotate(90deg)
+    }
+    85% {
+        transform: translateX(8px);
+        filter:blur(3px) hue-rotate(135deg)
+    }
+    87% {
+        transform: translateX(0px);
+        filter:blur(5px) hue-rotate(180deg)
+    }
+    100% {
+        transform: translateX(0px);
+        filter:blur(5px) hue-rotate(180deg);
+    }
+}
+
+@keyframes saved {
+    0%{
+        transform: translateY(0px);
+        filter:hue-rotate(0deg)
+    }
+    20%{
+        transform: translateY(0px);
+        filter:hue-rotate(45deg)
+    }
+    25% {
+        transform: translateY(-15px);
+        filter:hue-rotate(90deg)
+    }
+    30% {
+        transform: translateY(13px);
+        filter:hue-rotate(135deg)
+    }
+    33% {
+        transform: translateY(-10px);
+        filter:hue-rotate(180deg)
+    }
+    35% {
+        transform: translateY(8px);
+        filter:hue-rotate(225deg)
+    }
+    37% {
+        transform: translateY(0px);
+        filter:hue-rotate(270deg)
+    }
+    100% {
+        transform: translateY(0px);
+        filter:hue-rotate(270deg);
+    }
+}
+
+.duplicate {
+    animation: duplicate 2s 1 linear forwards !important;
+    pointer-events: none !important;
+}
+
+.saved {
+    animation: saved 2s 1 linear forwards !important;
+    pointer-events: none !important;
+}
+
 .result-container {
     background-color: rgb(255, 215, 215);
     border-radius: 25px;
@@ -40,6 +120,23 @@
 
 .result-container:hover {
     background-color: rgb(215, 255, 229);
+}
+
+.saved-result-container {
+    background-color: rgb(237, 215, 255);
+    border-radius: 25px;
+    margin-block: 15px;
+    padding-block: 15px;
+    padding-inline: 15px;
+    transition: all;
+    transition-duration: 0.3s;
+    width: 80vw;
+    margin-inline:auto;
+    text-align: center;
+}
+
+.saved-result-container:hover {
+    background-color: rgb(255, 230, 215);
 }
 
 @keyframes pulse {
@@ -86,6 +183,16 @@ a h3 {
     animation: pulse 3s linear infinite;
 }
 
+.saved-result-title h3 {
+    font-family: var(--title);
+    font-size: 0.8em;
+    text-decoration: none;
+    line-height: 1.5rem;
+    color: rgb(98, 0, 255);
+    transition: transform;
+    animation: pulse 3s linear infinite;
+}
+
 .status, .note-title {
     margin-bottom: 5px;
 }
@@ -116,6 +223,16 @@ a h3 {
 }
 .job-description {
     background: linear-gradient(90deg, var(--fairytale) 0%, var(--thistle) 45%, var(--straw) 50%, var(--thistle) 55%, var(--fairytale) 100%);
+    background-size: 800%;
+    background-position: left;
+    border-radius: 25px;
+    padding: 15px;
+    color:black;
+    animation: bg-shift 5s infinite linear;
+}
+
+.saved-job-description {
+    background: linear-gradient(90deg, var(--fairytale) 0%, var(--coral) 45%, white 50%, var(--coral) 55%, var(--fairytale) 100%);
     background-size: 800%;
     background-position: left;
     border-radius: 25px;
