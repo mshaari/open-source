@@ -105,6 +105,27 @@
     pointer-events: none !important;
 }
 
+@keyframes wipe {
+    0% {
+        transform: scaleX(1);
+        opacity: 1;
+
+    }
+    50% {
+        transform: scaleX(0);
+        opacity: 0;
+
+    }
+    100% {
+        transform: scaleX(1);
+        opacity: 1;
+
+    }
+}
+.removed {
+    animation: wipe 0.5s 1 linear forwards !important;
+}
+
 .result-container {
     background-color: rgb(255, 215, 215);
     border-radius: 25px;
