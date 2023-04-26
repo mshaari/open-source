@@ -44,7 +44,7 @@ function Navigation() {
         </nav>
       ) : (
         <nav className='navigation'>
-          <a href="/" className={currentPage === "/about" ? "nav-item-active" : "nav-item"}>About Us</a>
+          <a href="/" className={currentPage === "/" ? "nav-item-active" : "nav-item"}>About Us</a>
           <a href="/login" className={currentPage === "/login" ? "nav-item-active" : "nav-item"}>Signup/Login</a>
           <a href="/contact" className={currentPage === "/contact" ? "nav-item-active" : "nav-item"}>Contact</a>
         </nav>

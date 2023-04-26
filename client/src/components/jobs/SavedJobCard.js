@@ -24,22 +24,32 @@ function JobResultCard(props) {
 
     const [deleteJob, {data, loading, error }] = useMutation(DELETE_JOB);
 
-    const handleRemoveJob = async (event) => {
+    const handleRemoveJob = (event) => {
 
-        try {
-            const jobId = event.target.id;
+        event.preventDefault();
 
-            await deleteJob({
-                variables: {_id: jobId}                 
-            });
+        const jobId = event.target.id;
 
-            if (data) {
-               
+        const container = document.querySelector('.result-list');
+
+        container.classList.add('removed');
+
+        setTimeout(async() => {
+
+            try {
+                
+                await deleteJob({
+                    variables: {_id: jobId}                 
+                });
+
+            
+            } catch(e) {
+                console.log(e.message)
             }
 
-        } catch(e) {
-            console.log(e.message)
-        }
+            container.classList.remove('removed');
+
+        },450)
 
     };
 
@@ -107,7 +117,7 @@ function JobResultCard(props) {
     return (
         <div className='result-list'>
             {jobs.map((job) => (
-                <div key={job.name} className='saved-result-container'>
+                <div key={job.name} className='saved-result-container' id={`container-${job._id}`}>
                     <a className="saved-result-title" href={job.redirect_url}><h3>{job.title}</h3></a>
                     <div className="job-container">
                         <p>Contact Term: {job.contract_time}</p>
