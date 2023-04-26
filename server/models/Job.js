@@ -40,7 +40,7 @@ const jobSchema = new Schema({
   redirect_url: {
     type: String
   },
-  progress : [progressSchema] ,
+  progress : progressSchema,
 
   
 });
