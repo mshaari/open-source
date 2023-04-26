@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useHref } from "react-router-dom";
 import {
   ApolloClient,
   InMemoryCache,
@@ -44,95 +45,8 @@ const client = new ApolloClient({
 
 
 function App() {
-  // const [currentPage, setCurrentPage] = useState('About');
-
-  // // useEffect functionality is used to store the user's current page in local storage so when they reload the page, it renders the correct page instead of the default About page
-  // useEffect(() => {
-  //   const storedPage = localStorage.getItem('currentPage');
-  //   if (storedPage) {
-  //     setCurrentPage(storedPage);
-  //   }
-  // }, []);
-
-  // // Import UserContext to see if user is logged in (determine whether to load login page or not)
-  // const [user] = useContext(UserContext);
-
-
-  // // Export the handlePageChange functionality that will change the currentPage to whatever the input is
-  // const handlePageChange = (page) => {
-  //   setCurrentPage(page);
-  //   localStorage.setItem('currentPage', page);
-  // };
-
-  // // This method is checking to see what the value of `currentPage` is. Depending on the value of currentPage, we return the corresponding component to render.
-  // const renderPage = () => {
-  //   if (currentPage === 'About') {
-  //     return (
-  //       <div>
-  //         <Header currentPage={currentPage} handlePageChange={handlePageChange} />
-  //         <About currentPage='About' />
-  //         <Footer />
-  //       </div>
-  //     )
-  //   }
-  //   if (currentPage === 'Login') {
-  //     // If they are logged in, do not render the Login page, and render the About page instead
-  //     if (user.loggedIn === true) {
-  //       return (
-  //         <div>
-  //           <Header currentPage='About' handlePageChange={handlePageChange} />
-  //           <About currentPage='About' />
-  //           <Footer />
-  //         </div>
-  //       )
-  //     } else {
-  //       return (
-  //         <div>
-  //           <Header currentPage={currentPage} handlePageChange={handlePageChange} />
-  //           <Login currentPage='Login' />
-  //           <Footer />
-  //         </div>
-  //       )
-  //     }
-
-  //   }
-  //   if (currentPage === 'Contact') {
-  //     return (
-  //       <div>
-  //         <Header currentPage={currentPage} handlePageChange={handlePageChange} />
-  //         <Contact currentPage='Contact' />
-  //         <Footer />
-  //       </div>
-  //     )
-  //   }
-  //   if (currentPage === 'Dashboard') {
-  //     return (
-  //       <div>
-  //         <Header currentPage={currentPage} handlePageChange={handlePageChange} />
-  //         <Dashboard currentPage='Dashboard' />
-  //         <Footer />
-  //       </div>
-  //     )
-  //   }
-  //   if (currentPage === 'Search') {
-  //     return (
-  //       <div>
-  //         <Header currentPage={currentPage} handlePageChange={handlePageChange} />
-  //         <Search currentPage='Search' />
-  //         <Footer />
-  //       </div>
-  //     )
-  //   }
-  //   if (currentPage === 'Membership') {
-  //     return (
-  //       <div>
-  //         <Header currentPage={currentPage} handlePageChange={handlePageChange} />
-  //         <Membership currentPage='Membership' />
-  //         <Footer />
-  //       </div>
-  //     )
-  //   }
-  // };
+  // Import UserContext to see if user is logged in (determine whether to load login page or not)
+  const [user] = useContext(UserContext);
 
   return (
     <ApolloProvider client={client}>
