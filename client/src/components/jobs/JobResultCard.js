@@ -105,7 +105,7 @@ function JobResultCard(props) {
                         <p className='job-description'>Description: {job.description}</p>
 
                         {props.isPaidMember ? (
-                            <button onClick={handleSaveButton}className="save-job" id={job._id}>Save This Job</button>
+                            <button onClick={handleSaveButton} className="save-job" id={job._id}>Save This Job</button>
                         ) : (
                             <p className='reminder-text'>Become a paid member to save this job!</p>
                             )

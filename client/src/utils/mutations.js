@@ -35,6 +35,41 @@ export const ADD_JOB = gql`
   }
 `;
 
+// Mutation to add a job
+export const DELETE_JOB = gql`
+  mutation deleteJob($_id: ID!) {
+    deleteJob(_id: $_id) {
+      _id
+      email
+      cover_letter
+      first_name
+      last_name
+      password
+      paid_member
+      resume
+      saved_jobs {
+        _id
+        save_date
+        location
+        title
+        description
+        salary_predicted
+        salary_max
+        salary_min
+        contract_time
+        redirect_url
+        progress {
+          applied
+          end_process
+          interviewed
+          notes
+          offer_received
+        }
+      }
+    }
+  }
+`;
+
 // Mutation to add a user (signup)
 export const SIGN_UP = gql`
   mutation addUser(
