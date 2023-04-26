@@ -6,7 +6,7 @@ import '../../styles/pages.css';
 
 function Success() {
 
-    const [user, theme] = useContext(UserContext);
+    const [user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
 
     const [updateMembership] = useMutation(UPDATE_MEMBERSHIP);
 

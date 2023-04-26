@@ -11,15 +11,6 @@ function About() {
 
     const [user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
 
-
-    useEffect(() => {
-        // Update the class of the about section whenever the theme changes
-        const pageContent = document.getElementById('.page-content');
-        if (pageContent) {
-            pageContent.classList.toggle('greyscale', theme.greyscale);
-        }
-    }, [theme]);
-
     const { loading, error, data } = useQuery(QUERY_USER, {
         variables: { id: user.user_id }, // pass the user ID as a variable to the query
         skip: !user.loggedIn, // skip the query if user is not logged in
@@ -34,7 +25,7 @@ function About() {
     }
 
     return (
-        <div id="page-content" className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>
+        <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>
             <div id='about-container' className='about-container active'>
                 {user.loggedIn ? (
                     <h3 id='about-title'>Hello there,

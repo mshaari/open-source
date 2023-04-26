@@ -156,7 +156,28 @@ const resolvers = {
           );
           return user;
         }
-      }
+      },
+//addProgress can be used to add progress AND update progress on a specific saved_job for a user
+        addProgress: async(parent, args, context) => {
+          console.log(context.user);
+          if(context.user){
+            const user = await User.findOneAndUpdate(
+              //find the user by the user's _id in the context of the app
+              {"_id": context.user._id,
+              //find the job we want to add progress to in the user's saved_jobs array -- the job's _id gets passed in as an argument
+               "saved_jobs._id" : args._id
+              },
+              //using the $ positional operator, find the saved_job that we want to update, and set the progress object, passing in fields and values as arguments
+              {$set: {"saved_jobs.$.progress": {applied: args.applied, interviewed: args.interviewed,
+                offer_received: args.offer_received, end_process: args.end_process, notes: args.notes
+              }},
+            },
+            //return the new version of the user, including their new progress on their saved job
+              {new: true}
+            );
+            return user;
+          }
+        }
  
    }
 };
