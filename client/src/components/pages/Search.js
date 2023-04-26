@@ -3,55 +3,36 @@ import { UserContext } from '../UserContext';
 import JobResultCard from '../jobs/JobResultCard';
 import { useLazyQuery, useQuery } from '@apollo/client';
 import { QUERY_JOBS } from '../../utils/queries'; //Imports the query we made in client/src/utils/queries.js
-import { QUERY_USER } from '../../utils/queries';
+import { QUERY_USER } from '../../utils/queries'; // Imports the query we made in client/src/utils/queries.js
 import '../../styles/pages.css';
 
-
-
-// An onChange event was added to each input field to update the corresponding state variable whenever the user selects a new value
-// An onClick event is added to the Search button, which calls the handleSearch function.
+// The Search component renders a search form for jobs. The form has three input fields: Country, Job Title, and Location.
 function Search() {
- const [country, setCountry] = useState('');
- const [role, setRole] = useState('');
- const [location, setLocation] = useState('');
-
- const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
-
- //useLazyQuery hook allows us to call the query only when findJobs is triggered, as opposed to regulary useQuery which queries automatically when the page opens
-//  const [findJobs, {loading, error, data}] = useLazyQuery(QUERY_JOBS,
-//     { 
-//         variables: {country: country, role: role, location: location}
-//     }
-// );
-
-
-
-const { loading:userLoading, error:userError, data:userData } = useQuery(QUERY_USER, {
-    variables: { id: user.user_id },
-    skip: !user.loggedIn,
-});
-
-
-console.log(userData)
-console.log(user);
-
-
-const handleSearch = async (event) => {
-    //when the search button is clicked, the findJobs() / QUERY_JOBS query will trigger
-    event.preventDefault();
-    try {
-        // await findJobs();
-        
-        // if(loading){
-        //     console.log('LOADING');
-        // }
-
-
-
-    } catch (e) {
-        console.log(e);
-    }
-};
+    const [country, setCountry] = useState('');
+    const [role, setRole] = useState('');
+    const [location, setLocation] = useState('');
+    const [jobData, setData] = useState();
+   
+    const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+   
+    const [findJobs, {loading, error, data}] = useLazyQuery(QUERY_JOBS,
+       { 
+           variables: {country: country, role: role, location: location}
+       }
+   );
+   
+    const userData = useQuery(QUERY_USER, {
+       variables: { id: user.user_id },
+    });
+   
+    // const handleSearch = async (event) => {
+    //    event.preventDefault();
+    //    try {
+    //        await findJobs();
+    //    } catch (e) {
+    //        console.log(e);
+    //    }
+    // };
 
  return (
   <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>
@@ -112,9 +93,11 @@ const handleSearch = async (event) => {
      <label>Location:</label>
      <input id='location' placeholder='city or postal code' onChange={(e) => setLocation(e.target.value)}></input>
     </div>
-    <button id='search-btn' onClick={handleSearch}>Search</button>
+    {/* When the user clicks the Search button, the findJobs is called. It triggers a GraphQL query using the useLazyQuery hook from Apollo to fetch job data based on the user's input. */}
+    <button id='search-btn' onClick={() => findJobs({ variables: {country: country, role: role, location: location}})}>Search</button>
     <div>
-     {/* <JobResultCard jobs={data} isPaidMember={userData.user.paid_member}/> */}
+    {/* The Search component renders a JobResultCard component passing the data and userData as props.  */}
+     <JobResultCard jobs={data} isPaidMember={userData?.data?.user?.paid_member}/>
     </div>
    </div>
   </div>
