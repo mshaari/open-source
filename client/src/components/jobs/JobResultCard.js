@@ -61,12 +61,16 @@ function JobResultCard(props) {
                                 redirect_url: job.redirect_url
                             }
                         }
+
                     });
+
+                    button.innerText = "Job Saved!";
+                    button.parentElement.parentElement.classList.add("saved");
+
                     //if the mutation goes through correctly, it will return data, which we can log out to make sure it happened correctly 
                     if(data){
                         console.log({data});
-                        button.innerText = "Job Saved!";
-                        button.parentElement.parentElement.classList.add("saved");
+
                     }
                 
         }} 
