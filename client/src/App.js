@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useHref } from "react-router-dom";
 import {
   ApolloClient,
   InMemoryCache,
@@ -9,8 +8,6 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { UserContext } from './components/UserContext';
-import Header from './components/common/Header';
-import Footer from './components/common/Footer';
 import Login from './components/pages/Login';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
