@@ -156,7 +156,32 @@ const resolvers = {
           );
           return user;
         }
-      }
+      },
+
+      //new collection Progress
+      //keys: user_id_saved_job_id ---- String w/ these concatonated
+      //query for an id with that value to get the progress
+        //per user, per job
+        addProgress: async(parent, args, context) => {
+          console.log(context.user);
+          if(context.user){
+            //mongodb update deeply nested subdocument?
+            //findOneAndUpdate -- target the id, then the subdocument by it's id, --- remove saved_jobs in the $set line
+            //do the set on the subdoc
+            const user = await User.findOneAndUpdate(
+              {"_id": context.user._id,
+               "saved_jobs._id" : args._id
+              },
+              {$set: {"saved_jobs.$.progress": {applied: args.applied, interviewed: args.interviewed,
+                offer_received: args.offer_received, end_process: args.end_process, notes: args.notes
+              }},
+  // findById, update, callback function: if needed, add an expression here????  
+            },
+              {new: true}
+            );
+            return user;
+          }
+        }
  
    }
 };

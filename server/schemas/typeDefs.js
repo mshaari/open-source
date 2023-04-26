@@ -75,6 +75,8 @@ type Progress {
     login(email: String!, password: String!): Auth
     addJob(job: JobData) : Job
     deleteJob(_id: ID) : User
+    
+    addProgress(_id: ID, applied: Boolean, interviewed: Boolean, offer_received: Boolean, end_process: Boolean, notes: String) : User
    }
 `;
 module.exports = typeDefs;
