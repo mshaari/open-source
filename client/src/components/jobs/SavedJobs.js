@@ -1,7 +1,6 @@
 import SavedJobCard from './SavedJobCard';
 import React, { useContext } from 'react';
 import { UserContext } from '../UserContext';
-
 import { useQuery } from '@apollo/client'; // import useQuery hook
 import { QUERY_USER } from '../../utils/queries'; // import the query
 

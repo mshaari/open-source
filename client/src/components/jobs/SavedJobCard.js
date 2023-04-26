@@ -1,8 +1,45 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../UserContext';
+import { useQuery, useMutation } from '@apollo/client'; // import useQuery hook
+import { QUERY_USER } from '../../utils/queries'; // import the query
+import { DELETE_JOB } from '../../utils/mutations';
 import '../../styles/job.css';
 
 function JobResultCard(props) {
+    
     const { jobs } = props;
+
+    const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+
+    const { userData } = useQuery(QUERY_USER, {
+        variables: { id: user.user_id }, // pass the user ID as a variable to the query
+        skip: !user.loggedIn, // skip the query if user is not logged in
+    });
+
+    if (userData) {
+        console.log(userData);
+    }
+
+    const [deleteJob, {data, loading, error }] = useMutation(DELETE_JOB);
+
+    const handleRemoveJob = async (event) => {
+
+        try {
+            const jobId = event.target.id;
+
+            await deleteJob({
+                variables: {_id: jobId}                 
+            });
+
+            if (data) {
+               
+            }
+
+        } catch(e) {
+            console.log(e.message)
+        }
+
+    };
 
     return (
         <div className='result-list'>
@@ -37,7 +74,7 @@ function JobResultCard(props) {
                         </div>
                         <div>
                             <button className='remove-job'>Save Progress</button>
-                            <button className='remove-job'>Remove This Job!</button>
+                            <button id={job._id} className='remove-job' onClick={handleRemoveJob}>Remove This Job!</button>
                         </div>
                     </div>
                 </div>

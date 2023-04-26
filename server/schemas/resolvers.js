@@ -1,7 +1,7 @@
 require("dotenv").config()
 console.log(require("dotenv").config())
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Product, Order } = require('../models');
+const { User, Job } = require('../models');
 const { signToken } = require('../utils/auth');
 const axios = require("axios");
 // TODO: figure out why process.env.STRIPE_SECRET_KEY isn't loading the variable
@@ -154,6 +154,7 @@ const resolvers = {
             //return the new version of the user, without the deleted job from saved_jobs
             {new: true}
           );
+
           return user;
         }
       },
