@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { UserContext } from '../UserContext';
 import SavedJobs from '../jobs/SavedJobs';
 import Setting from '../pages/Setting';
@@ -8,10 +8,10 @@ import { useQuery } from '@apollo/client'; // import useQuery hook
 import { QUERY_USER } from '../../utils/queries'; // import the query
 
 function Dashboard() {
-    
+
     const [showSetting, setShowSetting] = useState(false);
 
-    const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+    const [user, theme] = useContext(UserContext);
 
     const { loading, error, data } = useQuery(QUERY_USER, {
         variables: { id: user.user_id },
@@ -21,13 +21,13 @@ function Dashboard() {
     const openSetting = () => {
         setShowSetting(true);
     };
-    
+
     const closeSetting = () => {
         setShowSetting(false);
     };
 
     return (
-       
+
         <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>
             {data?.user?.paid_member ? (
                 <div className='dashboard-container dashboard-active'>
@@ -41,28 +41,28 @@ function Dashboard() {
                 </div>
             )}
 
-            {showSetting? (
+            {showSetting ? (
                 <div>
                     <div id='setting-container' style={{ display: 'block' }}>
                         <Setting />
                     </div>
                 </div>
-            ):(
+            ) : (
                 <div>
                     <div id='setting-container' style={{ display: 'none' }}>
                         <Setting />
                     </div>
                 </div>
             )}
-            {showSetting? (
+            {showSetting ? (
                 <div>
                     <button id='setting' onClick={closeSetting}>Collapse Settings</button>
                 </div>
-            ):(
+            ) : (
                 <div>
                     <button id='setting' onClick={openSetting}>Settings</button>
                 </div>
-            )} 
+            )}
         </div>
 
     );

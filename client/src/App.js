@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   ApolloClient,
@@ -7,8 +7,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import AuthProvider  from './components/UserContext';
-import { UserContext } from './components/UserContext';
+import AuthProvider from './components/UserContext';
 import Login from './components/pages/Login';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
@@ -43,26 +42,23 @@ const client = new ApolloClient({
 
 
 function App() {
-  // Import UserContext to see if user is logged in (determine whether to load login page or not)
-  const [user] = useContext(UserContext);
-
   return (
     <ApolloProvider client={client}>
       <Layout>
         <AuthProvider>
-        <Router>
-          <Routes>
-            <Route path='/' element={<About />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/search' element={<Search />} />
-            <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='/membership' element={<Membership />} />
-            <Route path='/contact' element={<Contact />} />
-            <Route path='/success' element={<Success />} />
-            <Route path='/cancel' element={<Cancel />} />
-          </Routes>
-      </Router>
-      </AuthProvider>
+          <Router>
+            <Routes>
+              <Route path='/' element={<About />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/search' element={<Search />} />
+              <Route path='/dashboard' element={<Dashboard />} />
+              <Route path='/membership' element={<Membership />} />
+              <Route path='/contact' element={<Contact />} />
+              <Route path='/success' element={<Success />} />
+              <Route path='/cancel' element={<Cancel />} />
+            </Routes>
+          </Router>
+        </AuthProvider>
       </Layout>
     </ApolloProvider>
   )

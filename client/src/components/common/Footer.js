@@ -4,7 +4,7 @@ import '../../styles/footer.css';
 
 function Footer() {
 
-    const [user, setUser, theme, setTheme, toggleTheme] = useContext(UserContext);
+    const [theme, toggleTheme] = useContext(UserContext);
 
     const backToTop = () => {
         window.scrollTo(0, 0);
