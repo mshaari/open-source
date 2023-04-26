@@ -26,6 +26,9 @@ function Dashboard() {
         setShowSetting(false);
     };
 
+
+    
+
     return (
        
         <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>

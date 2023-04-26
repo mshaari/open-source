@@ -25,15 +25,22 @@ function Search() {
        variables: { id: user.user_id },
     });
    
-    // const handleSearch = async (event) => {
-    //    event.preventDefault();
-    //    try {
-    //        await findJobs();
-    //    } catch (e) {
-    //        console.log(e);
-    //    }
-    // };
+    let savedJobId = [];
+    
+    if (userData) {
 
+      if (userData?.data?.user?.saved_jobs) {
+
+         let savedJobsArray = userData?.data?.user?.saved_jobs;
+
+         for (var i=0; i<savedJobsArray.length; i++) {
+            savedJobId.push(savedJobsArray[i]._id);
+         }
+
+      }
+    };
+
+    
  return (
   <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>
    <div className='search-container search-active'>
@@ -97,7 +104,7 @@ function Search() {
     <button id='search-btn' onClick={() => findJobs({ variables: {country: country, role: role, location: location}})}>Search</button>
     <div>
     {/* The Search component renders a JobResultCard component passing the data and userData as props.  */}
-     <JobResultCard jobs={data} isPaidMember={userData?.data?.user?.paid_member}/>
+     <JobResultCard jobs={data} isPaidMember={userData?.data?.user?.paid_member} savedJobId={savedJobId}/>
     </div>
    </div>
   </div>

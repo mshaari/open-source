@@ -25,6 +25,31 @@
     filter:grayscale(1);
 }
 
+@keyframes remove {
+    0% {
+        transform: scaleY(1);
+    }
+    85% {
+        transform: scaleY(1);
+    }
+    90% {
+        transform: scaleY(1.1);
+    }
+    95% {
+        transform: scaleY();
+        height: 0px;
+    }
+
+    100% {
+        transform: scaleY();
+        height: 0px;  
+    }
+}
+
+.saved {
+    animation: remove 3s 1 linear forwards;
+}
+
 .result-container {
     background-color: rgb(255, 215, 215);
     border-radius: 25px;
@@ -40,6 +65,23 @@
 
 .result-container:hover {
     background-color: rgb(215, 255, 229);
+}
+
+.saved-result-container {
+    background-color: rgb(237, 215, 255);
+    border-radius: 25px;
+    margin-block: 15px;
+    padding-block: 15px;
+    padding-inline: 15px;
+    transition: all;
+    transition-duration: 0.3s;
+    width: 80vw;
+    margin-inline:auto;
+    text-align: center;
+}
+
+.saved-result-container:hover {
+    background-color: rgb(255, 230, 215);
 }
 
 @keyframes pulse {
@@ -86,6 +128,16 @@ a h3 {
     animation: pulse 3s linear infinite;
 }
 
+.saved-result-title h3 {
+    font-family: var(--title);
+    font-size: 0.8em;
+    text-decoration: none;
+    line-height: 1.5rem;
+    color: rgb(98, 0, 255);
+    transition: transform;
+    animation: pulse 3s linear infinite;
+}
+
 .status, .note-title {
     margin-bottom: 5px;
 }
@@ -116,6 +168,16 @@ a h3 {
 }
 .job-description {
     background: linear-gradient(90deg, var(--fairytale) 0%, var(--thistle) 45%, var(--straw) 50%, var(--thistle) 55%, var(--fairytale) 100%);
+    background-size: 800%;
+    background-position: left;
+    border-radius: 25px;
+    padding: 15px;
+    color:black;
+    animation: bg-shift 5s infinite linear;
+}
+
+.saved-job-description {
+    background: linear-gradient(90deg, var(--fairytale) 0%, var(--coral) 45%, white 50%, var(--coral) 55%, var(--fairytale) 100%);
     background-size: 800%;
     background-position: left;
     border-radius: 25px;
