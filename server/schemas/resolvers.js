@@ -157,7 +157,7 @@ const resolvers = {
           return user;
         }
       },
-
+//addProgress can be used to add progress AND update progress on a specific saved_job for a user
         addProgress: async(parent, args, context) => {
           console.log(context.user);
           if(context.user){
