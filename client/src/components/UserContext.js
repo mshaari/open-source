@@ -39,16 +39,11 @@ const AuthProvider =  ({ children }) => {
 
     },[localStorage.getItem('id_token')]);
 
-    // const toggleTheme = () => {
-    //     const newTheme = { ...theme, greyscale: !theme.greyscale };
-    //     setTheme(newTheme);
-    //     localStorage.setItem('theme', JSON.stringify(newTheme));
-    // };
-
     const toggleTheme = () => {
         const newTheme = { ...theme, greyscale: !theme.greyscale };
         setTheme(newTheme);
         localStorage.setItem('theme', JSON.stringify(newTheme));
+        window.location.reload();
       };
 
 
