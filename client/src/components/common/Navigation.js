@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import '../../styles/header.css';
 import { UserContext } from '../UserContext';
-
+import { redirect } from "react-router-dom";
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../../utils/queries';
 
 function Navigation(props) {
-  const { currentPage, handlePageChange } = props;
+  // const { currentPage, handlePageChange } = props;
   const [user, setUser] = useContext(UserContext);
 
   const { loading, error, data } = useQuery(QUERY_USER, {
@@ -29,11 +29,12 @@ function Navigation(props) {
   }
 
   const handleClick = (page) => {
-    handlePageChange(page);
-    const element = document.getElementById(page.toLowerCase());
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    // handlePageChange(page);
+    // const element = document.getElementById(page.toLowerCase());
+    // if (element) {
+    //   element.scrollIntoView({ behavior: 'smooth' });
+    // }
+    return redirect("")
   }
 
   return (
