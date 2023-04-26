@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { UserContext } from '../UserContext';
 import JobResultCard from '../jobs/JobResultCard';
 import { useLazyQuery, useQuery } from '@apollo/client';
@@ -22,7 +22,7 @@ function Search() {
    );
    
     const userData = useQuery(QUERY_USER, {
-       variables: { id: user.user.data._id },
+       variables: { id: user.user_id },
     });
    
     // const handleSearch = async (event) => {
@@ -97,7 +97,7 @@ function Search() {
     <button id='search-btn' onClick={() => findJobs({ variables: {country: country, role: role, location: location}})}>Search</button>
     <div>
     {/* The Search component renders a JobResultCard component passing the data and userData as props.  */}
-     <JobResultCard jobs={data} isPaidMember={userData.data.user.paid_member}/>
+     <JobResultCard jobs={data} isPaidMember={userData?.data?.user?.paid_member}/>
     </div>
    </div>
   </div>

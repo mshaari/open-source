@@ -7,6 +7,7 @@ import { QUERY_USER } from '../../utils/queries';
 
 function Navigation() {
   const currentPage = window.location.pathname;
+  
   const [user, setUser] = useContext(UserContext);
 
   const { loading, error, data } = useQuery(QUERY_USER, {

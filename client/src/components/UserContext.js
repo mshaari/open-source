@@ -4,7 +4,7 @@ import AuthService from '../utils/auth';
 
 export const UserContext = createContext();
 
-const Context =  ({ children }) => {
+const AuthProvider =  ({ children }) => {
 
     const [user, setUser] = useState({
         loggedIn: false,
@@ -17,6 +17,8 @@ const Context =  ({ children }) => {
       });
 
     useEffect(() => {
+
+
         const token = AuthService.getToken();
         if (token && !AuthService.isTokenExpired(token)) {
             const user = AuthService.getProfile();
@@ -35,16 +37,16 @@ const Context =  ({ children }) => {
             });
         }
 
-    }, []);
+    },[localStorage.getItem('id_token')]);
 
     const toggleTheme = () => {
         const newTheme = { ...theme, greyscale: !theme.greyscale };
         setTheme(newTheme);
         localStorage.setItem('theme', JSON.stringify(newTheme));
-      };
+    };
 
     return <UserContext.Provider value={[user, setUser, theme, setTheme, toggleTheme]}>{ children }</UserContext.Provider>;
 
 };
 
-export default Context; 
+export default AuthProvider; 

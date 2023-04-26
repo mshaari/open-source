@@ -7,6 +7,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import AuthProvider  from './components/UserContext';
 import { UserContext } from './components/UserContext';
 import Login from './components/pages/Login';
 import About from './components/pages/About';
@@ -48,6 +49,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Layout>
+        <AuthProvider>
         <Router>
           <Routes>
             <Route path='/' element={<About />} />
@@ -60,6 +62,7 @@ function App() {
             <Route path='/cancel' element={<Cancel />} />
           </Routes>
       </Router>
+      </AuthProvider>
       </Layout>
     </ApolloProvider>
   )
