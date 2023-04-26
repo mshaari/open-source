@@ -92,7 +92,7 @@ function Setting() {
                     setTimeout(() => {
                         setShowSuccess(false)
                     }, 3000);
-                    window.location.assign('/#dashboard');
+
                 })
                 .catch((error) => {
                     console.log(error);
@@ -116,7 +116,6 @@ function Setting() {
                     setTimeout(() => {
                         setShowSuccess(false)
                     }, 3000);
-                    window.location.assign('/#dashboard');
 
                 })
                 .catch((error) => {
@@ -175,7 +174,7 @@ function Setting() {
                     setTimeout(() => {
                         setShowSuccess(false)
                     }, 3000);
-                    window.location.assign('/#dashboard');
+
                 })
                 .catch((error) => {
                     console.log(error);
@@ -197,7 +196,6 @@ function Setting() {
                     setTimeout(() => {
                         setShowSuccess(false)
                     }, 3000);
-                    window.location.assign('/#dashboard');
 
                 })
                 .catch((error) => {
