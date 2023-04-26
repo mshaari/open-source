@@ -11,7 +11,6 @@ function Search() {
     const [country, setCountry] = useState('');
     const [role, setRole] = useState('');
     const [location, setLocation] = useState('');
-    const [jobData, setData] = useState();
    
     const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
    
