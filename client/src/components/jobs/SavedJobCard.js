@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { UserContext } from '../UserContext';
 import { useQuery, useMutation } from '@apollo/client'; // import useQuery hook
 import { QUERY_USER } from '../../utils/queries'; // import the query
 import { DELETE_JOB } from '../../utils/mutations';
+import { ADD_PROGRESS } from '../../utils/mutations';
+
 import '../../styles/job.css';
 
 function JobResultCard(props) {
@@ -51,6 +53,67 @@ function JobResultCard(props) {
 
     };
 
+    //Mutation to add or update progress to a saved job
+   const [addProgress, {progressData, isLoading, hasError}] = useMutation(ADD_PROGRESS);
+
+   //this function is triggered when the save progress button is clicked for one of the user's saved jobs
+    const handleSaveProgress = async (event) =>{
+        try{
+            //we are grabbing the id of the job which the save was triggered on
+            const jobId = event.target.id;
+            //and we are targeting the selected element of the progress-list, and any notes in the notes section
+            let progressSelection = document.getElementById("progress-list"+jobId).value;
+            let noteSection = document.getElementById("notes"+jobId).value;
+            //storing starting values in an object to track progress
+            let prog = {
+                apply: false,
+                interview: false,
+                offer: false,
+                end: false,
+                notes: noteSection
+            };
+           //whichever option is currently selected will be set to true in the prog object
+           //if no option is selected, all fields are set to false
+            switch (progressSelection){
+                case "applied":
+                   prog.apply = true;
+                   break;
+                case "interviewed":
+                    prog.interview = true;
+                    break;
+                case "offer-received" :
+                    prog.offer = true;
+                    break;
+                case "end-process":
+                    prog.end = true;
+                    break;
+            default: prog.apply = false;
+                        prog.interview = false;
+                        prog.offer = false;
+                        prog.end = false;
+            }
+           //running the mutation to add progress to a user, passing in the values for each field as parameters
+            await addProgress({
+                variables: {
+                    id: jobId,
+                    applied: prog.apply,
+                    interviewed: prog.interview,
+                    offerReceived: prog.offer,
+                    endProcess: prog.end,
+                    notes: prog.notes,
+
+                }
+            });
+            if(progressData){
+                console.log("Progress Added")
+            }
+        } catch (e) {
+            console.log(e);
+        }
+        
+
+    }
+
     return (
         <div className='result-list'>
             {jobs.map((job) => (
@@ -70,7 +133,7 @@ function JobResultCard(props) {
                         <p className='saved-job-description'>Description: {job.description}</p>
                         <div className='note-box'>
                             <h5 className='status'>Current Status:</h5>
-                            <select>
+                            <select id={"progress-list"+job._id}>
                                 <option>Please select one</option>
                                 <option value='applied'>Applied</option>
                                 <option value='interviewed'>Interviewed</option>
@@ -80,10 +143,10 @@ function JobResultCard(props) {
                         </div>
                         <div className='note-box'>
                             <h5 className='note-title'>Note:</h5>
-                            <textarea className='textarea'></textarea>
+                            <textarea id={"notes"+job._id} className='textarea'></textarea>
                         </div>
                         <div>
-                            <button className='remove-job'>Save Progress</button>
+                            <button id={job._id} className='save-job-progress' onClick={handleSaveProgress}>Save Progress</button>
                             <button id={job._id} className='remove-job' onClick={handleRemoveJob}>Remove This Job!</button>
                         </div>
                     </div>

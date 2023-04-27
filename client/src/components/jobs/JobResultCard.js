@@ -34,7 +34,7 @@ function JobResultCard(props) {
 
 
             //looping through all of the jobs in the array that came from the Search component
-            for(let i=0; i<props.jobs.findJobs.length -1 ; i++){
+            for(let i=0; i<props.jobs.findJobs.length; i++){
             //while looping through, the current job we are on is assigned to job variable
                 let job = props.jobs.findJobs[i];
                 //if the current job's _id field matches the jobId which triggered the event, we will want to save that job
@@ -90,7 +90,7 @@ function JobResultCard(props) {
                 <div key={job._id} className='result-container'>
                     <a className="result-title" href={job.redirect_url}><h3>{job.title}</h3></a>
                     <div className='job-container'>
-                        <p>{job.company_name}</p>
+                        <p>Company: {job.company_name}</p>
                         <p>Location: {job.location}</p>
                         <p>Contract Time: {job.contract_time}</p>
                         {job.salary_predicted ? 
