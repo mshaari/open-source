@@ -176,7 +176,7 @@ function JobResultCard(props) {
                             <h5 className='note-title'>Note:</h5>
                         {job.progress ? 
                         (
-                            <textarea id={"notes"+job._id} className='textarea' value={getNotesVal(job.progress)}></textarea>
+                            <textarea id={"notes"+job._id} className='textarea' defaultValue={getNotesVal(job.progress)}></textarea>
                         ):
                         (
                             <textarea id={"notes"+job._id} className='textarea'></textarea>
