@@ -1,1 +1,1 @@
-web: cd server && npm install && npm start
+echo "web: npm start" > Procfile
