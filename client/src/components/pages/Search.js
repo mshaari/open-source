@@ -24,9 +24,11 @@ function Search() {
        variables: { id: user.user_id },
     });
    
+    
     let savedJobId = [];
     
     if (userData) {
+
 
       if (userData?.data?.user?.saved_jobs) {
 
@@ -36,9 +38,14 @@ function Search() {
             savedJobId.push(savedJobsArray[i]._id);
          }
 
+
       }
+
     };
 
+
+
+    
     
  return (
   <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>
