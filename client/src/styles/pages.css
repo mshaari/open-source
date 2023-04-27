@@ -623,6 +623,13 @@ a, button {
     border: none;
 }
 
+#user-password, #user-old-password {
+    -webkit-text-security: disc;
+    -moz-text-securiity: disc;
+    -ms-text-security: disc;
+    text-security: disc;
+}
+
 #user-resume, #user-cover-letter {
     font-family: var(--text);
     width: 75vw;
