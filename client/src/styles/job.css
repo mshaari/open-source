@@ -218,7 +218,7 @@ a h3 {
     margin-bottom: 5px;
 }
 
-.save-job, .remove-job{
+.save-job, .save-job-progress, .remove-job{
     margin: 1rem;
     font-family: var(--buttons);
     background-color: #b1d1e2;
@@ -281,11 +281,11 @@ a h3 {
     }
 }
 
-.save-job:hover, .remove-job:hover {
+.save-job:hover, .save-job-progress:hover, .remove-job:hover {
     animation: save-job-button 0.5s linear forwards;
 }
 
-.save-job:active, .remove-job:active {
+.save-job:active, .save-job-progress:active, .remove-job:active {
     transition: none;
     box-shadow: none !important;
     background-color: white;
