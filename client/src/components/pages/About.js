@@ -8,7 +8,6 @@ import { QUERY_USER } from '../../utils/queries'; // import the query
 
 function About() {
 
-
     const [user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
 
     const { loading, error, data } = useQuery(QUERY_USER, {
@@ -23,6 +22,8 @@ function About() {
     if (error) {
         console.log(error);
     }
+
+
 
     return (
         <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>

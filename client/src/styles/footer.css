@@ -60,12 +60,12 @@
     z-index: 5;
     position: absolute;
     content: '';
-    background-color: black;
+    background-color: white;
     width: 120vw;
-    height: 120vh;
-    left: -50vw;
-    top: -110vh;
-    transform: scaleY(0);
+    height: 110vh;
+    left: -35vw;
+    top: -90vh;
+    //transform: scaleY(0);
     opacity: 1;
     transition: all;
     transition-duration: 0.1s;
