@@ -84,7 +84,7 @@ function JobResultCard(props) {
         <div className='result-list'>
             {props.jobs?.findJobs? (
             <h3 className='results'>Results:</h3>
-            ) : null }
+            ) :  null }
             {props.jobs?.findJobs ?  
             (props.jobs.findJobs.map((job) => (
                 <div key={job._id} className='result-container'>

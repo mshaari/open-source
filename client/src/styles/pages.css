@@ -312,12 +312,102 @@ a, button {
         transform: translateX(0);
     }
 }
+
+@keyframes expand {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.loading {
+    font-family: var(--title);
+    font-size: 1.2rem;
+    position: fixed;
+    left: -9vw;
+    top: 40vh;
+    padding-top: 10vh;
+    z-index: 5;
+    width: 110vw;
+    height: 10vh;
+    background-color: rgba(255, 219, 219, 0.8);
+    background-position: top;
+    background-size: cover;
+    animation: expand 0.5s infinite linear;
+}
+
+@keyframes hop {
+    0% {
+        color: rgb(255, 137, 192);
+    }
+    15% {
+
+        color: rgb(249, 162, 104);
+    }
+    30% {
+        color: rgb(243, 255, 113);
+    }
+    45% {
+        color: rgb(210, 250, 131);
+    }
+    60% {
+        color: rgb(128, 176, 254);
+    }
+    75% {
+        color: rgb(183, 138, 250);
+    }
+    100% {
+        color: rgb(0, 0, 0);
+    }
+}
+
+.loading span {
+    animation: hop 1s infinite linear;
+}
+
+.loading span:nth-of-type(1) {
+    animation-delay: 0.1s;
+}
+.loading span:nth-of-type(2) {
+    animation-delay: 0.2s;
+}
+.loading span:nth-of-type(3) {
+    animation-delay: 0.3s;
+}
+.loading span:nth-of-type(4) {
+    animation-delay: 0.4s;
+}
+.loading span:nth-of-type(5) {
+    animation-delay: 0.5s;
+}
+.loading span:nth-of-type(6) {
+    animation-delay: 0.6s;
+}
+.loading span:nth-of-type(7) {
+    animation-delay: 0.7s;
+}
+.loading span:nth-of-type(8) {
+    animation-delay: 0.8s;
+}
+.loading span:nth-of-type(9) {
+    animation-delay: 0.9s;
+}
+.loading span:nth-of-type(10) {
+    animation-delay: 1s;
+}
+
 .search, .results {
     font-family: var(--title);
     margin-bottom: 30px;
 }
 
 .search-container {
+    position: relative;
     font-family: var(--text);
     text-align: center;
     color: white;
