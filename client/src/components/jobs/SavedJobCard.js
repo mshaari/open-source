@@ -51,7 +51,7 @@ function JobResultCard(props) {
 
             container.classList.remove('removed');
 
-        },450)
+        },950)
 
     };
 
@@ -60,6 +60,9 @@ function JobResultCard(props) {
 
    //this function is triggered when the save progress button is clicked for one of the user's saved jobs
     const handleSaveProgress = async (event) =>{
+
+        const alert = event.target.parentElement.previousElementSibling;
+
         try{
             //we are grabbing the id of the job which the save was triggered on
             const jobId = event.target.id;
@@ -115,9 +118,12 @@ function JobResultCard(props) {
             console.log(e);
         }
         
-        setProgressUpdated(true);
+        // code to remove .hide class too success alert
+        alert.classList.remove('hide');
+
         setTimeout(() => {
-            setProgressUpdated(false);
+            // code to add .hide class to success alert
+            alert.classList.add('hide');
         },3000);
     }
     //if progress exists for this job, we set the default value of the dropdown menu to be equal to whichever of the progress fields is true
@@ -141,7 +147,7 @@ function JobResultCard(props) {
         <div className='result-list'>
             {jobs.map((job) => (
                 <div key={job._id} className='saved-result-container' id={`container-${job._id}`}>
-                    <a className="saved-result-title" href={job.redirect_url}><h3>{job.title}</h3></a>
+                    <a className="saved-result-title" href={job.redirect_url} target="blank"><h3>{job.title}</h3></a>
                     <div className="job-container">
                         <p>Contract Time: {job.contract_time}</p>
                         {job.salary_predicted ? 
@@ -188,13 +194,8 @@ function JobResultCard(props) {
                         (
                             <textarea id={"notes"+job._id} className='textarea'></textarea>
                         )}
-                           
                         </div>
-                        {progressUpdated? (
-                            <div className='success-text'>
-                                <p>Job Progress Updated!</p>
-                            </div>
-                        ) : null }
+                        <p className='updated-text hide'>Job Progress Updated!</p>
                         <div>
                             <button id={job._id} className='save-job-progress' onClick={handleSaveProgress}>Save Progress</button>
                             <button id={job._id} className='remove-job' onClick={handleRemoveJob}>Remove This Job!</button>

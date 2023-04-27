@@ -111,26 +111,47 @@
     pointer-events: none !important;
 }
 
-@keyframes wipe {
+@keyframes update {
     0% {
-        transform: scaleX(1);
+        transform: translateX(0) translateY(0);
         opacity: 1;
 
     }
+    10% {
+        transform: translateX(25px) translateY(0);
+        opacity: 1;
+    }
+    20% {
+        transform: translateX(-110vw) translateY(0);
+        opacity: 0;
+
+    }
+    30% {
+        transform: translateX(-110vw) translateY(110vh);
+        opacity: 0;
+    }
+
     50% {
-        transform: scaleX(0);
+        transform: translateX(0) translateY(110vh);
         opacity: 0;
 
     }
     100% {
-        transform: scaleX(1);
+        transform: translateX(0) translateY(0);
         opacity: 1;
-
     }
 }
 
 .removed {
-    animation: wipe 0.5s 1 linear forwards !important;
+    animation: update 1s 1 linear forwards !important;
+}
+
+.hide {
+    display: none;
+}
+
+.updated-text {
+    color: rgb(0, 128, 60);
 }
 
 .result-container {
