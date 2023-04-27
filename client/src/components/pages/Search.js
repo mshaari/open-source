@@ -54,8 +54,8 @@ function Search() {
     <h3 className='search'>Job Search:</h3>
     <div className='search-box'>
      <label>Country:</label>
-     <select id='country-select' onChange={(e) => setCountry(e.target.value)}>
-      <option disabled selected>Please select one</option>
+     <select id='country-select' defaultValue="default" onChange={(e) => setCountry(e.target.value)}>
+      <option disabled value="default">Please select one</option>
       <option value='us'>United States</option>
       <option value='gb'>United Kingdom</option>
       <option value='at'>Austria</option>
@@ -79,8 +79,8 @@ function Search() {
     </div>
     <div className='search-box'>
      <label>Job Title:</label>
-     <select id='job-select' onChange={(e) => setRole(e.target.value)}>
-      <option disabled selected>Please select one</option>
+     <select id='job-select' defaultValue="default" onChange={(e) => setRole(e.target.value)}>
+      <option disabled value="default">Please select one</option>
      	<option value='software-engineer'>Software Engineer</option>
         <option value='web-developer'>Web Developer</option>
         <option value='mobile-app-developer'>Mobile App Developer</option>
