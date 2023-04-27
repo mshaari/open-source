@@ -80,6 +80,9 @@ function JobResultCard(props) {
             
             }
 
+
+              
+
     return (
         <div className='result-list'>
             {props.jobs?.findJobs? (
@@ -88,7 +91,7 @@ function JobResultCard(props) {
             {props.jobs?.findJobs ?  
             (props.jobs.findJobs.map((job) => (
                 <div key={job._id} className='result-container'>
-                    <a className="result-title" href={job.redirect_url}><h3>{job.title}</h3></a>
+                    <a className="result-title" href={job.redirect_url} target="blank"><h3>{job.title}</h3></a>
                     <div className='job-container'>
                         <p>Company: {job.company_name}</p>
                         <p>Location: {job.location}</p>
@@ -105,7 +108,12 @@ function JobResultCard(props) {
                         <p className='job-description'>Description: {job.description}</p>
 
                         {props.isPaidMember ? (
-                            <button onClick={handleSaveButton} className="save-job" id={job._id}>Save This Job</button>
+                            <div>
+                                <button onClick={() => {
+                                    const mailToLink = `mailto:?subject=Look at this job listing I saw on </Open Source> for a ${job.title}!&body=Company: ${job.company_name}%0D%0A Location: ${job.location}%0D%0A Contract Time: ${job.contract_time}%0D%0A Estimated Salary: $${Math.floor(job.salary_min)}.00${job.salary_min !== job.salary_max ? ` - ${Math.floor(job.salary_max)}.00` : ''}%0D%0A Description: ${job.description}%0D%0A Visit </Open Source> at https://git.heroku.com/open-source.git to learn more!`;
+                                    window.location.href = mailToLink;}} className="share-job">Share This Job</button>
+                                <button onClick={handleSaveButton} className="save-job" id={job._id}>Save This Job</button>
+                            </div>
                         ) : (
                             <p className='reminder-text'>Become a paid member to save this job!</p>
                             )

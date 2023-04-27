@@ -102,6 +102,9 @@
 
 .saved {
     animation: saved 2s 1 linear forwards !important;
+}
+
+.saved .save-job {
     pointer-events: none !important;
 }
 
@@ -122,6 +125,7 @@
 
     }
 }
+
 .removed {
     animation: wipe 0.5s 1 linear forwards !important;
 }
@@ -218,7 +222,7 @@ a h3 {
     margin-bottom: 5px;
 }
 
-.save-job, .save-job-progress, .remove-job{
+.save-job, .share-job, .save-job-progress, .remove-job{
     margin: 1rem;
     font-family: var(--buttons);
     background-color: #b1d1e2;
@@ -281,11 +285,11 @@ a h3 {
     }
 }
 
-.save-job:hover, .save-job-progress:hover, .remove-job:hover {
+.save-job:hover, .share-job:hover, .save-job-progress:hover, .remove-job:hover {
     animation: save-job-button 0.5s linear forwards;
 }
 
-.save-job:active, .save-job-progress:active, .remove-job:active {
+.save-job:active, .share-job:active, .save-job-progress:active, .remove-job:active {
     transition: none;
     box-shadow: none !important;
     background-color: white;
