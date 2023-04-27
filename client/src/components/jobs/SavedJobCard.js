@@ -140,7 +140,7 @@ function JobResultCard(props) {
     return (
         <div className='result-list'>
             {jobs.map((job) => (
-                <div key={job.name} className='saved-result-container' id={`container-${job._id}`}>
+                <div key={job._id} className='saved-result-container' id={`container-${job._id}`}>
                     <a className="saved-result-title" href={job.redirect_url}><h3>{job.title}</h3></a>
                     <div className="job-container">
                         <p>Contact Term: {job.contract_time}</p>
