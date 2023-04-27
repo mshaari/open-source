@@ -25,13 +25,11 @@ function JobResultCard(props) {
             if (props.savedJobId.includes(jobId)) {
 
                 event.target.innerText = "You Saved this Job Already!";
-                event.target.parentElement.parentElement.classList.add("duplicate");
+                event.target.parentElement.parentElement.parentElement.classList.add("duplicate");
 
                 return;
 
             };
-
-
 
             //looping through all of the jobs in the array that came from the Search component
             for(let i=0; i<props.jobs.findJobs.length; i++){

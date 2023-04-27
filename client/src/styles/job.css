@@ -28,35 +28,35 @@
 @keyframes duplicate {
     0%{
         transform: translateX(0px);
-        filter:blur(0) hue-rotate(0deg)
+        filter: brightness(1);
     }
     70%{
         transform: translateX(0px);
-        filter:blur(0) hue-rotate(0deg)
+        filter: brightness(1);
     }
     75% {
         transform: translateX(-15px);
-        filter:blur(0) hue-rotate(0deg)
+        filter: brightness(0.8);
     }
     80% {
         transform: translateX(13px);
-        filter:blur(1px) hue-rotate(45deg)
+        filter: brightness(0.7);
     }
     83% {
         transform: translateX(-10px);
-        filter:blur(2px) hue-rotate(90deg)
+        filter: brightness(0.6);
     }
     85% {
         transform: translateX(8px);
-        filter:blur(3px) hue-rotate(135deg)
+        filter: brightness(0.5);
     }
     87% {
         transform: translateX(0px);
-        filter:blur(5px) hue-rotate(180deg)
+        filter: brightness(0.4);
     }
     100% {
         transform: translateX(0px);
-        filter:blur(5px) hue-rotate(180deg);
+        filter: brightness(0.4);
     }
 }
 
@@ -97,6 +97,9 @@
 
 .duplicate {
     animation: duplicate 2s 1 linear forwards !important;
+}
+
+.duplicate .save-job {
     pointer-events: none !important;
 }
 
@@ -155,7 +158,7 @@
     padding-inline: 15px;
     transition: all;
     transition-duration: 0.3s;
-    width: 80vw;
+    width: 75vw;
     margin-inline:auto;
     text-align: center;
 }
@@ -331,5 +334,10 @@ a h3 {
     .result-container {
         font-size: 0.7rem;
         width: 70vw;
+    }
+
+    .share-job, .save-job-progress, .remove-job, .save-job {
+        font-size: 0.7rem;
+        margin-inline: 5px;
     }
 }
