@@ -623,7 +623,7 @@ a, button {
     border: none;
 }
 
-#user-old-password {
+#user-password, #user-old-password {
     -webkit-text-security: disc;
     -moz-text-securiity: disc;
     -ms-text-security: disc;
