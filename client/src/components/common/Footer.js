@@ -20,6 +20,7 @@ function Footer() {
                     <button id="toggle-theme" onClick={toggleTheme}>Greyscale Mode</button>
                 )}
                 <button id="back" onClick={backToTop}>Back to Top</button>
+                <button id="install">Install</button>
             </div>
             <h5 id="footer-title"><span>&lt;/</span><span>Team Open Source, 2023. All rights reserved</span><span>&gt;</span></h5>
         </footer>
