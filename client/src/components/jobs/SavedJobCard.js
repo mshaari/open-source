@@ -13,6 +13,8 @@ function JobResultCard(props) {
 
     const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
 
+    const [progressUpdated, setProgressUpdated] = useState(false);
+
     const { userData } = useQuery(QUERY_USER, {
         variables: { id: user.user_id }, // pass the user ID as a variable to the query
         skip: !user.loggedIn, // skip the query if user is not logged in
@@ -105,13 +107,18 @@ function JobResultCard(props) {
                 }
             });
             if(progressData){
-                console.log("Progress Added")
+
+                console.log("Progress Added");
+
             }
         } catch (e) {
             console.log(e);
         }
         
-
+        setProgressUpdated(true);
+        setTimeout(() => {
+            setProgressUpdated(false);
+        },3000);
     }
     //if progress exists for this job, we set the default value of the dropdown menu to be equal to whichever of the progress fields is true
     const getProgVal = (progress) => {
@@ -183,6 +190,11 @@ function JobResultCard(props) {
                         )}
                            
                         </div>
+                        {progressUpdated? (
+                            <div className='success-text'>
+                                <p>Job Progress Updated!</p>
+                            </div>
+                        ) : null }
                         <div>
                             <button id={job._id} className='save-job-progress' onClick={handleSaveProgress}>Save Progress</button>
                             <button id={job._id} className='remove-job' onClick={handleRemoveJob}>Remove This Job!</button>

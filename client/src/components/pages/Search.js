@@ -20,6 +20,7 @@ function Search() {
        }
    );
    
+   
     const userData = useQuery(QUERY_USER, {
        variables: { id: user.user_id },
     });
@@ -108,10 +109,13 @@ function Search() {
     </div>
     {/* When the user clicks the Search button, the findJobs is called. It triggers a GraphQL query using the useLazyQuery hook from Apollo to fetch job data based on the user's input. */}
     <button id='search-btn' onClick={() => findJobs({ variables: {country: country, role: role, location: location}})}>Search</button>
-    <div>
+    {loading?(
+      <p className='loading'><span>L</span><span>o</span><span>a</span><span>d</span><span>i</span><span>n</span><span>g</span><span>.</span><span>.</span><span>.</span></p>
+    ): null }
+   <div>
     {/* The Search component renders a JobResultCard component passing the data and userData as props.  */}
-     <JobResultCard jobs={data} isPaidMember={userData?.data?.user?.paid_member} savedJobId={savedJobId}/>
-    </div>
+      <JobResultCard jobs={data} isPaidMember={userData?.data?.user?.paid_member} savedJobId={savedJobId}/>
+   </div>
    </div>
   </div>
  );
