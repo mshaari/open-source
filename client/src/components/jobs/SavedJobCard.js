@@ -113,6 +113,22 @@ function JobResultCard(props) {
         
 
     }
+    //if progress exists for this job, we set the default value of the dropdown menu to be equal to whichever of the progress fields is true
+    const getProgVal = (progress) => {
+        if (progress.applied === true){
+            return "applied";
+        } else if (progress.interviewed === true){
+            return "interviewed";
+        } else if (progress.offer_received){
+            return "offer-received";
+        } else if (progress.end_process){
+            return "end-process";
+        } else return "default";
+    }
+    //if progress exists for this job, we return the content of the notes field as the pre-set value of the notes textarea
+    const getNotesVal = (progress) => {
+         return progress.notes;
+    }
 
     return (
         <div className='result-list'>
@@ -133,17 +149,39 @@ function JobResultCard(props) {
                         <p className='saved-job-description'>Description: {job.description}</p>
                         <div className='note-box'>
                             <h5 className='status'>Current Status:</h5>
-                            <select id={"progress-list"+job._id}>
-                                <option>Please select one</option>
+                        {job.progress ? 
+                            (
+                            <select id={"progress-list"+job._id} value={getProgVal(job.progress)}>
+                                <option value='default'>Please select one</option>
                                 <option value='applied'>Applied</option>
                                 <option value='interviewed'>Interviewed</option>
                                 <option value='offer-received'>Offer Received</option>
                                 <option value='end-process'>Process Ended</option>
                             </select>
+                            )
+                            :
+                            (
+                            <select id={"progress-list"+job._id}>
+                            <option value='default'>Please select one</option>
+                                <option value='applied'>Applied</option>
+                                <option value='interviewed'>Interviewed</option>
+                                <option value='offer-received'>Offer Received</option>
+                                <option value='end-process'>Process Ended</option>
+                            </select>
+                            )
+                        }
+                               
                         </div>
                         <div className='note-box'>
                             <h5 className='note-title'>Note:</h5>
+                        {job.progress ? 
+                        (
+                            <textarea id={"notes"+job._id} className='textarea' value={getNotesVal(job.progress)}></textarea>
+                        ):
+                        (
                             <textarea id={"notes"+job._id} className='textarea'></textarea>
+                        )}
+                           
                         </div>
                         <div>
                             <button id={job._id} className='save-job-progress' onClick={handleSaveProgress}>Save Progress</button>
