@@ -1,17 +1,15 @@
 require("dotenv").config()
 console.log(require("dotenv").config())
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Job } = require('../models');
+const { User } = require('../models');
 const { signToken } = require('../utils/auth');
 const axios = require("axios");
-// TODO: figure out why process.env.STRIPE_SECRET_KEY isn't loading the variable
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); 
 
 
 const resolvers = {
   Query: {
     // Get user by ID
-        //TODO: set it up to identify the user ID by context, not passed in as args
     user: async (parents, args, context) => {
       if(context.user) {
         return await User.findById(context.user._id)
@@ -35,6 +33,7 @@ const resolvers = {
           } else {
             var contract = job.contract_time;
           }
+          //creating a jobObject for each of the jobs in search results
           let jobObject = {
             _id: job.id,
             title: job.title,
@@ -47,6 +46,7 @@ const resolvers = {
             contract_time: contract,
             redirect_url : job.redirect_url
           }
+          //pushing each of the jobObjects into an array, to create an array of Jobs
           jobArray.push(jobObject);
           }
       return jobArray;
@@ -74,6 +74,7 @@ const resolvers = {
   },
 
   Mutation: {
+  //creates a new user, returns a user and a signed token
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
@@ -92,9 +93,8 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!")
     },
 
-    //finds and updates 1 user by ID - ID is required
+    //finds and updates 1 user by ID - ID is required, comes from context of the application
     //returns the new/updated version of the user
-          //TODO: set it up to take in the user ID from the app's context
     updateUser : async (parent, args, context) => {
       if(context.user) {
 
@@ -129,7 +129,7 @@ const resolvers = {
           const token = signToken(user);
           return { token, user };
         },
-      //TODO: use React context to grab the user's id
+//adds a job to a user's saved_jobs array
       addJob: async (parent, args, context) => {
         if(context.user) {
         const user = await User.findByIdAndUpdate(
@@ -143,7 +143,7 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
       },
-
+//deleteds a job from a user's saved_jobs array
       deleteJob: async (parent, args, context) => {
         //find the user through their _id in the context 
         if(context.user){
