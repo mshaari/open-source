@@ -158,7 +158,7 @@ function JobResultCard(props) {
                             <h5 className='status'>Current Status:</h5>
                         {job.progress ? 
                             (
-                            <select id={"progress-list"+job._id} value={getProgVal(job.progress)}>
+                            <select id={"progress-list"+job._id} defaultValue={getProgVal(job.progress)}>
                                 <option value='default'>Please select one</option>
                                 <option value='applied'>Applied</option>
                                 <option value='interviewed'>Interviewed</option>
