@@ -2,6 +2,7 @@ import { useMutation } from '@apollo/client';
 import { UPDATE_MEMBERSHIP } from '../../utils/mutations';
 import { UserContext } from '../UserContext';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import '../../styles/pages.css';
 
 function Success() {
@@ -49,7 +50,7 @@ function Success() {
                     <br />
                     &lt;/open source&gt; offers!
                 </p>
-                <a href='/search' className='return'>Start Job Hunting!</a>
+                <Link to='/search' className='return'>Start Job Hunting!</Link>
             </div>
         </div>
     );
