@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../UserContext';
 import '../../styles/pages.css';
-import bcrypt from 'bcryptjs';
+// import bcrypt from 'bcryptjs';
 
 import { useQuery } from '@apollo/client'; // import useQuery hook
 import { QUERY_USER } from '../../utils/queries'; // import the query
@@ -56,49 +56,49 @@ function Setting() {
             return;
         }
 
-        if (password.length) {
+        // if (password.length) {
 
-            const isValidPassword = await bcrypt.compare(oldPassword, data?.user?.password);
+        //     // const isValidPassword = await bcrypt.compare(oldPassword, data?.user?.password);
 
-            if (!isValidPassword) {
+        //     // if (!isValidPassword) {
 
-                setShowError(true);
+        //     //     setShowError(true);
 
-                setTimeout(() => {
-                    setShowError(false);
+        //     //     setTimeout(() => {
+        //     //         setShowError(false);
 
-                }, 3000);
+        //     //     }, 3000);
 
-                return;
-            };
+        //     //     return;
+        //     // };
 
-            const saltRounds = 10;
-            const hashedPassword = await bcrypt.hash(password, saltRounds);
+        //     // const saltRounds = 10;
+        //     // const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-            updateUser({
-                variables: {
-                    id: user.user_id,
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email,
-                    password: hashedPassword,
-                    resume: resume,
-                    coverLetter: coverLetter,
-                }
-            })
-                .then(() => {
+        //     updateUser({
+        //         variables: {
+        //             id: user.user_id,
+        //             firstName: firstName,
+        //             lastName: lastName,
+        //             email: email,
+        //             // password: hashedPassword,
+        //             resume: resume,
+        //             coverLetter: coverLetter,
+        //         }
+        //     })
+        //         .then(() => {
 
-                    setShowSuccess(true);
-                    setTimeout(() => {
-                        setShowSuccess(false)
-                    }, 3000);
+        //             setShowSuccess(true);
+        //             setTimeout(() => {
+        //                 setShowSuccess(false)
+        //             }, 3000);
 
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
+        //         })
+        //         .catch((error) => {
+        //             console.log(error);
+        //         });
 
-        } else {
+        // } else {
 
             updateUser({
                 variables: {
@@ -122,7 +122,7 @@ function Setting() {
                     console.log(error);
                 });
         };
-    };
+    // };
 
 
     const SaveData = async () => {
@@ -139,48 +139,48 @@ function Setting() {
             return;
         }
 
-        if (password.length) {
+        // if (password.length) {
 
-            const isValidPassword = await bcrypt.compare(oldPassword, data?.user?.password);
+        //     const isValidPassword = await bcrypt.compare(oldPassword, data?.user?.password);
 
-            if (!isValidPassword) {
+        //     if (!isValidPassword) {
 
-                setShowError(true);
+        //         setShowError(true);
 
-                setTimeout(() => {
-                    setShowError(false);
+        //         setTimeout(() => {
+        //             setShowError(false);
 
-                }, 3000);
+        //         }, 3000);
 
-                return;
+        //         return;
 
-            };
+        //     };
 
-            const saltRounds = 10;
-            const hashedPassword = await bcrypt.hash(password, saltRounds);
+        //     const saltRounds = 10;
+        //     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-            updateUser({
-                variables: {
-                    id: user.user_id,
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email,
-                    password: hashedPassword,
-                }
-            })
-                .then(() => {
+        //     updateUser({
+        //         variables: {
+        //             id: user.user_id,
+        //             firstName: firstName,
+        //             lastName: lastName,
+        //             email: email,
+        //             password: hashedPassword,
+        //         }
+        //     })
+        //         .then(() => {
 
-                    setShowSuccess(true);
-                    setTimeout(() => {
-                        setShowSuccess(false)
-                    }, 3000);
+        //             setShowSuccess(true);
+        //             setTimeout(() => {
+        //                 setShowSuccess(false)
+        //             }, 3000);
 
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
+        //         })
+        //         .catch((error) => {
+        //             console.log(error);
+        //         });
 
-        } else {
+        // // } else {
 
             updateUser({
                 variables: {
@@ -202,7 +202,7 @@ function Setting() {
                     console.log(error);
                 });
         };
-    };
+    // };
 
 
     const copyLetter = () => {
@@ -246,7 +246,7 @@ function Setting() {
                         <textarea id="user-email" readOnly="readonly" value={data?.user?.email}></textarea>
                     )}
                 </div>
-                {editMode ? (
+                {/* {editMode ? (
                     <div>
                         <div className='data-box'>
                             <label>Old Password:</label>
@@ -257,12 +257,12 @@ function Setting() {
                             <textarea id="user-password" placeholder='Enter New Password'></textarea>
                         </div>
                     </div>
-                ) : (
+                ) : ( */}
                     <div className='data-box'>
                         <label>User Password:</label>
                         <textarea id="user-password" readOnly="readonly" placeholder='*******'></textarea>
                     </div>
-                )}
+                {/* )} */}
                 {data?.user?.paid_member ? (
                     <div>
                         <div className='data-box-large'>
