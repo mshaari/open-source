@@ -1025,8 +1025,13 @@ label {
 }
 
 .success-container, .cancel-container {
-    padding-block: 35px;
-    margin-top: 35vh;
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    padding-block: 35vh;
+    margin-top: 0;
+    z-index: 100;
     font-family: var(--text);
     text-align: center;
     background-color: rgba(255, 255, 255, 0.7);
