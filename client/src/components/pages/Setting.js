@@ -281,18 +281,11 @@ function Setting() {
                             )}
                             <button id='cover-letter-copy' onClick={() => copyLetter()}>Copy Your Cover Letter</button>
                         </div>
-
-                        {showIncomplete? (
-                            <div>
-                                <p className='error-text'>Need new password to change password!</p>
-                            </div>
-                        ): null }
                         {showSuccess ? (
                             <div className='success-text'>
                                 <p>User Data Updated!</p>
                             </div>
                         ) : null}
-
                         <div className='data-box'>
                             <button className='edit-btn' onClick={() => editData()}>Edit Settings</button>
                             <button className='edit-btn' onClick={() => saveMemberData()}>Save Changes</button>
