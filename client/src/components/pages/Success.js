@@ -1,7 +1,7 @@
 import { useMutation } from '@apollo/client';
 import { UPDATE_MEMBERSHIP } from '../../utils/mutations';
 import { UserContext } from '../UserContext';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/pages.css';
 
@@ -14,32 +14,18 @@ function Success() {
     const [updateMembership] = useMutation(UPDATE_MEMBERSHIP);
 
     const handlePaidMember = async () => {
-
-
         try {
-
             // Call the UPDATE_USER mutation to update the user's paid_member status
             const { data } = await updateMembership({
                 variables: {
                     id: user.user.data._id,
                 }
             });
-
-            console.log({ data })
-
-            
-
+            // console.log({ data })
         } catch (err) {
             console.error(err);
         }
     };
-
-    handlePaidMember();
-
-    const handleClick = (page) => {
-        setPage(page);
-      }
-
 
     return (
         <div className={`success-content ${theme.greyscale ? "greyscale" : ""}`}>
@@ -56,7 +42,7 @@ function Success() {
                     <br />
                     &lt;/open source&gt; offers!
                 </p>
-                <Link to='/' className='return'>Start Job Hunting!</Link>
+                <Link to='/' className='return' onClick={handlePaidMember}>Start Job Hunting!</Link>
             </div>
         </div>
     );
