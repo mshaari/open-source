@@ -135,9 +135,9 @@
         transform: translateX(0) translateY(110vh);
         opacity: 0;
     }
-    70% {
+    85% {
         transform: translateX(0) translateY(0);
-        opacity: 0;
+        opacity: 0.2;
     }
     100% {
         transform: translateX(0) translateY(0);
@@ -146,7 +146,7 @@
 }
 
 .removed {
-    animation: update 1s 1 linear forwards !important;
+    animation: update 1.5s 1 linear forwards !important;
 }
 
 .hide {
