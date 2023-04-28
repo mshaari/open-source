@@ -16,6 +16,7 @@ const AuthProvider =  ({ children }) => {
         return savedTheme !== null ? JSON.parse(savedTheme) : { greyscale: false };
       });
 
+
     useEffect(() => {
 
 
@@ -44,6 +45,8 @@ const AuthProvider =  ({ children }) => {
         setTheme(newTheme);
         localStorage.setItem('theme', JSON.stringify(newTheme));
       };
+
+    
 
 
     return <UserContext.Provider value={[user, setUser, theme, setTheme, toggleTheme]}>{ children }</UserContext.Provider>;
