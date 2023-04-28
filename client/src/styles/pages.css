@@ -1058,6 +1058,7 @@ label {
         background: url('../../public/images/mobile-bg.gif');
         background-repeat: no-repeat;
         background-size: cover;
+        background-position: center;
     }
 
     .about-container, #login-signup-wrapper, .search-container, .dashboard-container, #setting-container, .contact-form-container, .membership-container {
