@@ -41,7 +41,7 @@ function Navigation() {
           <Link to={'/search'} className={page === "/search" ? "nav-item-active" : "nav-item"}>Search</Link>
           <Link to={"/dashboard"} className={page === "/dashboard" ? "nav-item-active" : "nav-item"}>Dashboard</Link>
           {data.user.paid_member ? null : (
-            <Link to={"/membership"} className={page === "/membership" ? "nav-item-active" : "nav-item"}>Membership</Link>
+            <Link to="/membership" className={page === "/membership" ? "nav-item-active" : "nav-item"}>Membership</Link>
           )}
           <Link to='/contact' className={page === "/contact" ? "nav-item-active" : "nav-item"}>Contact</Link>
         </nav>

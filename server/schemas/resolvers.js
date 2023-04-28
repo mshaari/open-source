@@ -62,8 +62,8 @@ const resolvers = {
           }
         ],
         mode: 'payment',
-        success_url: process.env.FRONTEND_DOMAIN + '/success' || 'http://localhost:3000/success',
-        cancel_url: process.env.FRONTEND_DOMAIN + '/cancel' || 'http://localhost:3000/cancel'
+        success_url: process.env.FRONTEND_DOMAIN + '/success' || 'https://open-source.herokuapp.com/success',
+        cancel_url: process.env.FRONTEND_DOMAIN + '/cancel' || 'https://open-source.herokuapp.com/cancel'
       });
 
       return JSON.stringify({
