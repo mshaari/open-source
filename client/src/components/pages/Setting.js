@@ -18,6 +18,8 @@ function Setting() {
 
     const [showSuccess, setShowSuccess] = useState(false);
 
+    const [showIncomplete, setShowIncomplete] = useState(false);
+
     const [user, theme] = useContext(UserContext);
 
     const { loading, error, data } = useQuery(QUERY_USER, {
@@ -54,9 +56,21 @@ function Setting() {
 
         if (!user.loggedIn) {
             return;
-        }
+        };
 
-        if (password.length) {
+        if (!password.length && oldPassword.length) {
+
+            setShowIncomplete(true);
+
+            setTimeout(() => {
+                setShowIncomplete(false);
+
+            }, 3000);
+
+            return;
+        };
+
+        if (password.length && oldPassword.length) {
 
             const isValidPassword = await bcrypt.compare(oldPassword, data?.user?.password);
 
@@ -139,7 +153,18 @@ function Setting() {
             return;
         }
 
-        if (password.length) {
+        if (!password.length && oldPassword.length) {
+            setShowIncomplete(true);
+
+            setTimeout(() => {
+                setShowIncomplete(false);
+
+            }, 3000);
+
+            return;
+        };
+
+        if (password.length && oldPassword.length) {
 
             const isValidPassword = await bcrypt.compare(oldPassword, data?.user?.password);
 
@@ -290,6 +315,11 @@ function Setting() {
                                 <p>Forgot your password? <a id='service-email' href='mailto:service@opensource.com?subject=User Forgot Password'>Email</a> us so we can help you out!</p>
                             </div>
                         ) : null}
+                        {showIncomplete? (
+                            <div>
+                                <p className='error-text'>Need new password to change password!</p>
+                            </div>
+                        ): null }
                         {showSuccess ? (
                             <div className='success-text'>
                                 <p>User Data Updated!</p>
@@ -308,6 +338,11 @@ function Setting() {
                                 <p>Forgot your password? click <a id='service-email' href='mailto:service@opensource.com?subject=User Forgot Password'>here</a> to contact us and we'll sort it out for you!</p>
                             </div>
                         ) : null}
+                        {showIncomplete? (
+                            <div>
+                                <p className='error-text'>Need new password to change password!</p>
+                            </div>
+                        ): null }
                         {showSuccess ? (
                             <div className='success-text'>
                                 <p>User Data Updated!</p>
