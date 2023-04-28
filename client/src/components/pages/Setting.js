@@ -1,8 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../UserContext';
 import '../../styles/pages.css';
-import bcrypt from 'bcryptjs';
-
 import { useQuery } from '@apollo/client'; // import useQuery hook
 import { QUERY_USER } from '../../utils/queries'; // import the query
 
@@ -14,7 +12,11 @@ function Setting() {
 
     const [editMode, setEditMode] = useState(false);
 
+    const [passwordEdit, setPasswordEdit] = useState(false);
+
     const [showError, setShowError] = useState(false);
+
+    const [showComplete, setShowComplete] = useState(false);
 
     const [showSuccess, setShowSuccess] = useState(false);
 
@@ -28,6 +30,7 @@ function Setting() {
     });
 
     const [updateUser, { loading: updateLoading, error: updateError }] = useMutation(UPDATE_USER);
+
     const[updatePassword, {err}] = useMutation(UPDATE_PASSWORD);
 
     if (loading) {
@@ -38,11 +41,12 @@ function Setting() {
         console.log(error);
     }
 
-    const EditData = () => {
+    const editData = () => {
         setEditMode(true);
     };
 
-    const SaveMemberData = async () => {
+    const saveMemberData = async () => {
+
         setEditMode(false);
 
         const firstName = document.getElementById('user-first-name').value;
@@ -51,49 +55,39 @@ function Setting() {
         const resume = document.getElementById('user-resume').value;
         const coverLetter = document.getElementById('user-cover-letter').value;
 
-        const password = document.getElementById('user-password').value;
-        const oldPassword = document.getElementById('user-old-password').value;
-
 
         if (!user.loggedIn) {
             return;
         };
 
-       
-            updatePassword({
-                variables: {
-                    password: password,
-                    oldPassword: oldPassword
 
-                }
-            })
+        updateUser({
+            variables: {
+                id: user.user_id,
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                resume: resume,
+                coverLetter: coverLetter,
+            }
+        })
+        .then(() => {
 
-            updateUser({
-                variables: {
-                    id: user.user_id,
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email,
-                    resume: resume,
-                    coverLetter: coverLetter,
-                }
-            })
-                .then(() => {
+            setShowSuccess(true);
+            setTimeout(() => {
+                setShowSuccess(false)
+            }, 3000);
 
-                    setShowSuccess(true);
-                    setTimeout(() => {
-                        setShowSuccess(false)
-                    }, 3000);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-            // };
     };
 
 
-    const SaveData = async () => {
+    const saveData = async () => {
+
         setEditMode(false);
 
         const firstName = document.getElementById('user-first-name').value;
@@ -104,47 +98,84 @@ function Setting() {
             return;
         }
 
-            updateUser({
-                variables: {
-                    id: user.user_id,
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email,
-                }
-            })
-                .then(() => {
+        updateUser({
+            variables: {
+                id: user.user_id,
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+            }
+        })
+        .then(() => {
 
-                    setShowSuccess(true);
-                    setTimeout(() => {
-                        setShowSuccess(false)
-                    }, 3000);
+            setShowSuccess(true);
+            setTimeout(() => {
+                setShowSuccess(false)
+            }, 3000);
 
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+
     };
-const handleUpdatePass = async () => {
-    const password = document.getElementById('user-password').value;
-    const oldPassword = document.getElementById('user-old-password').value;
-try{ 
-    const response = await updatePassword({
-        variables: {
-            password: password,
-            oldPassword: oldPassword
 
-        }
-    });
-    if(response.data.updatePassword.update_successful){
-        console.log("update complete")
-    }else{
-        console.log("update failed")
+
+    const editPassword = () => {
+        setPasswordEdit(true);
     }
-}catch(err){
 
-}
-   
-}
+
+    const handleUpdatePass = async () => {
+
+        const password = document.getElementById('user-password').value;
+        const oldPassword = document.getElementById('user-old-password').value;
+
+        if (!password.length || !oldPassword.length) {
+
+            setShowIncomplete(true);
+            setTimeout(() => {
+                setShowIncomplete(false);
+                setPasswordEdit(false);
+            }, 3000);
+ 
+            return;
+        }
+
+        try{ 
+
+            const response = await updatePassword({
+                variables: {
+                    password: password,
+                    oldPassword: oldPassword
+                }
+            });
+
+            if(response.data.updatePassword.update_successful){
+
+                setShowComplete(true);
+                setTimeout(() => {
+                    setShowComplete(false);
+                    setPasswordEdit(false);
+                }, 3000);
+  
+            } else {
+
+                setShowError(true);
+
+                setTimeout(() => {
+                    setShowError(false);
+                    setPasswordEdit(false);
+                }, 3000);
+                
+
+            };
+
+        } catch(err) {
+            console.log(err.message);
+        }
+    
+    };
     
 
 
@@ -189,9 +220,9 @@ try{
                         <textarea id="user-email" readOnly="readonly" value={data?.user?.email}></textarea>
                     )}
                 </div>
-                {editMode ? (
+                {passwordEdit ? (
                     <div>
-                        <h3>Changing your Password?</h3>
+                        <h3>Changing your Password:</h3>
                         <div className='data-box'>
                             <label>Old Password:</label>
                             <textarea id="user-old-password" placeholder='Enter Old Password'></textarea>
@@ -200,12 +231,35 @@ try{
                             <label>New Password:</label>
                             <textarea id="user-password" placeholder='Enter New Password'></textarea>
                         </div>
+
+                        {showError ? (
+                            <div>
+                                <p className='error-text'>Incorrect Password!</p>
+                                <p>Forgot your password? <a id='service-email' href='mailto:service@opensource.com?subject=User Forgot Password'>Email</a> us so we can help you out!</p>
+                            </div>
+                        ) : null}
+                        {showIncomplete? (
+                            <div>
+                                <p className='error-text'>Please enter your old and new passwords!</p>
+                            </div>
+                        ): null }
+                        {showComplete? (
+                            <div>
+                                <p className='success-text'>User Password Updated!</p>
+                            </div>
+                        ): null }
+                        <button className='edit-btn' onClick={() => handleUpdatePass()}>Update Password</button>
                     </div>
                 ) : (
+                    <>
                     <div className='data-box'>
                         <label>User Password:</label>
-                        <textarea id="user-password" readOnly="readonly" placeholder='*******'></textarea>
+                        <textarea id="user-password" placeholder='*******' readOnly="readonly"></textarea>
                     </div>
+                    <div className='data-box'>
+                        <button className='edit-btn' onClick={() => editPassword()}>Change Password</button>
+                    </div>
+                    </>
                 )}
                 {data?.user?.paid_member ? (
                     <div>
@@ -227,12 +281,7 @@ try{
                             )}
                             <button id='cover-letter-copy' onClick={() => copyLetter()}>Copy Your Cover Letter</button>
                         </div>
-                        {showError ? (
-                            <div>
-                                <p className='error-text'>Incorrect Password!</p>
-                                <p>Forgot your password? <a id='service-email' href='mailto:service@opensource.com?subject=User Forgot Password'>Email</a> us so we can help you out!</p>
-                            </div>
-                        ) : null}
+
                         {showIncomplete? (
                             <div>
                                 <p className='error-text'>Need new password to change password!</p>
@@ -243,34 +292,22 @@ try{
                                 <p>User Data Updated!</p>
                             </div>
                         ) : null}
+
                         <div className='data-box'>
-                            <button className='edit-btn' onClick={() => EditData()}>Edit Settings</button>
-                            <button className='edit-btn' onClick={() => SaveMemberData()}>Save Changes</button>
+                            <button className='edit-btn' onClick={() => editData()}>Edit Settings</button>
+                            <button className='edit-btn' onClick={() => saveMemberData()}>Save Changes</button>
                         </div>
                     </div>
                 ) : (
                     <div>
-                        {showError ? (
-                            <div>
-                                <p className='error-text'>Incorrect Password!</p>
-                                <p>Forgot your password? click <a id='service-email' href='mailto:service@opensource.com?subject=User Forgot Password'>here</a> to contact us and we'll sort it out for you!</p>
-                            </div>
-                        ) : null}
-                        {showIncomplete? (
-                            <div>
-                                <p className='error-text'>Need new password to change password!</p>
-                            </div>
-                        ): null }
                         {showSuccess ? (
                             <div className='success-text'>
                                 <p>User Data Updated!</p>
                             </div>
                         ) : null}
                         <div className='data-box'>
-                            <button className='edit-btn' onClick={() => EditData()}>Edit Settings</button>
-                            <button className='edit-btn' onClick={() => SaveData()}>Save Changes</button>
-                            <button className='edit-btn' onClick={() => handleUpdatePass()}>Update Password</button>
-
+                            <button className='edit-btn' onClick={() => editData()}>Edit Settings</button>
+                            <button className='edit-btn' onClick={() => saveData()}>Save Changes</button>
                         </div>
                     </div>
                 )}
