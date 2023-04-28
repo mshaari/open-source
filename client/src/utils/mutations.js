@@ -98,8 +98,8 @@ export const SIGN_UP = gql`
 
 // Mutation to update a user
 export const UPDATE_USER = gql`
-  mutation Mutation($id: ID!, $firstName: String, $lastName: String, $email: String, $password: String, $paidMember: Boolean, $resume: String, $coverLetter: String) {
-    updateUser(id: $id, firstName: $firstName, lastName: $lastName, email: $email, password: $password, paid_member: $paidMember, resume: $resume, cover_letter: $coverLetter) {
+  mutation Mutation($id: ID!, $firstName: String, $lastName: String, $email: String,  $paidMember: Boolean, $resume: String, $coverLetter: String) {
+    updateUser(id: $id, firstName: $firstName, lastName: $lastName, email: $email, paid_member: $paidMember, resume: $resume, cover_letter: $coverLetter) {
       _id
       first_name
       last_name
@@ -110,6 +110,15 @@ export const UPDATE_USER = gql`
     }
   }
 `;
+
+export const UPDATE_PASSWORD = gql`
+mutation updatePassword($password: String, $oldPassword: String) {
+  updatePassword(password: $password, oldPassword: $oldPassword) {
+    update_successful
+
+  }
+}
+`
 
 // Mutation to update a user's membership status
 export const UPDATE_MEMBERSHIP = gql`

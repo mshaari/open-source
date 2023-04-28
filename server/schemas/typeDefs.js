@@ -41,6 +41,9 @@ type Progress {
     token: ID
     user: User
   }
+  type Verification{
+  update_successful: Boolean
+  }
   input JobData {
   _id: ID
   company_name: String
@@ -71,12 +74,13 @@ type Progress {
   type Mutation {
     addUser(first_name: String!, last_name: String!, email: String!, password: String!): Auth
     updateMembership(id: ID, paid_member: Boolean): User
-    updateUser(id: ID firstName: String, lastName: String, email: String, password: String, paid_member: Boolean, resume: String, cover_letter: String): User
+    updateUser(id: ID firstName: String, lastName: String, email: String, paid_member: Boolean, resume: String, cover_letter: String): User
     login(email: String!, password: String!): Auth
     addJob(job: JobData) : Job
     deleteJob(_id: ID) : User
     #addProgess can be used to create a brand new Progress object AND to update an existing Progress object
     addProgress(_id: ID, applied: Boolean, interviewed: Boolean, offer_received: Boolean, end_process: Boolean, notes: String) : User
+    updatePassword(password: String, oldPassword: String): Verification
    }
 `;
 module.exports = typeDefs;

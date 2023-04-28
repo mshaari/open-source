@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/client'; // import useQuery hook
 import { QUERY_USER } from '../../utils/queries'; // import the query
 
 import { useMutation } from '@apollo/client'; // import useMutation hook
-import { UPDATE_USER } from '../../utils/mutations'; // import the mutation
+import { UPDATE_USER, UPDATE_PASSWORD } from '../../utils/mutations'; // import the mutation
 
 function Setting() {
 
@@ -28,6 +28,7 @@ function Setting() {
     });
 
     const [updateUser, { loading: updateLoading, error: updateError }] = useMutation(UPDATE_USER);
+    const[updatePassword, {err}] = useMutation(UPDATE_PASSWORD);
 
     if (loading) {
         return <p>Loading...</p>;
@@ -58,36 +59,68 @@ function Setting() {
             return;
         };
 
-        if (!password.length && oldPassword.length) {
+        // if (!password.length && oldPassword.length) {
 
-            setShowIncomplete(true);
+        //     setShowIncomplete(true);
 
-            setTimeout(() => {
-                setShowIncomplete(false);
+        //     setTimeout(() => {
+        //         setShowIncomplete(false);
 
-            }, 3000);
+        //     }, 3000);
 
-            return;
-        };
+        //     return;
+        // };
 
-        if (password.length && oldPassword.length) {
+        // if (password.length && oldPassword.length) {
 
-            const isValidPassword = await bcrypt.compare(oldPassword, data?.user?.password);
+        //     const isValidPassword = await bcrypt.compare(oldPassword, data?.user?.password);
 
-            if (!isValidPassword) {
+        //     if (!isValidPassword) {
 
-                setShowError(true);
+        //         setShowError(true);
 
-                setTimeout(() => {
-                    setShowError(false);
+        //         setTimeout(() => {
+        //             setShowError(false);
 
-                }, 3000);
+        //         }, 3000);
 
-                return;
-            };
+        //         return;
+        //     };
 
-            const saltRounds = 10;
-            const hashedPassword = await bcrypt.hash(password, saltRounds);
+            // const saltRounds = 10;
+            // const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+        //     updateUser({
+        //         variables: {
+        //             id: user.user_id,
+        //             firstName: firstName,
+        //             lastName: lastName,
+        //             email: email,
+        //             // password: hashedPassword,
+        //             resume: resume,
+        //             coverLetter: coverLetter,
+        //         }
+        //     })
+        //         .then(() => {
+
+        //             setShowSuccess(true);
+        //             setTimeout(() => {
+        //                 setShowSuccess(false)
+        //             }, 3000);
+
+        //         })
+        //         .catch((error) => {
+        //             console.log(error);
+        //         });
+
+        // } else {
+            updatePassword({
+                variables: {
+                    password: password,
+                    oldPassword: oldPassword
+
+                }
+            })
 
             updateUser({
                 variables: {
@@ -95,7 +128,6 @@ function Setting() {
                     firstName: firstName,
                     lastName: lastName,
                     email: email,
-                    password: hashedPassword,
                     resume: resume,
                     coverLetter: coverLetter,
                 }
@@ -111,31 +143,7 @@ function Setting() {
                 .catch((error) => {
                     console.log(error);
                 });
-
-        } else {
-
-            updateUser({
-                variables: {
-                    id: user.user_id,
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email,
-                    resume: resume,
-                    coverLetter: coverLetter,
-                }
-            })
-                .then(() => {
-
-                    setShowSuccess(true);
-                    setTimeout(() => {
-                        setShowSuccess(false)
-                    }, 3000);
-
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-        };
+            // };
     };
 
 
@@ -164,25 +172,56 @@ function Setting() {
             return;
         };
 
-        if (password.length && oldPassword.length) {
+        // if (password.length && oldPassword.length) {
 
-            const isValidPassword = await bcrypt.compare(oldPassword, data?.user?.password);
+        //     const isValidPassword = await bcrypt.compare(oldPassword, data?.user?.password);
 
-            if (!isValidPassword) {
+        //     if (!isValidPassword) {
 
-                setShowError(true);
+        //         setShowError(true);
 
-                setTimeout(() => {
-                    setShowError(false);
+        //         setTimeout(() => {
+        //             setShowError(false);
 
-                }, 3000);
+        //         }, 3000);
 
-                return;
+        //         return;
 
-            };
+        //     };
 
-            const saltRounds = 10;
-            const hashedPassword = await bcrypt.hash(password, saltRounds);
+            // const saltRounds = 10;
+            // const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+            // updateUser({
+            //     variables: {
+            //         id: user.user_id,
+            //         firstName: firstName,
+            //         lastName: lastName,
+            //         email: email,
+            //         password: password,
+            //         oldPassword: oldPassword
+            //     }
+            // })
+            //     .then(() => {
+
+            //         setShowSuccess(true);
+            //         setTimeout(() => {
+            //             setShowSuccess(false)
+            //         }, 3000);
+
+            //     })
+            //     .catch((error) => {
+            //         console.log(error);
+            //     });
+            updatePassword({
+                variables: {
+                    password: password,
+                    oldPassword: oldPassword
+
+                }
+            })
+
+        // } else {
 
             updateUser({
                 variables: {
@@ -190,7 +229,6 @@ function Setting() {
                     firstName: firstName,
                     lastName: lastName,
                     email: email,
-                    password: hashedPassword,
                 }
             })
                 .then(() => {
@@ -204,29 +242,7 @@ function Setting() {
                 .catch((error) => {
                     console.log(error);
                 });
-
-        } else {
-
-            updateUser({
-                variables: {
-                    id: user.user_id,
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email,
-                }
-            })
-                .then(() => {
-
-                    setShowSuccess(true);
-                    setTimeout(() => {
-                        setShowSuccess(false)
-                    }, 3000);
-
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-        };
+        // };
     };
 
 
