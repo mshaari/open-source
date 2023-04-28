@@ -1,8 +1,10 @@
 html, body {
     width: 100vw;
+    height:fit-content;
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 @keyframes ripple {
