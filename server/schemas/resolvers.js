@@ -97,20 +97,39 @@ const resolvers = {
     //returns the new/updated version of the user
     updateUser : async (parent, args, context) => {
       if(context.user) {
-
         const user = await User.findByIdAndUpdate(context.user._id, {
           first_name: args.firstName,
           last_name: args.lastName,
           email: args.email,
           resume: args.resume,
-          password: args.password,
           cover_letter: args.cover_letter
-        }, { new: true });
+        }, { new: true, runValidators: true});
 
         return user;
       }
       //if context.user does not exist, then we do not have a valid jwt and are not logged in 
       throw new AuthenticationError("You need to be logged in!")
+    },
+    //updatePassword mutation has the user enter their old password, and verifies that they have their old password before allowing updates
+    //the mutation takes in user's entry for oldPassword and their new password
+    updatePassword: async (parent, args, context ) => {
+      //we identify which user is being updated by the user _id in the context of the application
+      if(context.user) {
+        const user = await User.findById(context.user._id);
+        //we check here whether the user's old password actually matches their password in the database
+        const correctPw = await user.isCorrectPassword(args.oldPassword);
+        //if the passwords match, we set the password to be the new password
+        if (correctPw){
+          user.password = args.password;
+          //and do a save to update the document 
+          //we are updating with save() instead of findOneAndUpdate because then we have access to the Mongoose pre-save functionality with the bcrypt password hashing
+          await user.save()
+          return {update_successful: true}
+        }
+        else {
+          return {update_successful: false}
+        }
+      }
     },
     //logs a user in
     //takes in an email and a password as arguments
