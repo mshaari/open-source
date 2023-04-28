@@ -47,20 +47,20 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <AuthProvider>
-        <Layout>
-          <Router>
+        <Router>
+          <Layout>
             <Routes>
-              <Route path='/' element={<About />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/search' element={<Search />} />
-              <Route path='/dashboard' element={<Dashboard />} />
-              <Route path='/membership' element={<Membership />} />
-              <Route path='/contact' element={<Contact />} />
-              <Route path='/success' element={<Success />} />
-              <Route path='/cancel' element={<Cancel />} />
+            <Route path='/' element={<About />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/search' element={<Search />} />
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/membership' element={<Membership />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/success' element={<Success />} />
+            <Route path='/cancel' element={<Cancel />} />
             </Routes>
-          </Router>
-        </Layout>
+          </Layout>
+        </Router>
       </AuthProvider>
     </ApolloProvider>
   )

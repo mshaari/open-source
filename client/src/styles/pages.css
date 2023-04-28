@@ -1100,6 +1100,14 @@ label {
         width: 60vw;
     }
 
+    .data-box {
+        width: 80vw;
+    }
+
+    #user-first-name, #user-last-name, #user-username, #user-email, #user-password, #user-old-password {
+        width: 40vw;
+    }
+
     #user-resume, #user-cover-letter {
         width: 70vw;
     }
@@ -1113,10 +1121,3 @@ label {
     }
 }
 
-@media screen and (min-height: 1200px) {
-    .page-content {
-
-        background: url('../../public/images/mobile-bg.gif');
-
-    }
-}
