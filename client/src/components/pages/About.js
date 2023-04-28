@@ -52,7 +52,7 @@ function About() {
                         <br></br>
                         and with our paid membership plan for just <span className="price">$14.99</span>,
                         <br></br>
-                        you'll get to save the job listings you're insterested in,
+                        you'll get to save the job listings you're interested in,
                         <br></br>
                         document your progress, and make notes for yourself,
                         <br></br>
