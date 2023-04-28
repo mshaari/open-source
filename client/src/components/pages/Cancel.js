@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { UserContext } from '../UserContext';
 import '../../styles/pages.css';
 
@@ -17,7 +18,7 @@ function Cancel() {
                     <br></br>
                     on the Contact page to let us know why!
                 </p>
-                <a href='/' className='return'>Return</a>
+                <Link to='/' className='return'>Return</Link>
             </div>
         </div>
     );
