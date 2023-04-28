@@ -60,12 +60,12 @@
     z-index: 5;
     position: absolute;
     content: '';
-    background-color: white;
+    background-color: black;
     width: 120vw;
     height: 110vh;
-    left: -35vw;
-    top: -90vh;
-    //transform: scaleY(0);
+    left: -40vw;
+    top: -100vh;
+    transform: scaleY(0);
     opacity: 1;
     transition: all;
     transition-duration: 0.1s;
@@ -111,6 +111,7 @@
     background-size: 200%;
     animation: horizontal-bg-shift 3s infinite alternate-reverse linear;
     box-shadow: 0px 0px 10px black;
+    overflow: hidden;
 } 
 
 .footer::after {
