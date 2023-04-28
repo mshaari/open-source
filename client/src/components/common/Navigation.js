@@ -10,7 +10,7 @@ function Navigation() {
 
   const [user, setUser] = useContext(UserContext);
 
-  const page = window.location.pathname;
+  let page = window.location.pathname;
 
   const { loading, error, data } = useQuery(QUERY_USER, {
     variables: { id: user.user_id },
@@ -35,7 +35,7 @@ function Navigation() {
   return (
     <div>
       {user.loggedIn ? (
-        <nav className='navigation' onClick={() => window.location.reload(true)}>
+        <nav className='navigation' onClick={page = window.location.pathname}>
           <Link to={'/'} className={page === "/" ? "nav-item-active" : "nav-item"}>About Us</Link>
           <Link to={"/login"} onClick={() => handleLogout()} className={page === "/login" ? "nav-item-active" : "nav-item"}>Log Out</Link>
           <Link to={'/search'} className={page === "/search" ? "nav-item-active" : "nav-item"}>Search</Link>
@@ -46,7 +46,7 @@ function Navigation() {
           <Link to='/contact' className={page === "/contact" ? "nav-item-active" : "nav-item"}>Contact</Link>
         </nav>
       ) : (
-        <nav className='navigation' onClick={() => window.location.reload(true)}>
+        <nav className='navigation' onClick={page = window.location.pathname}>
           <Link to='/' className={page === "/" ? "nav-item-active" : "nav-item"}>About Us</Link>
           <Link to='/login' className={page === "/login" ? "nav-item-active" : "nav-item"}>Signup/Login</Link>
           <Link to='/contact' className={page === "/contact" ? "nav-item-active" : "nav-item"}>Contact</Link>
