@@ -46,8 +46,8 @@ function App() {
   
   return (
     <ApolloProvider client={client}>
-      <Layout>
-        <AuthProvider>
+      <AuthProvider>
+        <Layout>
           <Router>
             <Routes>
               <Route path='/' element={<About />} />
@@ -60,8 +60,8 @@ function App() {
               <Route path='/cancel' element={<Cancel />} />
             </Routes>
           </Router>
-        </AuthProvider>
-      </Layout>
+        </Layout>
+      </AuthProvider>
     </ApolloProvider>
   )
 }
