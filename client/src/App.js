@@ -43,12 +43,12 @@ const client = new ApolloClient({
 
 function App() {
 
-  
+
   return (
     <ApolloProvider client={client}>
       <AuthProvider>
-        <Layout>
-          <Router>
+        <Router>
+          <Layout>
             <Routes>
               <Route path='/' element={<About />} />
               <Route path='/login' element={<Login />} />
@@ -59,8 +59,8 @@ function App() {
               <Route path='/success' element={<Success />} />
               <Route path='/cancel' element={<Cancel />} />
             </Routes>
-          </Router>
-        </Layout>
+          </Layout>
+        </Router>
       </AuthProvider>
     </ApolloProvider>
   )
