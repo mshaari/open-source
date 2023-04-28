@@ -43,15 +43,15 @@
 
 @keyframes spread {
     0% {
-        transform: scaleY(0);
+        transform: scale(0);
         opacity: 1;
     }
     95% {
-        transform: scaleY(1);
+        transform: scale(100);
         opacity: 0;
     }
     100% {
-        transform: scaleY(0);
+        transform: scale(0);
         opacity: 0; 
     }
 }
@@ -61,11 +61,12 @@
     position: absolute;
     content: '';
     background-color: black;
-    width: 120vw;
-    height: 110vh;
-    left: -40vw;
-    top: -100vh;
-    transform: scaleY(0);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    left: 30%;
+    top: -50%;
+    transform: scale(0);
     opacity: 1;
     transition: all;
     transition-duration: 0.1s;
@@ -83,7 +84,7 @@
 }
 
 #toggle-theme:active::after {
-    animation: spread 0.1s 1 linear forwards;
+    animation: spread 0.2s 1 linear forwards;
 }
 
 /* background color-shifting animation */
@@ -111,7 +112,6 @@
     background-size: 200%;
     animation: horizontal-bg-shift 3s infinite alternate-reverse linear;
     box-shadow: 0px 0px 10px black;
-    overflow: hidden;
 } 
 
 .footer::after {

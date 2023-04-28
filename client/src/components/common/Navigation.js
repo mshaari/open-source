@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/header.css';
 import { UserContext } from '../UserContext';
@@ -7,14 +7,21 @@ import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../../utils/queries';
 
 function Navigation() {
-  const currentPage = window.location.pathname;
 
   const [user, setUser] = useContext(UserContext);
+
+  const [page, setPage] = useState('about');
+
+
+
 
   const { loading, error, data } = useQuery(QUERY_USER, {
     variables: { id: user.user_id },
     skip: !user.loggedIn,
   });
+
+
+
 
   if (loading) {
     return <p>Loading...</p>;
@@ -24,30 +31,37 @@ function Navigation() {
     console.log(error);
   }
 
+
+
   const handleLogout = () => {
     setUser({ loggedIn: false });
     localStorage.removeItem('id_token');
     return redirect('/')
   }
 
+  const handleClick = (page) => {
+    setPage(page);
+  }
+
+
   return (
     <div>
       {user.loggedIn ? (
         <nav className='navigation'>
-          <Link to={'/'} className={currentPage === "/" ? "nav-item-active" : "nav-item"}>About Us</Link>
-          <Link to={"/login"} onClick={() => handleLogout()} className={currentPage === "Login" ? "nav-item-active" : "nav-item"}>Log Out</Link>
-          <Link to={'/search'} className={currentPage === "/search" ? "nav-item-active" : "nav-item"}>Search</Link>
-          <Link to={"/dashboard"} className={currentPage === "/dashboard" ? "nav-item-active" : "nav-item"}>Dashboard</Link>
+          <Link to={'/'} className={page === "about" ? "nav-item-active" : "nav-item"} onClick={() => handleClick('about')}>About Us</Link>
+          <Link to={"/login"} onClick={() => handleLogout()} className={page === "login" ? "nav-item-active" : "nav-item"}>Log Out</Link>
+          <Link to={'/search'} className={page === "search" ? "nav-item-active" : "nav-item"} onClick={() => handleClick('search')}>Search</Link>
+          <Link to={"/dashboard"} className={page === "dashboard" ? "nav-item-active" : "nav-item"} onClick={() => handleClick('dashboard')}>Dashboard</Link>
           {data.user.paid_member ? null : (
-            <Link to={"/membership"} className={currentPage === "/membership" ? "nav-item-active" : "nav-item"}>Membership</Link>
+            <Link to={"/membership"} className={page === "membership" ? "nav-item-active" : "nav-item"} onClick={() => handleClick('membership')}>Membership</Link>
           )}
-          <Link to='/contact' className={currentPage === "/contact" ? "nav-item-active" : "nav-item"}>Contact</Link>
+          <Link to='/contact' className={page === "contact" ? "nav-item-active" : "nav-item"} onClick={() => handleClick('contact')}>Contact</Link>
         </nav>
       ) : (
         <nav className='navigation'>
-          <Link to='/' className={currentPage === "/" ? "nav-item-active" : "nav-item"}>About Us</Link>
-          <Link to='/login' className={currentPage === "/login" ? "nav-item-active" : "nav-item"}>Signup/Login</Link>
-          <Link to='/contact' className={currentPage === "/contact" ? "nav-item-active" : "nav-item"}>Contact</Link>
+          <Link to='/' className={page === "about" ? "nav-item-active" : "nav-item"} onClick={() => handleClick('about')}>About Us</Link>
+          <Link to='/login' className={page === "login" ? "nav-item-active" : "nav-item"} onClick={() => handleClick('login')}>Signup/Login</Link>
+          <Link to='/contact' className={page === "contact" ? "nav-item-active" : "nav-item"} onClick={() => handleClick('contact')}>Contact</Link>
         </nav>
       )
       }

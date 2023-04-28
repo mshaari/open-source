@@ -248,6 +248,7 @@ function Setting() {
                 </div>
                 {editMode ? (
                     <div>
+                        <h3>Changing your Password?</h3>
                         <div className='data-box'>
                             <label>Old Password:</label>
                             <textarea id="user-old-password" placeholder='Enter Old Password'></textarea>
@@ -284,8 +285,9 @@ function Setting() {
                             <button id='cover-letter-copy' onClick={() => copyLetter()}>Copy Your Cover Letter</button>
                         </div>
                         {showError ? (
-                            <div className='error-text'>
-                                <p>Incorrect Password!</p>
+                            <div>
+                                <p className='error-text'>Incorrect Password!</p>
+                                <p>Forgot your password? <a id='service-email' href='mailto:service@opensource.com?subject=User Forgot Password'>Email</a> us so we can help you out!</p>
                             </div>
                         ) : null}
                         {showSuccess ? (
@@ -301,8 +303,9 @@ function Setting() {
                 ) : (
                     <div>
                         {showError ? (
-                            <div className='error-text'>
-                                <p>Incorrect Password!</p>
+                            <div>
+                                <p className='error-text'>Incorrect Password!</p>
+                                <p>Forgot your password? click <a id='service-email' href='mailto:service@opensource.com?subject=User Forgot Password'>here</a> to contact us and we'll sort it out for you!</p>
                             </div>
                         ) : null}
                         {showSuccess ? (
