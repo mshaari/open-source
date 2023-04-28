@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../../utils/queries';
 
 function Navigation() {
-  const currentPage = window.location.pathname;
+  const currentPage = '';
 
   const [user, setUser] = useContext(UserContext);
 
