@@ -31,23 +31,45 @@ function Navigation() {
   }
 
   return (
+    // <div>
+    //   {user.loggedIn ? (
+    //     <nav className='navigation'>
+    //       <Link to={'/'} className={currentPage === "/" ? "nav-item-active" : "nav-item"}>About Us</Link>
+    //       <Link to={"/login"} onClick={() => handleLogout()} className={currentPage === "Login" ? "nav-item-active" : "nav-item"}>Log Out</Link>
+    //       <Link to={'/search'} className={currentPage === "/search" ? "nav-item-active" : "nav-item"}>Search</Link>
+    //       <Link to={"/dashboard"} className={currentPage === "/dashboard" ? "nav-item-active" : "nav-item"}>Dashboard</Link>
+    //       {data.user.paid_member ? null : (
+    //         <Link to={"/membership"} className={currentPage === "/membership" ? "nav-item-active" : "nav-item"}>Membership</Link>
+    //       )}
+    //       <Link to='/contact' className={currentPage === "/contact" ? "nav-item-active" : "nav-item"}>Contact</Link>
+    //     </nav>
+    //   ) : (
+    //     <nav className='navigation'>
+    //       <Link to='/' className={currentPage === "/" ? "nav-item-active" : "nav-item"}>About Us</Link>
+    //       <Link to='/login' className={currentPage === "/login" ? "nav-item-active" : "nav-item"}>Signup/Login</Link>
+    //       <Link to='/contact' className={currentPage === "/contact" ? "nav-item-active" : "nav-item"}>Contact</Link>
+    //     </nav>
+    //   )
+    //   }
+    // </div>
+
     <div>
       {user.loggedIn ? (
         <nav className='navigation'>
-          <Link to={'/'} className={currentPage === "/" ? "nav-item-active" : "nav-item"}>About Us</Link>
-          <Link to={"/login"} onClick={() => handleLogout()} className={currentPage === "Login" ? "nav-item-active" : "nav-item"}>Log Out</Link>
-          <Link to={'/search'} className={currentPage === "/search" ? "nav-item-active" : "nav-item"}>Search</Link>
-          <Link to={"/dashboard"} className={currentPage === "/dashboard" ? "nav-item-active" : "nav-item"}>Dashboard</Link>
+          <a href="/" className={currentPage === "/" ? "nav-item-active" : "nav-item"}>About Us</a>
+          <a href="/login" onClick={() => handleLogout()} className={currentPage === "Login" ? "nav-item-active" : "nav-item"}>Log Out</a>
+          <a href="/search" className={currentPage === "/search" ? "nav-item-active" : "nav-item"}>Search</a>
+          <a href="/dashboard" className={currentPage === "/dashboard" ? "nav-item-active" : "nav-item"}>Dashboard</a>
           {data.user.paid_member ? null : (
-            <Link to={"/membership"} className={currentPage === "/membership" ? "nav-item-active" : "nav-item"}>Membership</Link>
+            <a href="/membership" className={currentPage === "/membership" ? "nav-item-active" : "nav-item"}>Membership</a>
           )}
-          <Link to='/contact' className={currentPage === "/contact" ? "nav-item-active" : "nav-item"}>Contact</Link>
+          <a href="/contact" className={currentPage === "/contact" ? "nav-item-active" : "nav-item"}>Contact</a>
         </nav>
       ) : (
         <nav className='navigation'>
-          <Link to='/' className={currentPage === "/" ? "nav-item-active" : "nav-item"}>About Us</Link>
-          <Link to='/login' className={currentPage === "/login" ? "nav-item-active" : "nav-item"}>Signup/Login</Link>
-          <Link to='/contact' className={currentPage === "/contact" ? "nav-item-active" : "nav-item"}>Contact</Link>
+          <a href="/" className={currentPage === "/" ? "nav-item-active" : "nav-item"}>About Us</a>
+          <a href="/login" className={currentPage === "/login" ? "nav-item-active" : "nav-item"}>Signup/Login</a>
+          <a href="/contact" className={currentPage === "/contact" ? "nav-item-active" : "nav-item"}>Contact</a>
         </nav>
       )
       }
