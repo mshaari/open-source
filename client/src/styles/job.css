@@ -164,7 +164,7 @@
     flex: row;
     flex-wrap: nowrap;
     height: fit-content ;
-    padding-bottom: 5vh;
+    padding-bottom: 0;
     scroll-snap-type: x;
 }
 

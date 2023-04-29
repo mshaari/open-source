@@ -433,6 +433,14 @@ a, button {
     animation: fade-in 1s 1 linear forwards;
 }
 
+.disabled {
+    pointer-events: none;
+}
+
+.hidden {
+    display: none;
+}
+
 .search-container:hover {
     color: black;
     background-color: white;
