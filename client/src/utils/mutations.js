@@ -35,7 +35,7 @@ export const ADD_JOB = gql`
   }
 `;
 
-// Mutation to add a job
+// Mutation to remove a job
 export const DELETE_JOB = gql`
   mutation deleteJob($_id: ID!) {
     deleteJob(_id: $_id) {
@@ -111,6 +111,7 @@ export const UPDATE_USER = gql`
   }
 `;
 
+// Mutation to change a user's password
 export const UPDATE_PASSWORD = gql`
 mutation updatePassword($password: String, $oldPassword: String) {
   updatePassword(password: $password, oldPassword: $oldPassword) {
@@ -132,6 +133,8 @@ export const UPDATE_MEMBERSHIP = gql`
     }
   }
 `;
+
+// Mutation to update a saved job's progress
 export const ADD_PROGRESS = gql`
 mutation AddProgress(
   $id: ID

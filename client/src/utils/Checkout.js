@@ -6,6 +6,7 @@ export const CHECKOUT = gql`
   }
 `;
 
+
 function Checkout() {
     const [ startCheckout, { loading, error, data } ] = useLazyQuery(CHECKOUT, {
 

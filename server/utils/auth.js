@@ -1,10 +1,8 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const secret = process.env.SECRET_KEY;
-// const secret = 314159265359;
 const expiration = '2h';
-// counter is to test bug with secret key not coming from .env file
-// let counter = 0;
+
 
 module.exports = {
   authMiddleware: function ({ req }) {
@@ -27,8 +25,6 @@ module.exports = {
 
       console.log(`Invalid token`);
 
-      // console.log(`Invalid token ${counter}`);
-      //counter++;
     }
 
     return req;
