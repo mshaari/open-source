@@ -160,6 +160,13 @@
 }
 
 @media screen and (max-width: 450px) {
+    .footer {
+        font-size: 0.5rem;
+    }
+
+    #toggle-theme, #back, #install {
+        font-size: 0.3rem;
+    }
     #install {
         display: none;
     }
