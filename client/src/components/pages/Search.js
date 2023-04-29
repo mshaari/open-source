@@ -11,6 +11,10 @@ function Search() {
     const [country, setCountry] = useState('');
     const [role, setRole] = useState('');
     const [location, setLocation] = useState('');
+    
+    const [alert,setAlert] = useState(false);
+
+    const searchButton = document.getElementById('search-btn');
    
     const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
    
@@ -29,6 +33,7 @@ function Search() {
     let savedJobId = [];
     
     if (userData) {
+
 
 
       if (userData?.data?.user?.saved_jobs) {
@@ -104,16 +109,32 @@ function Search() {
      <label>Location:</label>
      <input id='location' placeholder='city or postal code' onChange={(e) => setLocation(e.target.value)}></input>
     </div>
+    {alert? (
+      <div>
+         <p className='error-text'>Please Select a Country!</p>
+      </div>
+    ): null }
     {/* When the user clicks the Search button, the findJobs is called. It triggers a GraphQL query using the useLazyQuery hook from Apollo to fetch job data based on the user's input. */}
-    <button id='search-btn' onClick={() => 
-      findJobs({ variables: {country: country, role: role, location: location}})}>Search</button>
+    <button id='search-btn' className='search-btn' onClick={() => {
+      if (!country) {
+         setAlert(true);
+         setTimeout(()=> {
+            setAlert(false);
+         },3000)
+         return;
+      };
+      findJobs({ variables: {country: country, role: role, location: location}});
+      searchButton.classList.add('hidden');}}>Search</button>
     {loading?(
       <p className='loading'><span>L</span><span>o</span><span>a</span><span>d</span><span>i</span><span>n</span><span>g</span><span>.</span><span>.</span><span>.</span></p>
     ): null }
-   <div>
-    {/* The Search component renders a JobResultCard component passing the data and userData as props.  */}
-      <JobResultCard jobs={data} isPaidMember={userData?.data?.user?.paid_member} savedJobId={savedJobId}/>
-   </div>
+      <div>
+      {/* The Search component renders a JobResultCard component passing the data and userData as props.  */}
+         <JobResultCard jobs={data} isPaidMember={userData?.data?.user?.paid_member} savedJobId={savedJobId}/>
+      </div>
+    {data? (
+      <button id='search-btn' className='search-btn' onClick={() => {window.location.reload()}}>New Search</button>
+    ): null }
    </div>
   </div>
  );
