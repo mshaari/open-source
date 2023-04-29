@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+// query for user data
 export const QUERY_USER = gql`
   query Query($id: ID!) {
     user(_id: $id) {
@@ -34,8 +35,7 @@ export const QUERY_USER = gql`
   }
 `;
 
-// Made a query to get jobs from search input
-
+// Makes a query to get jobs from search input
 export const QUERY_JOBS = gql`
   query queryJobs ($country: String!, $role: String!, $location: String!) {
      findJobs(country: $country, role: $role, location: $location) {

@@ -1,5 +1,4 @@
 const { gql } = require('apollo-server-express');
-//TODO: write out queries and mutations (types) below
 
 //'scalar Date' is necessary for us to use the Scalar Type Date
 const typeDefs = gql`

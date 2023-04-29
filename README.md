@@ -3,18 +3,19 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
     
 ## Table of Contents
-- [Project Description](#Description)
-- [Usage](#Usage)
-- [Installation](#Installation)
-- [Contributing](#Contributing)
-- [Questions](#Questions)
-- [License](#License)
+- [Project Description](#description)
+- [Usage](#usage)
+- [Installation](#installation)
+- [Contributing](#contributing)
+- [Questions](#questions)
+- [Team Members](#team-members)
+- [License](#license)
 
-## Description
-This is an application that allows users to search for tech jobs, save jobs they are interested in, and track their application progress can be immensely helpful. This is intended to provide users with a centralized platform to browse job openings, save listings that match their interests, and track their application status, making the job search process more streamlined and efficient.
+## Description 
+This is an application that allows users to search for tech jobs, save jobs they are interested in, and track their application progress. This is intended to provide users with a centralized platform to browse job openings, save listings that match their interests, and track their application status, making the job search process more streamlined and efficient.
 
 ## Usage
-To use the Tech Job Board application, users can simply visit the website and start searching for tech jobs using keywords and location filters. They can also create an account to save job listings they are interested in and track their application progress. Once they have found a job they want to apply for, they can click on the apply button and be redirected to the job posting on the employer's website.
+To use the Tech Job Board application, users can simply visit the website, signup, and start searching for tech jobs using keywords and location filters. They can also become a paid member to save job listings they are interested in and track their application progress. Once they have found a job they want to apply for, they can click on the job listing title and be redirected to the job posting on the employer's website.
 
 
 ## Installation
@@ -27,6 +28,15 @@ Contributions to the Tech Job Board project are welcome. Developers can fork the
 
 ## Questions
 If you have any questions or feedback about the Tech Job Board project, you can contact the developers on the project's GitHub page.
+
+## Team Members
+ Aviva: https://github.com/AvivaRubenstein
+
+ Eli: https://github.com/crystal-coding-time
+
+ Fred: https://github.com/FeddericoWayne
+
+ Michael: https://github.com/mshaari
 
 
 ## License

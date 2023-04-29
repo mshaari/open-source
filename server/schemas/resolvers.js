@@ -24,7 +24,7 @@ const resolvers = {
 
 // Pulls Web API data from adzuna.com
     findJobs: async (parent, { country, role, location }) => {
-      const { data } = await axios.get(`https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${process.env.APP_ID}&app_key=${process.env.API_KEY}&results_per_page=20&what=${role}&where=${location}&distance=20`)
+      const { data } = await axios.get(`https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${process.env.APP_ID}&app_key=${process.env.API_KEY}&results_per_page=30&what=${role}&where=${location}&distance=20`)
       let jobArray = [];
       for (i=0; i < data.results.length; i++){
           let job =  data.results[i];
@@ -147,9 +147,9 @@ const resolvers = {
     
           const token = signToken(user);
           return { token, user };
-        },
+    },
 //adds a job to a user's saved_jobs array
-      addJob: async (parent, args, context) => {
+    addJob: async (parent, args, context) => {
         if(context.user) {
         const user = await User.findByIdAndUpdate(
           {_id: context.user._id},
@@ -161,9 +161,9 @@ const resolvers = {
         return newJob;
       }
       throw new AuthenticationError('You need to be logged in!');
-      },
+    },
 //deleteds a job from a user's saved_jobs array
-      deleteJob: async (parent, args, context) => {
+    deleteJob: async (parent, args, context) => {
         //find the user through their _id in the context 
         if(context.user){
           const user = await User.findByIdAndUpdate(
@@ -176,30 +176,29 @@ const resolvers = {
 
           return user;
         }
-      },
+    },
 //addProgress can be used to add progress AND update progress on a specific saved_job for a user
-        addProgress: async(parent, args, context) => {
-          console.log(context.user);
-          if(context.user){
-            const user = await User.findOneAndUpdate(
-              //find the user by the user's _id in the context of the app
-              {"_id": context.user._id,
-              //find the job we want to add progress to in the user's saved_jobs array -- the job's _id gets passed in as an argument
-               "saved_jobs._id" : args._id
-              },
-              //using the $ positional operator, find the saved_job that we want to update, and set the progress object, passing in fields and values as arguments
-              {$set: {"saved_jobs.$.progress": {applied: args.applied, interviewed: args.interviewed,
-                offer_received: args.offer_received, end_process: args.end_process, notes: args.notes
-              }},
-            },
-            //return the new version of the user, including their new progress on their saved job
-              {new: true}
-            );
-            return user;
-          }
-        }
- 
-   }
+    addProgress: async(parent, args, context) => {
+      console.log(context.user);
+      if(context.user){
+        const user = await User.findOneAndUpdate(
+          //find the user by the user's _id in the context of the app
+          {"_id": context.user._id,
+          //find the job we want to add progress to in the user's saved_jobs array -- the job's _id gets passed in as an argument
+            "saved_jobs._id" : args._id
+          },
+          //using the $ positional operator, find the saved_job that we want to update, and set the progress object, passing in fields and values as arguments
+          {$set: {"saved_jobs.$.progress": {applied: args.applied, interviewed: args.interviewed,
+            offer_received: args.offer_received, end_process: args.end_process, notes: args.notes
+          }},
+        },
+        //return the new version of the user, including their new progress on their saved job
+          {new: true}
+        );
+        return user;
+      }
+    }
+  }
 };
 
 module.exports = resolvers;
