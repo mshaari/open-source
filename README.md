@@ -20,10 +20,17 @@ The App's GitHub repo is located at: https://github.com/mshaari/open-source
 ## Usage
 To use the Tech Job Board application, users can simply visit the website, signup, and start searching for tech jobs using keywords and location filters. They can also become a paid member to save job listings they are interested in and track their application progress. Once they have found a job they want to apply for, they can click on the job listing title and be redirected to the job posting on the employer's website.
 
+![App at landing](assets/registered-user-navigation.gif)
+
+![Mobil view](assets/mobile-screenshots.png)
+
+
 
 ## Installation
 As a progressive web application, the Tech Job Board can be installed through the browser. Users can visit the website and follow the installation prompts on their browser. Once installed, they can access the Tech Job Board through their device's app launcher, just like any other app.
 Alternatively, developers can clone the repository and run it locally using a web server. They will need to have Node.js and npm installed on their machine. Once they have cloned the repository, they can run npm install to install the dependencies and npm start to start the development server.
+
+![Search function](assets/registered-user-search.gif)
 
 ## Contributing
 Contributions to the Tech Job Board project are welcome. Developers can fork the repository, make their changes, and submit a pull request to the main repository. Please make sure to follow the project's coding standards and guidelines.
