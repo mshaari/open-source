@@ -24,7 +24,7 @@ const resolvers = {
 
 // Pulls Web API data from adzuna.com
     findJobs: async (parent, { country, role, location }) => {
-      const { data } = await axios.get(`https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${process.env.APP_ID}&app_key=${process.env.API_KEY}&results_per_page=20&what=${role}&where=${location}&distance=20`)
+      const { data } = await axios.get(`https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${process.env.APP_ID}&app_key=${process.env.API_KEY}&results_per_page=30&what=${role}&where=${location}&distance=20`)
       let jobArray = [];
       for (i=0; i < data.results.length; i++){
           let job =  data.results[i];
