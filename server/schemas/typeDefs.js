@@ -1,5 +1,4 @@
 const { gql } = require('apollo-server-express');
-//TODO: write out queries and mutations (types) below
 
 //'scalar Date' is necessary for us to use the Scalar Type Date
 const typeDefs = gql`
@@ -55,7 +54,6 @@ type Progress {
   salary_min: Float
   contract_time: String
   redirect_url: String
-  # progress: Progress
   }
   type Query {
     # Get basic user information by user ID
@@ -80,6 +78,7 @@ type Progress {
     deleteJob(_id: ID) : User
     #addProgess can be used to create a brand new Progress object AND to update an existing Progress object
     addProgress(_id: ID, applied: Boolean, interviewed: Boolean, offer_received: Boolean, end_process: Boolean, notes: String) : User
+    #updatePassword can be used to create a brand new Password AND to update an existing Password, this is seprate from the update user mutation to keep becrypt secure
     updatePassword(password: String, oldPassword: String): Verification
    }
 `;
