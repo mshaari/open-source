@@ -24,7 +24,7 @@ function Search() {
     const userData = useQuery(QUERY_USER, {
        variables: { id: user.user_id },
     });
-   
+
     
     let savedJobId = [];
     
@@ -44,9 +44,6 @@ function Search() {
 
     };
 
-
-
-    
     
  return (
   <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>
@@ -108,7 +105,8 @@ function Search() {
      <input id='location' placeholder='city or postal code' onChange={(e) => setLocation(e.target.value)}></input>
     </div>
     {/* When the user clicks the Search button, the findJobs is called. It triggers a GraphQL query using the useLazyQuery hook from Apollo to fetch job data based on the user's input. */}
-    <button id='search-btn' onClick={() => findJobs({ variables: {country: country, role: role, location: location}})}>Search</button>
+    <button id='search-btn' onClick={() => 
+      findJobs({ variables: {country: country, role: role, location: location}})}>Search</button>
     {loading?(
       <p className='loading'><span>L</span><span>o</span><span>a</span><span>d</span><span>i</span><span>n</span><span>g</span><span>.</span><span>.</span><span>.</span></p>
     ): null }
@@ -119,5 +117,6 @@ function Search() {
    </div>
   </div>
  );
-}
+};
+
 export default Search;

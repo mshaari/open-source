@@ -406,6 +406,10 @@ a, button {
     margin-bottom: 30px;
 }
 
+.results {
+    display: block;
+}
+
 .search-container {
     position: relative;
     font-family: var(--text);
@@ -419,7 +423,7 @@ a, button {
     transition: transform, background-color, border, color, box-shadow;
     transition-duration: 0.4s;
     border-radius: 10px;
-    padding-inline: 15px;
+    padding-inline: 0;
     box-shadow: 5px 5px 10px black;
     opacity: 0;
     margin-bottom: 2rem;
