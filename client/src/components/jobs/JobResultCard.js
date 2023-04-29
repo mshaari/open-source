@@ -82,45 +82,45 @@ function JobResultCard(props) {
               
 
     return (
-        <div className='result-list'>
-            {props.jobs?.findJobs? (
-            <h3 className='results'>Results:</h3>
-            ) :  null }
-            {props.jobs?.findJobs ?  
-            (props.jobs.findJobs.map((job) => (
-                <div key={job._id} className='result-container'>
-                    <a className="result-title" href={job.redirect_url} target="blank"><h3>{job.title}</h3></a>
-                    <div className='job-container'>
-                        <p>Company: {job.company_name}</p>
-                        <p>Location: {job.location}</p>
-                        <p>Contract Time: {job.contract_time}</p>
-                        {job.salary_predicted ? 
-                            (
-                                <h5>Estimated Salary: ${Math.floor(job.salary_min)}.00{job.salary_min !== job.salary_max ? ` - ${Math.floor(job.salary_max)}.00` : ''}</h5>
-                            )
-                            : 
-                            (
-                                <h5>Salary not estimated</h5>
-                            )
-                        }
-                        <p className='job-description'>Description: {job.description}</p>
+        <><div>
+            {props.jobs?.findJobs ? (
+                <h3 className='results'>Results:</h3>
+            ) : null}
+        </div><div className='result-list'>
+                {props.jobs?.findJobs ?
+                    (props.jobs.findJobs.map((job) => (
+                        <div key={job._id} className='result-container'>
+                            <a className="result-title" href={job.redirect_url} target="blank"><h3>{job.title}</h3></a>
+                            <div className='job-container'>
+                                <p>Company: {job.company_name}</p>
+                                <p>Location: {job.location}</p>
+                                <p>Contract Time: {job.contract_time}</p>
+                                {job.salary_predicted ?
+                                    (
+                                        <h5>Estimated Salary: ${Math.floor(job.salary_min)}.00{job.salary_min !== job.salary_max ? ` - ${Math.floor(job.salary_max)}.00` : ''}</h5>
+                                    )
+                                    :
+                                    (
+                                        <h5>Salary not estimated</h5>
+                                    )}
+                                <p className='job-description'>Description: {job.description}</p>
 
-                        {props.isPaidMember ? (
-                            <div>
-                                <button onClick={() => {
-                                    const mailToLink = `mailto:?subject=Look at this job listing I saw on </Open Source> for a ${job.title}!&body=Company: ${job.company_name}%0D%0A Location: ${job.location}%0D%0A Contract Time: ${job.contract_time}%0D%0A Estimated Salary: $${Math.floor(job.salary_min)}.00${job.salary_min !== job.salary_max ? ` - ${Math.floor(job.salary_max)}.00` : ''}%0D%0A Description: ${job.description}%0D%0A Visit </Open Source> at https://git.heroku.com/open-source.git to learn more!`;
-                                    window.location.href = mailToLink;}} className="share-job">Share This Job</button>
-                                <button onClick={handleSaveButton} className="save-job" id={job._id}>Save This Job</button>
+                                {props.isPaidMember ? (
+                                    <div>
+                                        <button onClick={() => {
+                                            const mailToLink = `mailto:?subject=Look at this job listing I saw on </Open Source> for a ${job.title}!&body=Company: ${job.company_name}%0D%0A Location: ${job.location}%0D%0A Contract Time: ${job.contract_time}%0D%0A Estimated Salary: $${Math.floor(job.salary_min)}.00${job.salary_min !== job.salary_max ? ` - ${Math.floor(job.salary_max)}.00` : ''}%0D%0A Description: ${job.description}%0D%0A Visit </Open Source> at https://git.heroku.com/open-source.git to learn more!`;
+                                            window.location.href = mailToLink;
+                                        } } className="share-job">Share This Job</button>
+                                        <button onClick={handleSaveButton} className="save-job" id={job._id}>Save This Job</button>
+                                    </div>
+                                ) : (
+                                    <p className='reminder-text'>Become a paid member to save this job!</p>
+                                )}
                             </div>
-                        ) : (
-                            <p className='reminder-text'>Become a paid member to save this job!</p>
-                            )
-                        }
-                    </div>
-                </div> 
-            ))
-            ) : null }
-        </div>
+                        </div>
+                    ))
+                    ) : null}
+            </div></>
     );
 }
 

@@ -32,7 +32,7 @@ function JobResultCard(props) {
 
         const jobId = event.target.id;
 
-        const container = document.querySelector('.result-list');
+        const container = document.querySelector('.saved-result-list');
 
         container.classList.add('removed');
 
@@ -144,7 +144,7 @@ function JobResultCard(props) {
     }
 
     return (
-        <div className='result-list'>
+        <div className='saved-result-list'>
             {jobs.map((job) => (
                 <div key={job._id} className='saved-result-container' id={`container-${job._id}`}>
                     <a className="saved-result-title" href={job.redirect_url} target="blank"><h3>{job.title}</h3></a>

@@ -157,17 +157,30 @@
     color: rgb(0, 128, 60);
 }
 
+.result-list {
+    height: 70vh;
+    overflow-x: auto;
+    display: flex;
+    flex: row;
+    flex-wrap: nowrap;
+    height: fit-content ;
+    padding-bottom: 5vh;
+    scroll-snap-type: x;
+}
+
 .result-container {
+    flex: 0 0 68vw;
+    flex-direction: column;
     background-color: rgb(255, 215, 215);
     border-radius: 25px;
+    margin-inline: 10px;
     margin-block: 15px;
     padding-block: 15px;
     padding-inline: 15px;
     transition: all;
     transition-duration: 0.3s;
-    width: 80vw;
-    margin-inline:auto;
     text-align: center;
+    scroll-snap-align: center;
 }
 
 .result-container:hover {
