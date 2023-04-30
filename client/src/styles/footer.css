@@ -132,7 +132,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: radial-gradient(circle at 50% 50%, var(--new-leaf) 0%, var(--sky) 80%);
+    background: radial-gradient(circle at 50% 50%, var(--new-leaf) 0%, rgb(73, 213, 255) 80%);
     transform: scale(0);
     transition: transform;
     transform-origin: bottom;
@@ -157,6 +157,13 @@
 .footer:hover #footer-title span:nth-last-of-type(2) {
     color: white;
     text-shadow: 0 0 15px white;
+}
+
+@media screen and (max-width: 630px) {
+
+    .footer::after {
+        background: radial-gradient(circle at 50% 50%, var(--new-leaf) 0%, rgb(255, 146, 110) 80%);
+    }
 }
 
 
