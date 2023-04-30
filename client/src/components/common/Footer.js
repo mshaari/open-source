@@ -3,6 +3,7 @@ import { UserContext } from '../UserContext';
 import '../../styles/footer.css';
 
 function Footer() {
+    
     const [user, setUser, theme, setTheme, toggleTheme] = useContext(UserContext); // initializing context values
 
     const installButtonRef = useRef(null); // creating a reference to the install button

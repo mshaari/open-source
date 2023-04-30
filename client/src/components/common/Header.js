@@ -5,8 +5,6 @@ import '../../styles/header.css';
 
 function Header() {
 
-    // const { currentPage, handlePageChange } = props;
-
     const [user, setUser, theme, setTheme, toggleTheme] = useContext(UserContext);
 
     return (

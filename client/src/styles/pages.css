@@ -789,9 +789,9 @@ label {
     justify-content: center;
     z-index:3;
     top:0;
-    width: 90vw;
+    left:-15vw;
+    width: 120vw;
     height: 70vh;
-    border-radius: 35px;
     color: white;
     background-color: rgba(0,0,0,0.8);
 }

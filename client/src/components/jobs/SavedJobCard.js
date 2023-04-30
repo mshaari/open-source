@@ -13,8 +13,6 @@ function JobResultCard(props) {
 
     const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
 
-    const [progressUpdated, setProgressUpdated] = useState(false);
-
     const { userData } = useQuery(QUERY_USER, {
         variables: { id: user.user_id }, // pass the user ID as a variable to the query
         skip: !user.loggedIn, // skip the query if user is not logged in

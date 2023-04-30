@@ -4,7 +4,7 @@ import Auth from '../../utils/auth';
 import { SIGN_UP } from '../../utils/mutations';
 
 
-function Signup(props) {
+function Signup() {
     const [formState, setFormState] = useState({ email: '', password: '' });
     const [addUser, { error }] = useMutation(SIGN_UP);
 
