@@ -22,38 +22,45 @@
 }
 
 .greyscale {
-    filter:grayscale(1);
+    filter: grayscale(1);
 }
 
 @keyframes duplicate {
-    0%{
+    0% {
         transform: translateX(0px);
         filter: brightness(1);
     }
-    70%{
+
+    70% {
         transform: translateX(0px);
         filter: brightness(1);
     }
+
     75% {
         transform: translateX(-15px);
         filter: brightness(0.8);
     }
+
     80% {
         transform: translateX(13px);
         filter: brightness(0.7);
     }
+
     83% {
         transform: translateX(-10px);
         filter: brightness(0.6);
     }
+
     85% {
         transform: translateX(8px);
         filter: brightness(0.5);
     }
+
     87% {
         transform: translateX(0px);
         filter: brightness(0.4);
     }
+
     100% {
         transform: translateX(0px);
         filter: brightness(0.4);
@@ -61,37 +68,44 @@
 }
 
 @keyframes saved {
-    0%{
+    0% {
         transform: translateY(0px);
-        filter:hue-rotate(0deg)
+        filter: hue-rotate(0deg)
     }
-    20%{
+
+    20% {
         transform: translateY(0px);
-        filter:hue-rotate(45deg)
+        filter: hue-rotate(45deg)
     }
+
     25% {
         transform: translateY(-15px);
-        filter:hue-rotate(90deg)
+        filter: hue-rotate(90deg)
     }
+
     30% {
         transform: translateY(13px);
-        filter:hue-rotate(135deg)
+        filter: hue-rotate(135deg)
     }
+
     33% {
         transform: translateY(-10px);
-        filter:hue-rotate(180deg)
+        filter: hue-rotate(180deg)
     }
+
     35% {
         transform: translateY(8px);
-        filter:hue-rotate(225deg)
+        filter: hue-rotate(225deg)
     }
+
     37% {
         transform: translateY(0px);
-        filter:hue-rotate(270deg)
+        filter: hue-rotate(270deg)
     }
+
     100% {
         transform: translateY(0px);
-        filter:hue-rotate(270deg);
+        filter: hue-rotate(270deg);
     }
 }
 
@@ -117,15 +131,18 @@
         opacity: 1;
 
     }
+
     10% {
         transform: translateX(25px) translateY(0);
         opacity: 1;
     }
+
     20% {
         transform: translateX(-110vw) translateY(0);
         opacity: 0;
 
     }
+
     30% {
         transform: translateX(-110vw) translateY(110vh);
         opacity: 0;
@@ -135,10 +152,12 @@
         transform: translateX(0) translateY(110vh);
         opacity: 0;
     }
+
     85% {
         transform: translateX(0) translateY(0);
         opacity: 0.2;
     }
+
     100% {
         transform: translateX(0) translateY(0);
         opacity: 1;
@@ -163,7 +182,7 @@
     display: flex;
     flex: row;
     flex-wrap: nowrap;
-    height: fit-content ;
+    height: fit-content;
     padding-bottom: 0;
     scroll-snap-type: x;
 }
@@ -196,7 +215,7 @@
     transition: all;
     transition-duration: 0.3s;
     width: 75vw;
-    margin-inline:auto;
+    margin-inline: auto;
     text-align: center;
 }
 
@@ -210,23 +229,28 @@
         text-shadow: none;
         text-shadow: 1px 1px 1px black;
     }
+
     5% {
         transform: scale(0.8);
         text-shadow: none;
     }
+
     10% {
         transform: scale(1.1);
         text-shadow: 3px 3px 3px black;
     }
+
     13% {
         transform: scale(0.9);
         text-shadow: none;
     }
+
     15% {
         transform: scale(1);
         text-shadow: none;
         text-shadow: 1px 1px 1px black;
     }
+
     100% {
         transform: scale(1);
         text-shadow: none;
@@ -258,11 +282,15 @@ a h3 {
     animation: pulse 3s linear infinite;
 }
 
-.status, .note-title {
+.status,
+.note-title {
     margin-bottom: 5px;
 }
 
-.save-job, .share-job, .save-job-progress, .remove-job{
+.save-job,
+.share-job,
+.save-job-progress,
+.remove-job {
     margin: 1rem;
     font-family: var(--buttons);
     background-color: #b1d1e2;
@@ -273,26 +301,30 @@ a h3 {
 }
 
 @keyframes bg-shift {
-    0%{
+    0% {
         background-position: left;
     }
+
     10% {
         background-position: right;
     }
+
     20% {
         background-position: left;
     }
+
     100% {
         background-position: left;
     }
 }
+
 .job-description {
     background: linear-gradient(90deg, var(--fairytale) 0%, var(--thistle) 45%, var(--straw) 50%, var(--thistle) 55%, var(--fairytale) 100%);
     background-size: 800%;
     background-position: left;
     border-radius: 25px;
     padding: 15px;
-    color:black;
+    color: black;
     animation: bg-shift 5s infinite linear;
 }
 
@@ -302,7 +334,7 @@ a h3 {
     background-position: left;
     border-radius: 25px;
     padding: 15px;
-    color:black;
+    color: black;
     animation: bg-shift 5s infinite linear;
 }
 
@@ -311,25 +343,34 @@ a h3 {
         transform: translateY(-4px);
         box-shadow: 0 5px 0px 0 rgb(42, 131, 255);
     }
+
     30% {
         transform: translateY(-1px);
         box-shadow: 0 3px 0px 0 rgb(42, 131, 255);
     }
+
     40% {
         transform: translateY(-3px);
         box-shadow: 0 5px 0px 0 rgb(42, 131, 255);
     }
+
     100% {
         transform: translateY(-3px);
         box-shadow: 0 5px 0px 0 rgb(42, 131, 255);
     }
 }
 
-.save-job:hover, .share-job:hover, .save-job-progress:hover, .remove-job:hover {
+.save-job:hover,
+.share-job:hover,
+.save-job-progress:hover,
+.remove-job:hover {
     animation: save-job-button 0.5s linear forwards;
 }
 
-.save-job:active, .share-job:active, .save-job-progress:active, .remove-job:active {
+.save-job:active,
+.share-job:active,
+.save-job-progress:active,
+.remove-job:active {
     transition: none;
     box-shadow: none !important;
     background-color: white;
@@ -342,21 +383,27 @@ a h3 {
     0% {
         transform: translateX(0px);
     }
+
     5% {
         transform: translateX(20px);
     }
+
     10% {
         transform: translateX(-15px);
     }
+
     13% {
         transform: translateX(10px);
     }
+
     17% {
         transform: translateX(-5px);
     }
+
     21% {
         transform: translateX(0px);
     }
+
     100% {
         transform: translateX(0px);
     }
@@ -373,7 +420,10 @@ a h3 {
         width: 70vw;
     }
 
-    .share-job, .save-job-progress, .remove-job, .save-job {
+    .share-job,
+    .save-job-progress,
+    .remove-job,
+    .save-job {
         font-size: 0.7rem;
         margin-inline: 5px;
     }

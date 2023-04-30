@@ -9,7 +9,7 @@ function Success() {
 
     const [page, setPage] = useState('about');
 
-    const [user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+    const [user, setUser, theme, setTheme, toggleTheme] = useContext(UserContext);
 
     const [updateMembership] = useMutation(UPDATE_MEMBERSHIP);
 

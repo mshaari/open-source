@@ -23,10 +23,12 @@
 }
 
 .greyscale {
-    filter:grayscale(1);
+    filter: grayscale(1);
 }
 
-#toggle-theme, #back, #install {
+#toggle-theme,
+#back,
+#install {
     position: relative;
     cursor: pointer;
     font-family: var(--title);
@@ -34,7 +36,7 @@
     margin-top: 15px;
     margin-inline: 15px;
     background-color: black;
-    border:none;
+    border: none;
     border: 3px solid white;
     border-radius: 15px;
     color: white;
@@ -46,13 +48,15 @@
         transform: scale(0);
         opacity: 1;
     }
+
     95% {
         transform: scale(100);
         opacity: 0;
     }
+
     100% {
         transform: scale(0);
-        opacity: 0; 
+        opacity: 0;
     }
 }
 
@@ -73,11 +77,15 @@
     transform-origin: bottom;
 }
 
-#toggle-theme:hover, #back:hover, #install:hover {
+#toggle-theme:hover,
+#back:hover,
+#install:hover {
     filter: invert(1);
 }
 
-#toggle-theme:active, #back:active, #install:active {
+#toggle-theme:active,
+#back:active,
+#install:active {
     color: var(--indian-red);
     background-color: white;
     border: 3px solid var(--indian-red);
@@ -89,10 +97,11 @@
 
 /* background color-shifting animation */
 @keyframes horizontal-bg-shift {
-    0%{
+    0% {
         background-position: left;
     }
-    100%{
+
+    100% {
         background-position: right;
     }
 }
@@ -105,7 +114,7 @@
     position: relative;
     width: 100vw;
     margin-inline: 0;
-    display: flex; 
+    display: flex;
     flex-direction: column;
     align-items: center;
     background: linear-gradient(90deg, #6200ff 0%, var(--fairytale)50%, #6200ff 100%);
@@ -113,7 +122,7 @@
     animation: horizontal-bg-shift 3s infinite alternate-reverse linear;
     box-shadow: 0px 0px 10px black;
     font-size: 0.5rem !important;
-} 
+}
 
 .footer::after {
     z-index: -1;
@@ -156,4 +165,4 @@
     #install {
         display: none;
     }
-} 
+}

@@ -18,7 +18,6 @@ import Success from './components/pages/Success';
 import Cancel from './components/pages/Cancel';
 import Layout from './components/common/Layout';
 
-
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -33,17 +32,12 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
-
-
 function App() {
-
-
   return (
     <ApolloProvider client={client}>
       <AuthProvider>
