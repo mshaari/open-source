@@ -8,7 +8,7 @@ import { QUERY_USER } from '../../utils/queries'; // import the query
 
 function About() {
 
-    const [user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+    const [user, setUser, theme, setTheme, toggleTheme] = useContext(UserContext);
 
     const { loading, error, data } = useQuery(QUERY_USER, {
         variables: { id: user.user_id }, // pass the user ID as a variable to the query
@@ -22,8 +22,6 @@ function About() {
     if (error) {
         console.log(error);
     }
-
-
 
     return (
         <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>
@@ -61,11 +59,9 @@ function About() {
                         Sign up and start your tech job hunting journey today!
                     </p>
                 )}
-
             </div>
         </div>
     );
-
 }
 
 export default About;

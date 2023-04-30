@@ -5,7 +5,7 @@ import '../../styles/pages.css';
 
 function Contact() {
 
-    const [user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+    const [user, setUser, theme, setTheme, toggleTheme] = useContext(UserContext);
 
     const form = useRef();
 

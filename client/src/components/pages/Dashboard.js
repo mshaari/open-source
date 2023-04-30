@@ -3,7 +3,6 @@ import { UserContext } from '../UserContext';
 import SavedJobs from '../jobs/SavedJobs';
 import Setting from '../pages/Setting';
 import '../../styles/pages.css';
-
 import { useQuery } from '@apollo/client'; // import useQuery hook
 import { QUERY_USER } from '../../utils/queries'; // import the query
 
@@ -11,7 +10,7 @@ function Dashboard() {
 
     const [showSetting, setShowSetting] = useState(false);
 
-    const [user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+    const [user, setUser, theme, setTheme, toggleTheme] = useContext(UserContext);
 
     const { loading, error, data } = useQuery(QUERY_USER, {
         variables: { id: user.user_id },
@@ -25,9 +24,6 @@ function Dashboard() {
     const closeSetting = () => {
         setShowSetting(false);
     };
-
-
-    
 
     return (
 

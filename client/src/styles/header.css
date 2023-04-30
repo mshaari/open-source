@@ -22,15 +22,16 @@
 }
 
 .greyscale {
-    filter:grayscale(1);
+    filter: grayscale(1);
 }
 
 /* background color-shifting animation */
 @keyframes horizontal-bg-shift {
-    0%{
+    0% {
         background-position: left;
     }
-    100%{
+
+    100% {
         background-position: right;
     }
 }
@@ -42,14 +43,14 @@
     position: relative;
     width: 100vw;
     margin-inline: 0;
-    display: flex; 
+    display: flex;
     flex-direction: column;
     align-items: center;
     background: linear-gradient(90deg, var(--straw)0%, var(--fairytale)50%, var(--straw) 100%);
     background-size: 200%;
     animation: horizontal-bg-shift 3s infinite alternate-reverse linear;
     box-shadow: 0px 0px 10px black;
-} 
+}
 
 .header::after {
     z-index: -1;
@@ -100,14 +101,17 @@
         transform: translateY(-4px);
         box-shadow: 0 5px 0px 0 var(--moonstone);
     }
+
     30% {
         transform: translateY(-1px);
         box-shadow: 0 3px 0px 0 var(--moonstone);
     }
+
     40% {
         transform: translateY(-3px);
         box-shadow: 0 5px 0px 0 var(--moonstone);
     }
+
     100% {
         transform: translateY(-3px);
         box-shadow: 0 5px 0px 0 var(--moonstone);
@@ -143,9 +147,11 @@
     0% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-3px);
     }
+
     100% {
         transform: translateY(0);
     }
@@ -163,7 +169,7 @@
     margin-bottom: 10px;
     transition: all;
     transition-duration: 0.2s;
-    animation: hover 1s  infinite linear;
+    animation: hover 1s infinite linear;
 }
 
 .nav-item-active::after {
@@ -174,7 +180,7 @@
     width: 1.5rem;
     left: calc(50% - 0.75rem);
     top: 90%;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 16%, 92% 16%, 92% 30%, 84% 30%, 84% 44%, 76% 44%, 76% 58%, 68% 58%, 68% 72%, 60% 72%, 60% 86%, 55% 86%, 55% 100%, 45% 100%, 45% 86%, 40% 86%, 40% 72%, 32% 72%, 32% 58%, 24% 58%, 24% 44%, 16% 44%, 16% 30%, 8% 30%, 8% 16%, 0% 16% )
+    clip-path: polygon(0% 0%, 100% 0%, 100% 16%, 92% 16%, 92% 30%, 84% 30%, 84% 44%, 76% 44%, 76% 58%, 68% 58%, 68% 72%, 60% 72%, 60% 86%, 55% 86%, 55% 100%, 45% 100%, 45% 86%, 40% 86%, 40% 72%, 32% 72%, 32% 58%, 24% 58%, 24% 44%, 16% 44%, 16% 30%, 8% 30%, 8% 16%, 0% 16%)
 }
 
 @media screen and (max-width: 630px) {
@@ -200,13 +206,9 @@
         font-size: 0.8rem;
         border-radius: 6px;
     }
-    
+
     .nav-item-active::after {
         height: 2rem;
         clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
     }
 }
-
-
-
-

@@ -1,9 +1,9 @@
 import React, { useContext, useRef, useEffect } from 'react';
-import { UserContext } from '../UserContext'; 
+import { UserContext } from '../UserContext';
 import '../../styles/footer.css';
 
 function Footer() {
-    
+
     const [user, setUser, theme, setTheme, toggleTheme] = useContext(UserContext); // initializing context values
 
     const installButtonRef = useRef(null); // creating a reference to the install button
@@ -65,7 +65,7 @@ function Footer() {
         window.scrollTo(0, 0);
     };
 
-    
+
     return (
         <footer className={`footer ${theme.greyscale ? "greyscale" : ""}`}>
             <div>

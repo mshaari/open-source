@@ -5,7 +5,7 @@ import '../../styles/pages.css';
 
 function Membership() {
 
-    const [user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+    const [user, setUser, theme, setTheme, toggleTheme] = useContext(UserContext);
 
     return (
         <div className={`page-content ${theme.greyscale ? "greyscale" : ""}`}>

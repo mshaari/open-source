@@ -6,7 +6,7 @@ import { QUERY_USER } from '../../utils/queries'; // import the query
 
 function SavedJobs() {
 
-    const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
+    const [user, setUser, theme, setTheme, toggleTheme] = useContext(UserContext);
 
     const { loading, error, data, refetch } = useQuery(QUERY_USER, {
         variables: { id: user.user_id }, // pass the user ID as a variable to the query
@@ -18,29 +18,24 @@ function SavedJobs() {
     }, []);
 
     if (loading) {
-    return <p>Loading...</p>;
+        return <p>Loading...</p>;
     }
 
     if (error) {
-    console.log(error);
-    }
-
-    if (data) {
-        
+        console.log(error);
     }
 
     return (
         <div className='Jobs'>
-            {data.user.saved_jobs.length? (
+            {data.user.saved_jobs.length ? (
                 <>
-                <h3>Your Saved Jobs:</h3><SavedJobCard jobs={data.user.saved_jobs} />
+                    <h3>Your Saved Jobs:</h3><SavedJobCard jobs={data.user.saved_jobs} />
                 </>
-            ):(
+            ) : (
                 <>
-                <h3>Your Have No Saved Jobs!</h3>
+                    <h3>Your Have No Saved Jobs!</h3>
                 </>
             )}
-
         </div>
     );
 }
