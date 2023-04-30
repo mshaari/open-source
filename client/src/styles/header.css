@@ -170,6 +170,7 @@
     transition: all;
     transition-duration: 0.2s;
     animation: hover 1s infinite linear;
+    text-shadow: 0 0 5px var(--straw);
 }
 
 .nav-item-active::after {
