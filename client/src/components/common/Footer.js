@@ -74,7 +74,7 @@ function Footer() {
                     <button id="toggle-theme" onClick={toggleTheme}>Greyscale Mode</button>
                 )}
                 <button id="back" onClick={backToTop}>Back to Top</button>
-                <button ref={installButtonRef} id="install" className="hidden">Install</button>
+                <button ref={installButtonRef} id="install">Install</button>
             </div>
             <h5 id="footer-title"><span>&lt;/</span><span>Open Source, 2023. All rights reserved</span><span>&gt;</span></h5>
         </footer>
