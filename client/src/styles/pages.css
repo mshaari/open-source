@@ -34,10 +34,8 @@ a, button {
     user-select: none;
     min-height: 80vh;
     padding-top: 5vh;
-    background: url('../../public/images/bg.gif') no-repeat center center fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background: url('../../public/images/bg.gif') no-repeat center center fixed !important;
+    background-size: cover !important;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -1073,8 +1071,8 @@ label {
 @media screen and (max-width: 630px) {
 
     .page-content {
-        background: url('../../public/images/mobile-bg.gif') no-repeat center center fixed;
-        background-size: cover;
+        background: url('../../public/images/mobile-bg.gif') no-repeat center center fixed !important;
+        background-size: cover !important;
     }
 
     .about-container, #login-signup-wrapper, .search-container, .dashboard-container, #setting-container, .contact-form-container, .membership-container {

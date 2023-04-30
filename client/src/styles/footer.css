@@ -84,7 +84,7 @@
 }
 
 #toggle-theme:active::after {
-    animation: spread 0.2s 1 linear forwards;
+    animation: spread 0.2s 1 linear forwards !important;
 }
 
 /* background color-shifting animation */
@@ -112,7 +112,7 @@
     background-size: 200%;
     animation: horizontal-bg-shift 3s infinite alternate-reverse linear;
     box-shadow: 0px 0px 10px black;
-    font-size: 0.5rem;
+    font-size: 0.5rem !important;
 } 
 
 .footer::after {
