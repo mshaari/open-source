@@ -5,7 +5,7 @@ const progressSchema = require('./Progress');
 
 const jobSchema = new Schema({
   _id: {
-    type: String 
+    type: String
   },
   save_date: {
     type: Date,
@@ -18,16 +18,16 @@ const jobSchema = new Schema({
   location: {
     type: String
   },
-  title : {
+  title: {
     type: String
   },
   description: {
-    type: String 
+    type: String
   },
-  salary_predicted : {
+  salary_predicted: {
     type: Boolean
   },
-  salary_max : {
+  salary_max: {
     type: Number
   },
   salary_min: {
@@ -40,9 +40,9 @@ const jobSchema = new Schema({
   redirect_url: {
     type: String
   },
-  progress : progressSchema,
+  progress: progressSchema,
 
-  
+
 });
 
 module.exports = jobSchema;

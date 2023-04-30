@@ -3,20 +3,20 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const progressSchema = new Schema({
-  
-  applied : {
+
+  applied: {
     type: Boolean
   },
   interviewed: {
     type: Boolean
   },
-  offer_received : {
+  offer_received: {
     type: Boolean
   },
   end_process: {
     type: Boolean
   },
-  notes : {
+  notes: {
     type: String
   }
 });

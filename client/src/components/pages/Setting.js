@@ -9,7 +9,6 @@ import { UPDATE_USER, UPDATE_PASSWORD } from '../../utils/mutations'; // import 
 
 function Setting() {
 
-
     const [editMode, setEditMode] = useState(false);
 
     const [passwordEdit, setPasswordEdit] = useState(false);
@@ -31,7 +30,7 @@ function Setting() {
 
     const [updateUser, { loading: updateLoading, error: updateError }] = useMutation(UPDATE_USER);
 
-    const[updatePassword, {err}] = useMutation(UPDATE_PASSWORD);
+    const [updatePassword, { err }] = useMutation(UPDATE_PASSWORD);
 
     if (loading) {
         return <p>Loading...</p>;
@@ -55,11 +54,9 @@ function Setting() {
         const resume = document.getElementById('user-resume').value;
         const coverLetter = document.getElementById('user-cover-letter').value;
 
-
         if (!user.loggedIn) {
             return;
         };
-
 
         updateUser({
             variables: {
@@ -71,20 +68,19 @@ function Setting() {
                 coverLetter: coverLetter,
             }
         })
-        .then(() => {
+            .then(() => {
 
-            setShowSuccess(true);
-            setTimeout(() => {
-                setShowSuccess(false)
-            }, 3000);
+                setShowSuccess(true);
+                setTimeout(() => {
+                    setShowSuccess(false)
+                }, 3000);
 
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
 
     };
-
 
     const saveData = async () => {
 
@@ -106,25 +102,22 @@ function Setting() {
                 email: email,
             }
         })
-        .then(() => {
+            .then(() => {
 
-            setShowSuccess(true);
-            setTimeout(() => {
-                setShowSuccess(false)
-            }, 3000);
+                setShowSuccess(true);
+                setTimeout(() => {
+                    setShowSuccess(false)
+                }, 3000);
 
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
-
 
     const editPassword = () => {
         setPasswordEdit(true);
     }
-
 
     const handleUpdatePass = async () => {
 
@@ -138,12 +131,11 @@ function Setting() {
                 setShowIncomplete(false);
                 setPasswordEdit(false);
             }, 3000);
- 
+
             return;
         }
 
-        try{ 
-
+        try {
             const response = await updatePassword({
                 variables: {
                     password: password,
@@ -151,33 +143,27 @@ function Setting() {
                 }
             });
 
-            if(response.data.updatePassword.update_successful){
+            if (response.data.updatePassword.update_successful) {
 
                 setShowComplete(true);
                 setTimeout(() => {
                     setShowComplete(false);
                     setPasswordEdit(false);
                 }, 3000);
-  
-            } else {
 
+            } else {
                 setShowError(true);
 
                 setTimeout(() => {
                     setShowError(false);
                     setPasswordEdit(false);
                 }, 3000);
-                
-
             };
 
-        } catch(err) {
+        } catch (err) {
             console.log(err.message);
         }
-    
     };
-    
-
 
     const copyLetter = () => {
         const coverLetter = document.getElementById('user-cover-letter').value;
@@ -188,9 +174,6 @@ function Setting() {
         const resume = document.getElementById('user-resume').value;
         navigator.clipboard.writeText(resume);
     }
-
-
-
 
     return (
         <div className={`setting-content ${theme.greyscale ? "greyscale" : ""}`}>
@@ -238,27 +221,27 @@ function Setting() {
                                 <p>Forgot your password? <a id='service-email' href='mailto:service@opensource.com?subject=User Forgot Password'>Email</a> us so we can help you out!</p>
                             </div>
                         ) : null}
-                        {showIncomplete? (
+                        {showIncomplete ? (
                             <div>
                                 <p className='error-text'>Please enter your old and new passwords!</p>
                             </div>
-                        ): null }
-                        {showComplete? (
+                        ) : null}
+                        {showComplete ? (
                             <div>
                                 <p className='success-text'>User Password Updated!</p>
                             </div>
-                        ): null }
+                        ) : null}
                         <button className='edit-btn' onClick={() => handleUpdatePass()}>Update Password</button>
                     </div>
                 ) : (
                     <>
-                    <div className='data-box'>
-                        <label>User Password:</label>
-                        <textarea id="user-password" placeholder='*******' readOnly="readonly"></textarea>
-                    </div>
-                    <div className='data-box'>
-                        <button className='edit-btn' onClick={() => editPassword()}>Change Password</button>
-                    </div>
+                        <div className='data-box'>
+                            <label>User Password:</label>
+                            <textarea id="user-password" placeholder='*******' readOnly="readonly"></textarea>
+                        </div>
+                        <div className='data-box'>
+                            <button className='edit-btn' onClick={() => editPassword()}>Change Password</button>
+                        </div>
                     </>
                 )}
                 {data?.user?.paid_member ? (
@@ -304,7 +287,6 @@ function Setting() {
                         </div>
                     </div>
                 )}
-
             </div>
         </div>
     )
