@@ -32,7 +32,7 @@ To use the Tech Job Board application, users can simply visit the website, signu
 As a progressive web application, the Tech Job Board can be installed through the browser. Users can visit the website and follow the installation prompts on their browser. Once installed, they can access the Tech Job Board through their device's app launcher, just like any other app.
 Alternatively, developers can clone the repository and run it locally using a web server. They will need to have Node.js and npm installed on their machine. Once they have cloned the repository, they can run npm install to install the dependencies and npm start to start the development server.
 
-![Search function](assets/registered-user-search.gif)
+![Search function](assets/paid-member-search-and-save-jobs.gif)
 
 ## Contributing
 Contributions to the Tech Job Board project are welcome. Developers can fork the repository, make their changes, and submit a pull request to the main repository. Please make sure to follow the project's coding standards and guidelines.
