@@ -14,5 +14,5 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-
-serviceWorkerRegistration.unregister();
+// Changed from unregister() to register() to enable service worker
+serviceWorkerRegistration.register();
