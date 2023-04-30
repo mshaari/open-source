@@ -46,7 +46,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(90deg, var(--straw)0%, var(--fairytale)50%, var(--straw) 100%);
+    background: linear-gradient(90deg, #6200ff 0%, var(--fairytale)50%, #6200ff 100%);
     background-size: 200%;
     animation: horizontal-bg-shift 3s infinite alternate-reverse linear;
     box-shadow: 0px 0px 10px black;
