@@ -6,9 +6,6 @@ import { QUERY_USER } from '../../utils/queries'; // import the query
 
 function SavedJobs() {
 
-    // Declare an array of objects that will get passed into Job element to create the multiple projects (figure out how this comes from the users saved job document -- it will be a number of objects with different properties depending on what we save and what the API initially returne)
-
-
     const [ user, setUser, theme, setTheme, toggleTheme ] = useContext(UserContext);
 
     const { loading, error, data, refetch } = useQuery(QUERY_USER, {

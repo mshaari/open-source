@@ -37,7 +37,7 @@ function Contact() {
         setSubmittedStatus(true);
 
         setTimeout(() => {
-            document.location.reload();
+            document.location.assign('/');
         }, 3000);
     };
 
