@@ -14,7 +14,9 @@
 ## Description 
 This is an application that allows users to search for tech jobs, save jobs they are interested in, and track their application progress. This is intended to provide users with a centralized platform to browse job openings, save listings that match their interests, and track their application status, making the job search process more streamlined and efficient.
 
+
 Open Source is deployed on Heroku at: https://open-source.herokuapp.com/
+
 The App's GitHub repo is located at: https://github.com/mshaari/open-source
 
 ## Usage

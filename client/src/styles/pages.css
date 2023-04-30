@@ -329,7 +329,7 @@ a, button {
     font-family: var(--title);
     font-size: 1.2rem;
     position: fixed;
-    left: -9vw;
+    left: -10vw;
     top: 40vh;
     padding-top: 10vh;
     z-index: 5;
