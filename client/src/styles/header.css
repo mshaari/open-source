@@ -60,7 +60,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: radial-gradient(circle at 50% 50%, var(--new-leaf) 0%, var(--sky) 80%);
+    background: radial-gradient(circle at 50% 50%, var(--new-leaf) 0%, rgb(73, 213, 255) 80%);
     transform: scale(0);
     transition: transform;
     transform-origin: top;
@@ -170,6 +170,7 @@
     transition: all;
     transition-duration: 0.2s;
     animation: hover 1s infinite linear;
+    text-shadow: 0 0 5px var(--straw);
 }
 
 .nav-item-active::after {
@@ -184,6 +185,11 @@
 }
 
 @media screen and (max-width: 630px) {
+
+    .header::after {
+        background: radial-gradient(circle at 50% 50%, var(--new-leaf) 0%, rgb(255, 146, 110) 80%);
+    }
+
     #title {
         font-size: 1em;
         margin-block: 2rem;
