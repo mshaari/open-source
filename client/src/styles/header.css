@@ -23,9 +23,7 @@
 
 .greyscale {
     filter: grayscale(1);
-    background-color: rgba(255, 255, 255, 1) !important;
-    box-shadow: 0px 5px 0px rgba(255, 255, 255,0.4), 0px 10px 0px rgba(255, 255, 255,0.3), 0px 15px 0px rgba(255, 255, 255,0.2),  0px 20px 0px rgba(255, 255, 255,0.1);
-
+    background-color: white !important;
 }
 
 /* background color-shifting animation */
@@ -36,6 +34,20 @@
 
     100% {
         background-position: right;
+    }
+}
+
+@keyframes header-waves {
+    0% {
+        box-shadow: 0px 5px 0px rgba(255, 255, 255,0.4), 0px 10px 0px rgba(255, 255, 255,0.3), 0px 15px 0px rgba(255, 255, 255,0.2),  0px 20px 0px rgba(255, 255, 255,0.1);
+    }
+
+    50% {
+        box-shadow: 0px 5px 0px rgba(255, 255, 255,0.1), 0px 10px 0px rgba(255, 255, 255,0.2), 0px 15px 0px rgba(255, 255, 255,0.3),  0px 20px 0px rgba(255, 255, 255,0.4);
+    }
+
+    100% {
+        box-shadow: 0px 5px 0px rgba(255, 255, 255,0.4), 0px 10px 0px rgba(255, 255, 255,0.3), 0px 15px 0px rgba(255, 255, 255,0.2),  0px 20px 0px rgba(255, 255, 255,0.1);
     }
 }
 
@@ -50,7 +62,7 @@
     flex-direction: column;
     align-items: center;
     background-color: rgba(255, 255, 255,0.7);
-    box-shadow: 0px 5px 0px rgba(255, 255, 255,0.4), 0px 10px 0px rgba(255, 255, 255,0.3), 0px 15px 0px rgba(255, 255, 255,0.2),  0px 20px 0px rgba(255, 255, 255,0.1);
+    animation: header-waves 1s infinite linear;
 }
 
 .header::after {
@@ -62,11 +74,15 @@
     top: 0;
     left: 0;
     background-color: rgba(27, 217, 255, 0.7);
-    box-shadow: 0px 5px 0px rgba(27, 217, 255,0.4), 0px 10px 0px rgba(27, 217, 255,0.3), 0px 15px 0px rgba(27, 217, 255,0.2),  0px 20px 0px rgba(27, 217, 255,0.1);
+    box-shadow: 0px 5px 0px rgba(111, 231, 255, 0.5), 0px 10px 0px rgba(111, 231, 255,0.4), 0px 15px 0px rgba(111, 231, 255,0.3),  0px 20px 0px rgba(111, 231, 255,0.2);
     transform: scale(0);
     transition: transform;
     transform-origin: top;
     transition-duration: 0.2s;
+}
+
+.header:hover {
+    animation: none;
 }
 
 .header:hover::after {
@@ -189,8 +205,8 @@
 @media screen and (max-width: 630px) {
 
     .header::after {
-        background-color: rgba(88, 27, 255, 0.7);
-        box-shadow: 0px 5px 0px rgba(88, 27, 255,0.4), 0px 10px 0px rgba(88, 27, 255,0.3), 0px 15px 0px rgba(88, 27, 255,0.2),  0px 20px 0px rgba(88, 27, 255,0.1);
+        background-color: rgba(88, 27, 255, 0.8);
+        box-shadow: 0px 5px 0px rgba(115, 65, 255, 0.6), 0px 10px 0px rgba(115, 65, 255,0.5), 0px 15px 0px rgba(115, 65, 255,0.4),  0px 20px 0px rgba(115, 65, 255,0.3);
     }
 
     #title {
