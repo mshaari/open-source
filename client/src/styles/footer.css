@@ -24,8 +24,21 @@
 
 .greyscale {
     filter: grayscale(1);
-    background-color: rgba(255, 255, 255, 1) !important;
-    box-shadow: 0px 5px 0px rgba(255, 255, 255,0.4), 0px 10px 0px rgba(255, 255, 255,0.3), 0px 15px 0px rgba(255, 255, 255,0.2),  0px 20px 0px rgba(255, 255, 255,0.1);
+    background-color: rgb(255, 255, 255) !important;
+}
+
+@keyframes footer-waves {
+    0% {
+        box-shadow: 0px -5px 0px rgba(255, 255, 255,0.4), 0px -10px 0px rgba(255, 255, 255,0.3), 0px -15px 0px rgba(255, 255, 255,0.2),  0px -20px 0px rgba(255, 255, 255,0.1);
+    }
+
+    50% {
+        box-shadow: 0px -5px 0px rgba(255, 255, 255,0.1), 0px -10px 0px rgba(255, 255, 255,0.2), 0px -15px 0px rgba(255, 255, 255,0.3),  0px -20px 0px rgba(255, 255, 255,0.4);
+    }
+
+    100% {
+        box-shadow: 0px -5px 0px rgba(255, 255, 255,0.4), 0px -10px 0px rgba(255, 255, 255,0.3), 0px -15px 0px rgba(255, 255, 255,0.2),  0px -20px 0px rgba(255, 255, 255,0.1);
+    }
 }
 
 #toggle-theme,
@@ -121,7 +134,11 @@
     align-items: center;
     font-size: 0.5rem !important;
     background-color: rgba(255, 255, 255,0.7);
-    box-shadow: 0px -5px 0px rgba(255, 255, 255,0.4), 0px -10px 0px rgba(255, 255, 255,0.3), 0px -15px 0px rgba(255, 255, 255,0.2),  0px -20px 0px rgba(255, 255, 255,0.1);
+    animation: footer-waves 1s infinite linear;
+}
+
+.footer:hover {
+    animation: none;
 }
 
 .footer::after {
@@ -133,7 +150,7 @@
     top: 0;
     left: 0;
     background-color: rgba(27, 217, 255, 0.7);
-    box-shadow: 0px -5px 0px rgba(27, 217, 255,0.4), 0px -10px 0px rgba(27, 217, 255,0.3), 0px -15px 0px rgba(27, 217, 255,0.2),  0px -20px 0px rgba(27, 217, 255,0.1);
+    box-shadow: 0px -5px 0px rgba(111, 231, 255, 0.5), 0px -10px 0px rgba(111, 231, 255,0.4), 0px -15px 0px rgba(111, 231, 255,0.3),  0px -20px 0px rgba(111, 231, 255,0.2);
     transform: scale(0);
     transition: transform;
     transform-origin: bottom;
@@ -163,8 +180,8 @@
 @media screen and (max-width: 630px) {
 
     .footer::after {
-        background-color: rgba(88, 27, 255, 0.7);
-        box-shadow: 0px -5px 0px rgba(88, 27, 255,0.4), 0px -10px 0px rgba(88, 27, 255,0.3), 0px -15px 0px rgba(88, 27, 255,0.2),  0px -20px 0px rgba(88, 27, 255,0.1);
+        background-color: rgba(88, 27, 255, 0.8);
+        box-shadow: 0px -5px 0px rgba(115, 65, 255, 0.6), 0px -10px 0px rgba(115, 65, 255,0.5), 0px -15px 0px rgba(115, 65, 255,0.4),  0px -20px 0px rgba(115, 65, 255,0.3);
     }
 }
 
