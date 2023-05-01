@@ -6,6 +6,8 @@ body {
     padding: 0;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    background: url('../../public/images/bg.gif') no-repeat center center fixed !important;
+    background-size: cover !important;
 }
 
 @keyframes ripple {
@@ -32,4 +34,13 @@ body {
     animation: ripple 0.3s 1 forwards;
     transition: all;
     transition-duration: 1s;
+}
+
+@media screen and (max-width: 630px ) {
+
+    html,
+    body {
+        background: url('../../public/images/mobile-bg.gif') no-repeat center center fixed !important;
+        background-size: cover !important;
+    }
 }

@@ -23,6 +23,9 @@
 
 .greyscale {
     filter: grayscale(1);
+    background-color: rgba(255, 255, 255, 1) !important;
+    box-shadow: 0px 5px 0px rgba(255, 255, 255,0.4), 0px 10px 0px rgba(255, 255, 255,0.3), 0px 15px 0px rgba(255, 255, 255,0.2),  0px 20px 0px rgba(255, 255, 255,0.1);
+
 }
 
 /* background color-shifting animation */
@@ -46,10 +49,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(90deg, #6200ff 0%, var(--fairytale)50%, #6200ff 100%);
-    background-size: 200%;
-    animation: horizontal-bg-shift 3s infinite alternate-reverse linear;
-    box-shadow: 0px 0px 10px black;
+    background-color: rgba(255, 255, 255,0.7);
+    box-shadow: 0px 5px 0px rgba(255, 255, 255,0.4), 0px 10px 0px rgba(255, 255, 255,0.3), 0px 15px 0px rgba(255, 255, 255,0.2),  0px 20px 0px rgba(255, 255, 255,0.1);
 }
 
 .header::after {
@@ -60,7 +61,8 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: radial-gradient(circle at 50% 50%, var(--new-leaf) 0%, rgb(73, 213, 255) 80%);
+    background-color: rgba(27, 217, 255, 0.7);
+    box-shadow: 0px 5px 0px rgba(27, 217, 255,0.4), 0px 10px 0px rgba(27, 217, 255,0.3), 0px 15px 0px rgba(27, 217, 255,0.2),  0px 20px 0px rgba(27, 217, 255,0.1);
     transform: scale(0);
     transition: transform;
     transform-origin: top;
@@ -187,7 +189,8 @@
 @media screen and (max-width: 630px) {
 
     .header::after {
-        background: radial-gradient(circle at 50% 50%, var(--new-leaf) 0%, rgb(255, 146, 110) 80%);
+        background-color: rgba(88, 27, 255, 0.7);
+        box-shadow: 0px 5px 0px rgba(88, 27, 255,0.4), 0px 10px 0px rgba(88, 27, 255,0.3), 0px 15px 0px rgba(88, 27, 255,0.2),  0px 20px 0px rgba(88, 27, 255,0.1);
     }
 
     #title {

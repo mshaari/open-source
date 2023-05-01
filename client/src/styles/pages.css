@@ -31,12 +31,13 @@ button {
 }
 
 .page-content {
+    background: url('../../public/images/bg.gif') no-repeat center center fixed !important;
+    background-size: cover !important;
+    background-attachment: fixed;
     z-index: -1;
     user-select: none;
     min-height: 80vh;
     padding-top: 5vh;
-    background: url('../../public/images/bg.gif') no-repeat center center fixed !important;
-    background-size: cover !important;
     display: flex;
     flex-direction: column;
     align-items: center;
