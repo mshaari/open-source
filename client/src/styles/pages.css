@@ -1108,6 +1108,8 @@ label {
 
 /* payment success page styliing */
 .success-content {
+    position: relative;
+    z-index: 100;
     height: 100vh;
     background-image: url('../../public/images/success.gif');
     background-position: bottom;
@@ -1118,6 +1120,8 @@ label {
 }
 
 .cancel-content {
+    position: relative;
+    z-index: 100;
     height: 100vh;
     background-image: url('../../public/images/cancel.gif');
     background-position: bottom;
@@ -1135,12 +1139,12 @@ label {
 .success-container,
 .cancel-container {
     position: fixed;
-    top: 0;
+    top: -20vh;
     height: 100vh;
     width: 100vw;
-    padding-block: 35vh;
+    padding-top: 25vh;
     margin-top: 0;
-    z-index: 100;
+    z-index: 100 !important;
     font-family: var(--text);
     text-align: center;
     background-color: rgba(255, 255, 255, 0.7);
